@@ -1,9 +1,5 @@
- #TITLE: HAVE A SEAT
-					        ¬by Vimanyu Aggarwal
-					            Sparsh Sidana
-					            Jayam Malviya
-					            Amit Pandey
-
+#TITLE: HAVE A SEAT
+					            
 ##Problem Statement:
 How many times has it occurred that you went to a diner and couldn’t find a seat? You probably ended up spending time in long queues, ruining your dining experience and getting frustrated – not knowing that there is a diner with available seats on the next street or there was a seat available just a few minutes ago when you stopped just for a small chat.
 Moreover, restaurant owners lose revenue (as well as food!) when a customer enters the diner right after the owner closed the cash counter machine. So, there is a need to develop a platform on which the consumers and the restaurant owners can communicate real-time. 
