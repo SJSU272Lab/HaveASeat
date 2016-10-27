@@ -23,3 +23,9 @@ Benefits:
 •	Increased revenue of the restaurant owners by allowing them to contact *prospective* customers thereby allowing them to fill up the seats at the last moment.
 •	Reduced food wastage by making the restaurants aware about the eating habits of the prospective customers.
 •	Lots and lots of happiness to the Foodies!
+
+Architectural Flow Diagram:
+
+![artitecture flow diagram](https://cloud.githubusercontent.com/assets/21698271/19756814/120493d0-9bd4-11e6-9e3a-f96cbe620a41.png)
+![machine learning 272](https://cloud.githubusercontent.com/assets/21698271/19756815/12053038-9bd4-11e6-8983-8a803a967978.png)
+
