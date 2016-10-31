@@ -26,7 +26,7 @@ Wider ML integration to suggest appropriate restaurants to the foodies based on 
 •Reduced food wastage by making the restaurants aware about the eating habits of the prospective customers.
 •Lots and lots of happiness to the Foodies!
 
-###Architectural Flow Diagram:
+##Architectural Flow Diagram:
 
 ![artitecture flow diagram](https://cloud.githubusercontent.com/assets/21698271/19756814/120493d0-9bd4-11e6-9e3a-f96cbe620a41.png)
 
