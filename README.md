@@ -29,5 +29,6 @@ Wider ML integration to suggest appropriate restaurants to the foodies based on 
 ##Architectural Flow Diagram:
 
 ![artitecture flow diagram](https://cloud.githubusercontent.com/assets/21698271/19756814/120493d0-9bd4-11e6-9e3a-f96cbe620a41.png)
+
 ![machine learning 272](https://cloud.githubusercontent.com/assets/21698271/19756815/12053038-9bd4-11e6-8983-8a803a967978.png)
 
