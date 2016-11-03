@@ -4,10 +4,11 @@ from flask import Flask, jsonify
 from flask import request
 from flask import render_template
 
-con=MongoClient()
-db=con.customers
-employee=db.employee
-Restaurant=db.Restaurant
+con = MongoClient()
+db = con.hockey
+Customers = db.Customers
+Restaurants = db.Restaurants
+Tables = db.Tables
 
 app= Flask(__name__)
 list=[]
@@ -31,13 +32,13 @@ def checkSeats(restaurant_name):
     #totalRestaurants = mongo.db.Restaurants
 
     #rest_cursor = mongo.db.Restaurants.find({"restName": "subway"})
-    restID = mongo.db.Restaurants.find({"restName": restaurant_name},{"_id":1})
+    restID = Restaurants.find({"restName": restaurant_name},{"_id":1})
     print restID
     myrestID =0
     for i in restID:
         myrestID = i["_id"]
         print myrestID
-    totaltables = mongo.db.Tables.find({"Restid": myrestID})
+    totaltables = Tables.find({"Restid": myrestID})
     total_counter = 0
     booked_counter =0
     for i in totaltables:
