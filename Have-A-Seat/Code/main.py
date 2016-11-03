@@ -24,6 +24,28 @@ def getRastaurent():
 def dashboard():
     return render_template('dashboard.html')
 
+@app.route('/<string:restaurant_name>/checkSeats')
+def checkSeats(restaurant_name):
+    """user reaches here after selecting the restaurant name
+    """
+    #totalRestaurants = mongo.db.Restaurants
+
+    #rest_cursor = mongo.db.Restaurants.find({"restName": "subway"})
+    restID = mongo.db.Restaurants.find({"restName": restaurant_name},{"_id":1})
+    print restID
+    myrestID =0
+    for i in restID:
+        myrestID = i["_id"]
+        print myrestID
+    totaltables = mongo.db.Tables.find({"Restid": myrestID})
+    total_counter = 0
+    booked_counter =0
+    for i in totaltables:
+        if(i["isBooked"]):
+            booked_counter +=1
+        total_counter +=1
+
+    return "This Restaurant has "+ str(total_counter) + " seats of which "+ str(booked_counter)+" are booked"
 
 
 """@app.route('/<string:restaurant_name>')
