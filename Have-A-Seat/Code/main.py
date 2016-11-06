@@ -8,17 +8,20 @@ con = MongoClient()
 db = con.hockey
 Customers = db.Customers
 Restaurants = db.Restaurants
+Restaurant = db.Restaurant
 Tables = db.Tables
 
 app= Flask(__name__)
 list=[]
 list1=[]
+
 @app.route('/')
 def getRastaurent():
     check = Restaurant.find()
     for i in check:
         list= str(i['name'])
         list1.append(list)
+
     return render_template("restaurant.html", list = list1)
 
 @app.route('/dashboard/')
