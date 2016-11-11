@@ -23,7 +23,9 @@
 
 					Total: <b>$<span id="total">0</span></b>
 
-					<button class="checkout-button">Checkout &raquo;</button>
+					<button class="checkout-button">Checkout</button>
+
+
 
 					<div id="legend"></div>
 				</div>
@@ -33,7 +35,7 @@
          <script type="text/javascript" src={{url_for('static', filename='js/jquery-1.11.0.min.js')}}></script>
          <script type="text/javascript" src={{url_for('static', filename='js/jquery.seat-charts.js')}}></script>
 
-
+<form  action="/seatBooked" class="navbar-form navbar-left" method="post" >
 		<script>
 			var firstSeatLabel = 1;
 
@@ -43,50 +45,39 @@
 					$total = $('#total'),
 					sc = $('#seat-map').seatCharts({
 					map: [
-						'f_ff',
-						'f_ff',
-						'e_ee',
-						'e_ee',
-						'e___',
-						'e_ee',
-						'e_ee',
-						'e_ee',
-						'eeee',
-					],
+						'e_e',
+						'e_e',
+						'e_e',
+						'_e_'
+						],
 					seats: {
-						f: {
+						e: {
 							price   : 100,
 							classes : 'first-class', //your custom CSS class
 							category: 'First Class'
-						},
-						e: {
-							price   : 40,
-							classes : 'economy-class', //your custom CSS class
-							category: 'Economy Class'
 						}
-
 					},
 					naming : {
 						top : false,
 						getLabel : function (character, row, column) {
 							return firstSeatLabel++;
-						},
+						}
 					},
 					legend : {
 						node : $('#legend'),
 					    items : [
-							[ 'f', 'available',   'Booked ' ],
+							[ 'e', 'booked',   'Booked ' ],
 							[ 'e', 'available',   'Available'],
-							[ 'f', 'unavailable', 'Dinning ']
+							[ 'e', 'unavailable', 'Dining ']
 					    ]
 					},
 					click: function () {
 						if (this.status() == 'available') {
 							//let's create a new <li> which we'll add to the cart items
-							$('<li>'+this.data().category+' Seat # '+this.settings.label+': <b>$'+this.data().price+'</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
-								.attr('id', 'cart-item-'+this.settings.id)
-								.data('seatId', this.settings.id)
-								.appendTo($cart);
+							$('<li>' + this.data().category + ' Seat # ' + this.settings.label + ': <b>$' + this.data().price + '</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
+									.attr('id', 'cart-item-' + this.settings.id)
+									.data('seatId', this.settings.id)
+									.appendTo($cart);
 
 							/*
 							 * Lets update the counter and total
@@ -94,24 +85,27 @@
 							 * .find function will not find the current seat, because it will change its stauts only after return
 							 * 'selected'. This is why we have to add 1 to the length and the current seat price to the total.
 							 */
-							$counter.text(sc.find('selected').length+1);
-							$total.text(recalculateTotal(sc)+this.data().price);
+							$counter.text(sc.find('selected').length + 1);
+							$total.text(recalculateTotal(sc) + this.data().price);
 
 							return 'selected';
 						} else if (this.status() == 'selected') {
 							//update the counter
-							$counter.text(sc.find('selected').length-1);
+							$counter.text(sc.find('selected').length - 1);
 							//and total
-							$total.text(recalculateTotal(sc)-this.data().price);
+							$total.text(recalculateTotal(sc) - this.data().price);
 
 							//remove the item from our cart
-							$('#cart-item-'+this.settings.id).remove();
+							$('#cart-item-' + this.settings.id).remove();
 
 							//seat has been vacated
 							return 'available';
 						} else if (this.status() == 'unavailable') {
 							//seat has been already booked
 							return 'unavailable';
+						} else if (this.status() == 'booked')
+						{	//seat has been already booked
+							return 'booked';
 						} else {
 							return this.style();
 						}
@@ -122,10 +116,18 @@
 				$('#selected-seats').on('click', '.cancel-cart-item', function () {
 					//let's just trigger Click event on the appropriate seat, so we don't have to repeat the logic here
 					sc.get($(this).parents('li:first').data('seatId')).click();
+
+
 				});
 
 				//let's pretend some seats have already been booked
-				sc.get(['1_2', '4_1', '7_1', '7_2']).status('unavailable');
+				sc.get(['1_1']).status('{{seat_details[0]}}');
+				sc.get(['1_3']).status('{{seat_details[1]}}');
+				sc.get(['2_1']).status('{{seat_details[2]}}');
+				sc.get(['2_3']).status('{{seat_details[3]}}');
+				sc.get(['3_1']).status('{{seat_details[4]}}');
+				sc.get(['3_3']).status('{{seat_details[5]}}');
+				sc.get(['4_2']).status('{{seat_details[6]}}');
 
 		});
 
@@ -141,23 +143,11 @@
 		}
 
 		</script>
+<button class="btn btn-default" value="Book Seat">Book Seat </button>
+
+      			</form>
 
 
-<div>
-    <ul>
-        {% for rest in dic["Restaurant"]  %}
-        <li><a href ="{{rest[1]}}">{{rest[0]}}</a></li>
-        {% endfor %}
-
-    </ul>
-</div>
-<div>
-    <ul>
-
-        <li>{{seat_details}}</li>
-
-    </ul>
 </div>
 
-</div>
 {% endblock %}
