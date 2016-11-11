@@ -1,14 +1,16 @@
 from pymongo import MongoClient
 import flask
-from flask import Flask,url_for , redirect ,flash
+from flask import Flask,url_for , redirect, session ,flash
 from flask import request
 from flask import render_template
+from flask_oauth import OAuth
 
 con = MongoClient()
 db = con.Have_A_Seat
 Customers = db.Customers
 Restaurants = db.Restaurants
 Tables = db.Tables
+Users = db.Users
 
 app= Flask(__name__)
 list=[]
@@ -82,9 +84,28 @@ def checkSeats(restaurant_name):
 
     return render_template("restaurant.html", seat_details=seat_details, dic=dic)
 
+# this is the authenticate route
+@app.route('/register', methods=['GET','POST'])
+def Register():
+    # print 'u have readched login'
+    # print request.form.get('email')
+    # print request.form.get('password')
+    return render_template('register.html'), 200
+
+@app.route('/registerUser', methods=['POST'])
+def registerUser():
+    print 'u have readched regitserter user'
+    print request.form.get('email')
+    print request.form.get('password')
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    # restID = db.Users.insert_one({'email':email,'password':password})
+    restID = db.Users.update_one({'email':email},{'$set':{'password':password}},upsert=True)
+    print restID
+    print 'inserted'
+    return render_template("index.html")
+
+
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=8082)
-
-
-
-

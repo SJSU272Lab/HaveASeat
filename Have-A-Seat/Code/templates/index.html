@@ -9,7 +9,6 @@
 
 </head>
 
-
 <header>
     <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -54,7 +53,8 @@
       <ul class="nav navbar-nav navbar-right">
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<button type="button"  onclick="location.href = '/register';" id="myButton" class="btn btn-primary btn-lg"
+        data-toggle="modal" data-target="#myModal">
   sign up
 </button>
 
@@ -64,7 +64,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+        <h5 class="modal-title" id="myModalLabel">Sign Up</h5>
       </div>
       <div class="modal-body">
         ...

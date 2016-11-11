@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+
+
+function goBack() {
+    window.history.back();
+}
+
+function validation(){
+ var emailRegex = /^([a-zA-Z0-9_-]){3,10}@([a-zA-Z0-9_-]){3,10}.com$/;
+ var passwordRegex = /^([a-zA-Z0-9_-]){3,10}$/;
+
+var email = document.forms["registerUser"]["email"].value;
+var password = document.forms["registerUser"]["password"].value;
+
+ var emailValid   = emailRegex.test(email);
+ var passwordValid  = passwordRegex.test(password);
+ if( emailValid  && passwordValid){
+    return true;
+ }
+
+ else{
+
+    if(!emailValid){
+     document.getElementById("invalidEmail").style.visibility = "visible";
+ }
+
+ else{
+     document.getElementById("invalidEmail").style.visibility = "hidden";
+ }
+
+ if(!passwordValid){
+     document.getElementById("invalidPassword").style.visibility = "visible";
+ }
+
+ else{
+     document.getElementById("invalidPassword").style.visibility = "hidden";
+ }
+
+    return false;
+ }
+}
+</script>
+</head>
+<body>
+    <div class="col-sm-4 text-right">
+        <h3>
+				<span class="glyphicon glyphicon-user"></span> &nbsp;Sign Up
+			</h3>
+
+    </div>
+
+    <div class="col-sm-4 text-left">
+    <form  name = "registerUser" action="/registerUser" class="navbar-form navbar-left" method="post"  onsubmit="return validation()">
+        <br/>
+        <div>
+            <input type="text" name="email" placeholder="email" class="form-control" value="{{request.form.email}}">
+            <!-- <p id="invalidEmail" class="alert alert-danger"> Invalid EmailId</p> -->
+
+        </div>
+        <br/>
+
+        <div class="form-group">
+           <input type="password" class="form-control" placeholder="password" name="password"  value="{{request.form.password}}">
+        </div>
+        <br/>
+        <br/>
+        <br/>
+
+        <input type="submit" class="btn btn-primary"  value="Register">
+        <input type="button" onclick="goBack()" class="btn btn-default" value="Cancel">
+
+    </form>
+
+    </div>
+
+    <div class="col-sm-4 text-left">
+        <br/>
+            <p id="invalidEmail" class="alert  alert-danger" style="width:130px"> Invalid EmailId</p>
+            <p id="invalidPassword"  class="alert alert-danger" style="width:140px" > Weak Password</p>
+    </div>
+
+
+
+</body>
+
+<script>
+    document.getElementById("invalidEmail").style.visibility = "hidden";
+document.getElementById("invalidPassword").style.visibility = "hidden";
+
+</script>
+</html>
