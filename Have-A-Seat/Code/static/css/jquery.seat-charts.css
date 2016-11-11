@@ -59,6 +59,11 @@ div.seatCharts-seat.unavailable {
 	cursor: not-allowed;
 }
 
+div.seatCharts-seat.booked {
+	background-color: orange;
+	cursor: not-allowed;
+}
+
 ul.seatCharts-legendList {
 	list-style: none;
 }
