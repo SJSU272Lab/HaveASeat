@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" ng-app="HaveASeat" xmlns="http://www.w3.org/1999/html">
+
+
 <head>
     <meta charset="UTF-8">
     <title>Have A Seat</title>
@@ -7,101 +9,46 @@
     <link href={{url_for('static', filename='css/bootstrap.min.css')}} rel="stylesheet" type="text/css" />
     <link href={{url_for('static', filename='images/icon.png')}} rel="shortcut icon" />
 
+    <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="static/angularjs/src/angular.js"></script>
+<script src="static/angularjs/src/angular-route.js"></script>
+<script src="static/angularjs/src/angular-resource.js"></script>
+<script src="static/angularjs/src/angular-animate.js"></script>
+<script src="static/angularjs/src/angular-cookies.js"></script>
+<script src="static/app.module.js"></script>
+<script src="static/app.config.js"></script>
+
+<script src="static/header/header.module.js"></script>
+<script src="static/header/header.component.js"></script>
+
+
+<script src="static/owner/owner.module.js"></script>
+<script src="static/owner/owner.component.js"></script>
+
+<script src="static/index/index.module.js"></script>
+<script src="static/index/index.component.js"></script>
+
+<script src="static/restaurants/restaurants.module.js"></script>
+<script src="static/restaurants/restaurants.component.js"></script>
+
+<script src="static/seats/seats.module.js"></script>
+<script src="static/seats/seats.component.js"></script>
+
 </head>
 
-<header>
-    <nav class="navbar navbar-default">
-    <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-
-      <a class="navbar-brand" href="/">
-          <img style ="max-width:150px; margin-top  -7px:" src ="{{url_for('static', filename='images/logo1.png')}}"
-      </a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-
-        <!-- implementing search functionality-->
-
-      <form  action="" class="navbar-form navbar-left" method="post" >
-          <div class="form-group">
-       <input type="text" class="form-control" placeholder="search" name="search"  value="{{request.form.search}}">
-              </div>
-      <input type="submit" class="btn btn-default" value="Search">
-        <!--<span class ="glyphicon glyphicon-search"  aria-hidden="true" value="index"></span>Search</input> -->
-      </form>
-
-
-      <ul class="nav navbar-nav navbar-right">
-
-<!-- Button trigger modal -->
-<button type="button"  onclick="location.href = '/login';" id="myButton" class="btn btn-primary btn-lg"
-        data-toggle="modal" data-target="#myModal">
-  Login
-</button>
-
-<button type="button"  onclick="location.href = '/logout';" id="myButton" class="btn btn-primary btn-lg"
-        data-toggle="modal" data-target="#myModal">
-  Logout
-</button>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h5 class="modal-title" id="myModalLabel">Sign Up</h5>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">submit</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-</header>
-
-
-
 <body>
-{% block body %}{% endblock %}
+<header></header>
+
+<div ng-view></div>
 
 </body>
 

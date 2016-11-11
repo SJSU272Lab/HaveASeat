@@ -3,10 +3,10 @@ import flask
 from flask import Flask,url_for , redirect, session ,flash,request
 from flask import request
 from flask import render_template
-from flask_oauth import OAuth
 import bson.objectid
 from bson.objectid import ObjectId
 import flask_login
+import json
 
 app= Flask(__name__)
 con = MongoClient()
@@ -15,6 +15,20 @@ db = con.Have_A_Seat
 
 list=[]
 dic={}
+
+
+@app.route('/restaurants/', methods=['GET'])
+def restaurants():
+    return json.dumps([{'id':123,'name':'aaa'},{'id':456,'name':'bbb'},{'id':789,'name':'ccc'}])
+
+
+@app.route('/searchRestaurants', methods=['POST'])
+def searchRestaurants():
+    print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx'
+    print request.form['search']
+    return json.dumps([{'id':123,'name':'aaa'},{'id':456,'name':'bbb'},{'id':789,'name':'ccc'}])
+
+
 # this is the home page which loads first
 @app.route('/', methods=['GET', 'POST'])
 def Homepage():
@@ -34,6 +48,12 @@ def Homepage():
     return  render_template("index.html")
 
 
+
+@app.route('/hello')
+def hello():
+    return json.dumps({id:123,'name':'aaa','name':'bbb','name':'ccc'})
+
+
 # when user searches for restaurent this page gets loaded
 @app.route('/restaurantList/')
 def restaurantList():
@@ -44,7 +64,8 @@ def restaurantList():
        # dic={"Restaurant" : [[list, link]]}
     global dic
     #print dic
-    return render_template("restaurantList.html", dic = dic)
+    # return render_template("restaurantList.html", dic = dic)
+    return json.dump(dic)
 
 """
 @app.route('/dashboard/')
@@ -141,7 +162,7 @@ def registerUser():
 @app.route('/login', methods=['GET','POST'])
 def Login():
     if request.method=='GET':
-        return render_template("login.html")
+        return render_template("LogIn.html")
     if request.method == 'POST':
         print("In Post")
         login_user = db.Customers.find_one({'email' : request.form['email']})
@@ -209,4 +230,4 @@ def logout():
 
 if __name__ == "__main__":
     app.secret_key= 'mysecret'
-    app.run(host="0.0.0.0", port=8085, debug=True)
+    app.run(host="0.0.0.0", port=8087, debug=True)

@@ -1,0 +1,45 @@
+ <nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          <img style ="max-width:150px; margin-top  -7px:" src ="{{url_for('static', filename='images/logo1.png')}}"
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+
+        <!-- implementing search functionality-->
+
+      <form   ng-submit="$ctrl.searchRestaurants()" class="navbar-form navbar-left" >
+          <div class="form-group">
+             <input type="text" class="form-control" placeholder="search" name="search"  ng-model="search" value="{{request.form.search}}">
+          </div>
+            <input type="submit" class="btn btn-default" value="Search">
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+
+<button type="button"  onclick="location.href = '/login';" id="myButton" class="btn btn-primary btn-lg"
+        data-toggle="modal" data-target="#myModal">
+  Login
+</button>
+
+<button type="button"  onclick="location.href = '/logout';" id="myButton" class="btn btn-primary btn-lg"
+        data-toggle="modal" data-target="#myModal">
+  Logout
+</button>
+</nav>
