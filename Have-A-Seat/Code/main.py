@@ -106,6 +106,36 @@ def registerUser():
     print 'inserted'
     return render_template("index.html")
 
+@app.route('/login', methods=['GET','POST'])
+def Login():
+    if request.method=='GET':
+        return render_template("login.html")
+    if request.method == 'POST':
+        print("In Post")
+        login_user = Customers.find_one({'username' : request.form['username']})
+        if login_user:
+            print("FOUNDDD")
+            print login_user['password']
+
+            if(request.form['password']==login_user['password']):
+                return("logged in")
+            return("Invalid Password")
+
+         #   if bcrypt.hashpw(request.form['passwrd'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+         #       session['username']==request.form['username']
+         #       return redirect(url_for('Restaurants'))
+            #print("Invalid Password")
+
+    return ("invalid username")
+        #db.Customers.find({'userame':username})
+
+   # restaurantList = Restaurants.find({"restName": restaurant_seached})
+   # for restaurant in restaurantList:
+       # list= str(restaurant['restName'])
+       # link="/" + restaurant_seached + "/checkSeats"
+       # dic={"Restaurant" : [[list, link]]}
+    #return render_template("Login.html", dic = dic)
+
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=8082)
