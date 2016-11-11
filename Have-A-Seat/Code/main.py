@@ -1,9 +1,12 @@
 from pymongo import MongoClient
 import flask
-from flask import Flask,url_for , redirect, session ,flash
+from flask import Flask,url_for , redirect, session ,flash,request
 from flask import request
 from flask import render_template
 from flask_oauth import OAuth
+import bson.objectid
+from bson.objectid import ObjectId
+import flask_login
 
 app= Flask(__name__)
 con = MongoClient()
@@ -12,7 +15,6 @@ db = con.Have_A_Seat
 
 list=[]
 dic={}
-
 # this is the home page which loads first
 @app.route('/', methods=['GET', 'POST'])
 def Homepage():
@@ -130,9 +132,10 @@ def registerUser():
     password = request.form.get('password')
 
     # restID = db.Users.insert_one({'email':email,'password':password})
-    restID = db.Users.update_one({'email':email},{'$set':{'password':password}},upsert=True)
+    restID = db.Customers.update_one({'email':email},{'$set':{'password':password}},upsert=True)
     print restID
     print 'inserted'
+    #print("you're logged in as:"+session['email'])
     return render_template("index.html")
 
 @app.route('/login', methods=['GET','POST'])
@@ -141,17 +144,19 @@ def Login():
         return render_template("login.html")
     if request.method == 'POST':
         print("In Post")
-        login_user = Customers.find_one({'username' : request.form['username']})
+        login_user = db.Customers.find_one({'email' : request.form['email']})
         if login_user:
             print("FOUNDDD")
             print login_user['password']
 
             if(request.form['password']==login_user['password']):
-                return("logged in")
+                session['email'] = request.form['email']
+                if(session['email']=='abc@xyz.com'):
+                    return redirect(url_for('checkOwnerSeats',restaurant_name="subway"))
+                return redirect(url_for('checkSeats', restaurant_name="subway"))
             return("Invalid Password")
 
          #   if bcrypt.hashpw(request.form['passwrd'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
-         #       session['username']==request.form['username']
          #       return redirect(url_for('Restaurants'))
             #print("Invalid Password")
 
@@ -165,6 +170,43 @@ def Login():
        # dic={"Restaurant" : [[list, link]]}
     #return render_template("Login.html", dic = dic)
 
+@app.route('/<string:restaurant_name>/checkOwnerSeats')
+def checkOwnerSeats(restaurant_name):
+    print("you're logged in as:" + session['email'])
+    """user reaches here after selecting the restaurant name
+    """
+    #totalRestaurants = mongo.db.Restaurants
+    #rest_cursor = mongo.db.Restaurants.find({"restName": "subway"})
+
+    restID = db.Restaurants.find({"restName": restaurant_name},{"_id":1})
+    print restID
+    myrestID =0
+    for i in restID:
+        myrestID = i["_id"]
+        print myrestID
+    totaltables = db.Tables.find({"Restid": myrestID})
+    tup = []
+    for i in totaltables:
+        if i["isAvailable"] == 0:
+            i["isAvailable"] = "available"
+
+        if i["isAvailable"] == 1:
+            i["isAvailable"] = "booked"
+
+        if i["isAvailable"] == 2:
+            i["isAvailable"] = "unavailable"
+        tup.append((i["isAvailable"]))
+    return render_template("restaurantOwner.html", seat_details=tup, restaurant_name=restaurant_name)
+
+@app.route('/logout')
+def logout():
+    if True:
+        session.clear()
+        #print("you're logged in as:" + session['email'])
+        return 'Logged out'
+    return "noone is logged in"
+
 
 if __name__ == "__main__":
-	app.run(host="0.0.0.0", port=8082)
+    app.secret_key= 'mysecret'
+    app.run(host="0.0.0.0", port=8085, debug=True)
