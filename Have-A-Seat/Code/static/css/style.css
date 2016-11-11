@@ -56,7 +56,7 @@ div.seatCharts-seat.available {
   background-color: green;
 
 }
-div.seatCharts-seat.available.first-class {
+div.seatCharts-seat.available.Booked {
 /*  background: url(vip.png); */
   background-color: orange;
 }
