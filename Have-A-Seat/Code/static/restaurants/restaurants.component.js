@@ -5,19 +5,22 @@ angular.module('restaurants')
 		'$http',
 		'$scope',
 		'$location',
-		function ($http, $scope, $location) {
+		'$routeParams',
+		function ($http, $scope, $location,$routeParams) {
              var restaurantsCtrl = this;
 
             $http({
-            method: 'GET',
-            url: '/restaurants',
-
+            method: 'POST',
+            url: '/searchRestaurants',
+            data:{
+                search:$routeParams.search
+            }
           }).then(function (res) {
             restaurantsCtrl.filteredRestaurants = res.data;
           });
 
           this.view = function(res){
-             $location.path('/seats/123');
+             $location.path('/seats/'+res.id);
           }
 
 		}]

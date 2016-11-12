@@ -8,8 +8,8 @@ angular.module('seats')
 		'$routeParams',
 		function ($http, $scope, $location,$routeParams) {
 
-             var indexCtrl = this;
+             var seatCtrl = this;
 
-             indexCtrl.restaurantId = $routeParams.resId;
+             seatCtrl.restaurantId = $routeParams.resId;
 		}]
 });

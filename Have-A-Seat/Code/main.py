@@ -17,15 +17,16 @@ list=[]
 dic={}
 
 
-@app.route('/restaurants/', methods=['GET'])
+@app.route('/restaurants/', methods=['POST'])
 def restaurants():
+    # print request
     return json.dumps([{'id':123,'name':'aaa'},{'id':456,'name':'bbb'},{'id':789,'name':'ccc'}])
 
 
 @app.route('/searchRestaurants', methods=['POST'])
 def searchRestaurants():
     print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx'
-    print request.form['search']
+    # print request.form['search']
     return json.dumps([{'id':123,'name':'aaa'},{'id':456,'name':'bbb'},{'id':789,'name':'ccc'}])
 
 

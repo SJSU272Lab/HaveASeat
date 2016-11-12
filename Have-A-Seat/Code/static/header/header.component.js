@@ -7,22 +7,21 @@ angular.module('header')
 		'$location',
 		function ($http, $scope, $location) {
 			var headerCtrl = this;
-			headerCtrl.loggedIn = false;
-			headerCtrl.loggedOut = true;
-			console.log(headerCtrl.loggedIn);
-
 
 			this.searchRestaurants = function(){
             $scope.search;
-             $http({
-                    method: 'POST',
-                    url: '/searchRestaurants',
-                    data:{
-                    search:$scope.search
-                    }
-                  }).then(function (res) {
-                    restaurantsCtrl.filteredRestaurants = res.data;
-                  });
+
+            $location.path('restaurants/'+$scope.search);
+//             $http({
+//                    method: 'POST',
+//                    url: '/searchRestaurants',
+//                    data:{
+//                    search:$scope.search
+//                    }
+//                  }).then(function (res) {
+//                    headerCtrl.filteredRestaurants = res.data;
+//                    $location.path('restaurants');
+//                  });
                 }
 		}]
 });
