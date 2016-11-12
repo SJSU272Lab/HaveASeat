@@ -12,16 +12,6 @@ angular.module('header')
             $scope.search;
 
             $location.path('restaurants/'+$scope.search);
-//             $http({
-//                    method: 'POST',
-//                    url: '/searchRestaurants',
-//                    data:{
-//                    search:$scope.search
-//                    }
-//                  }).then(function (res) {
-//                    headerCtrl.filteredRestaurants = res.data;
-//                    $location.path('restaurants');
-//                  });
-                }
+           }
 		}]
 });

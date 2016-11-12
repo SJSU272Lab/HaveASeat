@@ -9,7 +9,7 @@ angular.module('HaveASeat')
 		        when('/owner', {
 		          template: '<owner></owner>'
 		        }).
-		        when('/restaurants', {
+		        when('/restaurants/:search', {
 		          template: '<restaurants></restaurants>'
 		        }).
 		        when('/index', {
