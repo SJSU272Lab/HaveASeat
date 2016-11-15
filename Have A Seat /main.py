@@ -7,6 +7,8 @@ import bson.objectid
 from bson.objectid import ObjectId
 #import flask_login
 import json
+from functools import  wraps
+from flask_login import LoginManager
 
 app= Flask(__name__)
 con = MongoClient()
@@ -15,6 +17,19 @@ db = con.Have_A_Seat
 
 #list=[]
 #dic={}
+
+login_manager=LoginManager()
+login_manager.init_app(app)
+
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'email' in session:
+            return f(*args, **kwargs)
+        else:
+            flash("You need to login first")
+            return redirect(url_for('login'))
+    return wrap
 
 @app.route('/', methods=['GET', 'POST'])
 def Homepage():
@@ -202,30 +217,26 @@ def restaurants():
 #     #print("you're logged in as:"+session['email'])
 #     return render_template("index.html")
 #
-# @app.route('/login', methods=['GET','POST'])
-# def Login():
-#     if request.method=='GET':
-#         return render_template("LogIn.html")
-#     if request.method == 'POST':
-#         print("In Post")
-#         login_user = db.Customers.find_one({'email' : request.form['email']})
-#         if login_user:
-#             print("FOUNDDD")
-#             print login_user['password']
-#
-#             if(request.form['password']==login_user['password']):
-#                 session['email'] = request.form['email']
-#                 if(session['email']=='abc@xyz.com'):
-#                     return redirect(url_for('checkOwnerSeats',restaurant_name="subway"))
-#                 return redirect(url_for('checkSeats', restaurant_name="subway"))
-#             return("Invalid Password")
-#
-#          #   if bcrypt.hashpw(request.form['passwrd'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
-#          #       return redirect(url_for('Restaurants'))
-#             #print("Invalid Password")
-#
-#     return ("invalid username")
-#         #db.Customers.find({'userame':username})
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    error= None
+    if request.method == 'POST':
+        login_user = db.Customers.find_one({'email': request.form['email']})
+        #login_owner=db.Owners.find_one({'email': request.form['email']})
+        if login_user:
+            print("FOUNDDD")
+            print login_user['password']
+            if (request.form['password'] == login_user['password']):
+                session['email'] = request.form['email']
+                if (session['email'] == 'abc@xyz.com'):
+                    return redirect(url_for('checkOwnerSeats', restaurant_name="subway"))
+                return redirect(url_for('checkSeats', restaurant_name="subway"))
+            error = "Invalid Passowrd. Please try again."
+            return render_template("LogIn.html", error=error)
+        error="Invalid Username"
+        return render_template("LogIn.html", error=error)
+    return render_template("LogIn.html", error=error)
 #
 #    # restaurantList = Restaurants.find({"restName": restaurant_seached})
 #    # for restaurant in restaurantList:
@@ -272,7 +283,7 @@ def restaurants():
 #
 
 if __name__ == "__main__":
-   # app.secret_key= 'mysecret'
+    app.secret_key= 'mysecret'
     app.run(host="127.0.0.1", port=8089, debug=True)
 
 
