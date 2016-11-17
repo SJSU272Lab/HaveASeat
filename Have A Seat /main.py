@@ -8,7 +8,7 @@ from bson.objectid import ObjectId
 #import flask_login
 import json
 from functools import  wraps
-from flask_login import LoginManager
+#from flask_login import LoginManager
 
 app= Flask(__name__)
 con = MongoClient()
@@ -18,8 +18,8 @@ db = con.Have_A_Seat
 #list=[]
 #dic={}
 
-login_manager=LoginManager()
-login_manager.init_app(app)
+#login_manager=LoginManager()
+#login_manager.init_app(app)
 
 def login_required(f):
     @wraps(f)
@@ -319,7 +319,7 @@ def login():
 
 if __name__ == "__main__":
     app.secret_key= 'mysecret'
-    app.run(host="127.0.0.1", port=8089, debug=True)
+    app.run(host="127.0.0.1", port=9019)
 
 
 
