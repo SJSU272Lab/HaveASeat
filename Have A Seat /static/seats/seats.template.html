@@ -2,16 +2,16 @@
     <br/>
     <br/>
     <div class="lead" >A Table of your Choice at :  {{$ctrl.selectedRestaurant.name}}</div>
-    <div ng-hide="$seatsCtrl.pizzaHutLayout"> --------Subway Layout--------</div>
-    <div ng-hide="$seatsCtrl.pizzaHutLayout" > McDonalds Layout</div>
-    <div ng-hide="$seatsCtrl.pizzaHutLayout" > Starbucks Layout</div>
-    <div ng-hide="$seatsCtrl.pizzaHutLayout" > Tacobells Layout</div>
+    <div ng-hide="$ctrl.pizzaHutLayout"> --------Subway Layout--------</div>
+    <div ng-hide="$ctrl.pizzaHutLayout" > McDonalds Layout</div>
+    <div ng-hide="$ctrl.pizzaHutLayout" > Starbucks Layout</div>
+    <div ng-hide="$ctrl.pizzaHutLayout" > Tacobells Layout</div>
 
     <div>
 
-                <!--   Pizzahut LAyout   -->
+                <!--   Pizzahut LAyout
 
-            <div class="row">
+            <div class="row">-->
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                     <div class="col-md-12">
@@ -23,32 +23,32 @@
 
                             <div class="col-md-12">
                                 <div class="col-md-3">
-                                    <input type="button"  ng-class="model.dynamic0"  style="margin:3px ; width:50px" value="1" ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[0],'dynamic0')" />
+                                    <input type="button"  ng-class="model.dynamic0"  style="margin:3px ; width:50px" value="1" ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[0],'dynamic0',0)" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" style="width:50px ; margin:3px"   ng-class="model.dynamic1" value="2" ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[1],'dynamic1')" />
+                                    <input type="button" style="width:50px ; margin:3px"   ng-class="model.dynamic1" value="2" ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[1],'dynamic1',1)" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" style="width:50px;margin:3px"  value="3" ng-class="model.dynamic2" ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[2],'dynamic2')" />
+                                    <input type="button" style="width:50px;margin:3px"  value="3" ng-class="model.dynamic2" ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[2],'dynamic2',2)" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" value="4" style="width:50px;margin:3px" ng-class="model.dynamic3" ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[3],'dynamic3')"    />
+                                    <input type="button" value="4" style="width:50px;margin:3px" ng-class="model.dynamic3" ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[3],'dynamic3',3)"    />
                                 </div>
                             </div>
 
 
                             <div class="col-md-12">
                                 <div class="col-md-3">
-                                     <input type="button" ng-class="model.dynamic4" value="5" style="width:50px;margin:3px"  ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[4],'dynamic4')" />
+                                     <input type="button" ng-class="model.dynamic4" value="5" style="width:50px;margin:3px"  ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[4],'dynamic4',4)" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" ng-class="model.dynamic5" value="6" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[5],'dynamic5')" />
+                                    <input type="button" ng-class="model.dynamic5" value="6" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[5],'dynamic5',5)" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" ng-class="model.dynamic6" value="7" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[6],'dynamic6')" />
+                                    <input type="button" ng-class="model.dynamic6" value="7" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[6],'dynamic6',6)" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" value="8" style="width:50px;margin:3px"   ng-class="model.dynamic7" ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[7],'dynamic7')" />
+                                    <input type="button" value="8" style="width:50px;margin:3px"   ng-class="model.dynamic7" ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[7],'dynamic7',7)" />
                                 </div>
                             </div>
 
@@ -56,42 +56,51 @@
 
                     <div class="col-md-12">
                                 <div class="col-md-3">
-                                     <input type="button" ng-class="model.dynamic8" value="9" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[8],'dynamic8')" />
+                                     <input type="button" ng-class="model.dynamic8" value="9" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[8],'dynamic8',8)" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" ng-class="model.dynamic9" value="10" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[9],'dynamic9')" />
+                                    <input type="button" ng-class="model.dynamic9" value="10" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[9],'dynamic9',9)" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" ng-class="model.dynamic10" value="11" style="width:50px;margin:3px"  ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[10],'dynamic10')" />
+                                    <input type="button" ng-class="model.dynamic10" value="11" style="width:50px;margin:3px"  ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[10],'dynamic10',10)" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button"  ng-class="model.dynamic11" value="12" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[11],'dynamic11')" />
+                                    <input type="button"  ng-class="model.dynamic11" value="12" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[11],'dynamic11',11)" />
                                 </div>
                             </div>
 
 
                     <div class="col-md-12">
                                 <div class="col-md-3">
-                                     <input type="button" ng-class="model.dynamic12" value="13" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[12],'dynamic12')" />
+                                     <input type="button" ng-class="model.dynamic12" value="13" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[12],'dynamic12'.12)" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" ng-class="model.dynamic13"  value="14" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[13],'dynamic13')" />
+                                    <input type="button" ng-class="model.dynamic13"  value="14" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[13],'dynamic13',13)" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" ng-class="model.dynamic14"  value="15" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[14],'dynamic14')" />
+                                    <input type="button" ng-class="model.dynamic14"  value="15" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[14],'dynamic14',14)" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" ng-class="model.dynamic15" value="16" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[15],'dynamic15')" />
+                                    <input type="button" ng-class="model.dynamic15" value="16" style="width:50px;margin:3px"   ng-click="$ctrl.updateStatus($ctrl.selectedRestaurant.seats[15],'dynamic15',15)" />
                                 </div>
                             </div>
 
                     </div>
                     </div>
                 </div>
-                <div class="col-md-4"></div>
-            </div>
+                <div class="col-md-4">
+                    Your Selections...
+                    <br/>
+                    <ul class="list-group" >
+                        <li ng-repeat="table in $ctrl.bookedTables">
+                        <h4>{{table.selectedTable.sid}}</h4>
+                               <input type="submit" value="UnBook" class="btn btn-default" ng-click="$ctrl.unBook(table)">
+                        </li>
+                    </ul>
+                </div>
+            <!--   </div>
 
-            <!--   Pizzahut LAyout Ends   -->
+            Pizzahut LAyout Ends   -->
     </div>
 
 </div>

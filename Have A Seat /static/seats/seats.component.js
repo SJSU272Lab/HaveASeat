@@ -11,6 +11,7 @@ angular.module('seats')
 		function ($http, $scope, $location,$routeParams, $rootScope, $anchorScroll) {
 
              var seatsCtrl = this;
+             seatsCtrl.bookedTables = [];
              seatsCtrl.restaurantId = $routeParams.resId;
 
                 $http({
@@ -22,13 +23,13 @@ angular.module('seats')
                 }).then(function (res) {
                     seatsCtrl.selectedRestaurant = res.data;
                     console.log('$rootScope.showSeats  '+$rootScope.showSeats);
+                 seatsCtrl[seatsCtrl.selectedRestaurant.templateSeats] = false;
                 });
 
              seatsCtrl.pizzaHutLayout =true;
              seatsCtrl.subwayLayout =true;
              seatsCtrl.starbucksLayout =true;
              seatsCtrl.mcDonaldsLayout =true;
-             //seatsCtrl[seatsCtrl.selectedRestaurant.templateSeats] = false;
 
                 this.setTemplateSeatView = function(templateName){
                      seatsCtrl.pizzaHutLayout =true;
@@ -58,20 +59,41 @@ angular.module('seats')
              }
 
 
-            $scope.changeToRed = function(){
-                $scope.model.dynamic = "red";
+            this.changeToEmpty = function(dynamic){
+               $scope.model[dynamic] = "btn btn-default";
             }
 
             $scope.changeToGreen = function(dynamic){
                 $scope.model[dynamic] = "btn btn-warning";
             }
 
-            this.updateStatus = function(table,dynamic){
+            this.addTableToList =function(table){
+               seatsCtrl.bookedTables.push(table);
+            }
+
+            this.updateStatus = function(table,dynamic,tableIndex){
                 console.log(table);
+                var tabObj = {selectedTable:table,dynamicTab:dynamic};
+                seatsCtrl.addTableToList(tabObj);
                 //will be changing based on logic
                 if(table.status==='avail'){
                  $scope.changeToGreen(dynamic);
                 }
             }
+
+            this.unBook= function(table){
+
+                function filterTables(el) {
+                       if(el.selectedTable.sid === table.selectedTable.sid){
+                            console.log(el);
+                            seatsCtrl.changeToEmpty(table.dynamicTab);
+                       }
+                      return el.selectedTable.sid !== table.selectedTable.sid ;
+                   }
+
+                   var filteredTables = seatsCtrl.bookedTables.filter(filterTables);
+                   seatsCtrl.bookedTables = filteredTables;
+                }
+            //}
     }]
 });
