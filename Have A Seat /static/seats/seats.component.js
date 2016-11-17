@@ -93,7 +93,10 @@ angular.module('seats')
 
                    var filteredTables = seatsCtrl.bookedTables.filter(filterTables);
                    seatsCtrl.bookedTables = filteredTables;
-                }
-            //}
+            }
+           this.checkOut= function(){
+            alert("ThankYou for making a booking with Have A Seat ");
+            $location.path("/");
+           }
     }]
 });

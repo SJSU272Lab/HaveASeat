@@ -89,8 +89,12 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    Your Selections...
+                    <div ng-hide="true"> ThankYou for making a booking with Have A Seat </div>
                     <br/>
+                    Your Selections...
+                    <input type="button" class="btn btn-primary" value="CheckOut" ng-click="$ctrl.checkOut()"/>
+                    <br/>
+
                     <ul class="list-group" >
                         <li ng-repeat="table in $ctrl.bookedTables">
                         <h4>{{table.selectedTable.sid}}</h4>
@@ -98,9 +102,7 @@
                         </li>
                     </ul>
                 </div>
-            <!--   </div>
 
-            Pizzahut LAyout Ends   -->
     </div>
 
 </div>
