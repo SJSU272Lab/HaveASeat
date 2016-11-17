@@ -11,7 +11,7 @@ angular.module('index')
 		'$routeParams',
         "$rootScope",
 		function ($http, $scope, $location,$routeParams, $rootScope) {
-             var restaurantsCtrl = this;
+             var indexCtrl = this;
 
 		}]
 });

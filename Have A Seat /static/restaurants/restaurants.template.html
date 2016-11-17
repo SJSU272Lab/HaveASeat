@@ -1,9 +1,10 @@
 <div>
-    <!--<H1>Restaurants List</H1>-->
+    <H3>Restaurants</H3>
     <ul class="list-group">
-        <li class="list-group-item" ng-repeat="res in $root.restaurants">
+        <li class="list-group-item" ng-repeat="res in $ctrl.restaurants">
         <h4>{{res.name}}</h4> <br> Description : {{res.id}}<br>
         <input type="submit" value="view" class="btn btn-default" ng-click="$ctrl.view(res)">
         </li>
     </ul>
-    </div>
+
+</div>

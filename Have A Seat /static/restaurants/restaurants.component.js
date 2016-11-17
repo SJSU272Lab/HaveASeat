@@ -7,10 +7,25 @@ angular.module('restaurants')
 		'$location',
 		'$routeParams',
         "$rootScope",
-		function ($http, $scope, $location,$routeParams, $rootScope) {
-             var restaurantsCtrl = this;
+        '$anchorScroll',
+		function ($http, $scope, $location,$routeParams, $rootScope, $anchorScroll) {
+                var restaurantsCtrl = this;
+                restaurantsCtrl.search = $routeParams.search;
 
-                $rootScope.restaurants;
+                $http({
+                    method: 'POST',
+                    url: '/restaurants',
+                    data:{
+                        search: restaurantsCtrl.search
+                    }
+                }).then(function (res) {
+                    restaurantsCtrl.restaurants = res.data;
+                });
 
+                this.view = function(restaurant){
+                console.log(restaurant);
+                var seatsUrl = '/seats/'+restaurant.id;
+                $location.path(seatsUrl);
+            }
 		}]
 });

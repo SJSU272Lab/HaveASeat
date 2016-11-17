@@ -55,7 +55,42 @@ def Homepage():
 #     print restaurant_searched
 
 
+
+
 #
+@app.route('/getSeats', methods=['POST'])
+def getSeats():
+    print  " Hello I am in"
+    reqObj = request.get_json()
+    res=str(reqObj['restaurantId'])
+    print '------------------------'
+    print res
+
+    #'templateSeats':pizzaHutLayout - pizzaHutLayout
+    #'templateSeats':mcDonaldsLayout - mcDonaldsLayout
+    #'templateSeats':subwayLayout - subwayLayout
+    #'templateSeats':starbucksLayout - starbucksLayout
+
+    return json.dumps({'id': 456, 'name': 'PizzaHut!!', 'templateSeats':'subwayLayout','seats':[
+        {'sid':101,'status':'avail'},
+        {'sid': 102, 'status': 'avail'},
+        {'sid': 103, 'status': 'avail'},
+        {'sid': 104, 'status': 'avail'},
+        {'sid': 105, 'status': 'avail'},
+        {'sid': 106, 'status': 'avail'},
+        {'sid': 107, 'status': 'avail'},
+        {'sid': 108, 'status': 'avail'},
+        {'sid': 109, 'status': 'avail'},
+        {'sid': 110, 'status': 'avail'},
+        {'sid': 111, 'status': 'avail'},
+        {'sid': 112, 'status': 'avail'},
+        {'sid': 113, 'status': 'avail'},
+        {'sid': 114, 'status': 'avail'},
+        {'sid': 115, 'status': 'avail'},
+        {'sid': 116, 'status': 'avail'},
+    ]})
+
+
 @app.route('/restaurants', methods=['POST'])
 def restaurants():
     print  " Hello I am in"

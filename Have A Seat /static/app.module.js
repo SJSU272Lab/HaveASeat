@@ -1,6 +1,10 @@
-// Define the 'ebayj' module
+// Define the 'HaveASeat' module
 angular.module('HaveASeat', [
   'ngRoute',
   'header',
-  'restaurants'
+  'restaurants',
+  'seats',
+  'index',
+  'login',
+  'signup'
 ]);
