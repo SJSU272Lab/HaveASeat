@@ -21,6 +21,7 @@ db = con.Have_A_Seat
 #login_manager=LoginManager()
 #login_manager.init_app(app)
 
+
 def login_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
@@ -253,25 +254,60 @@ def restaurants():
 #     return render_template("index.html")
 #
 
+
 @app.route('/login', methods=['GET','POST'])
 def login():
     error= None
     if request.method == 'POST':
-        login_user = db.Customers.find_one({'email': request.form['email']})
-        #login_owner=db.Owners.find_one({'email': request.form['email']})
+        login_user = db.Customers.find_one({'email': request.form['username']})
+        login_owner=db.Owners.find_one({'owner_email': request.form['username']})
         if login_user:
-            print("FOUNDDD")
             print login_user['password']
             if (request.form['password'] == login_user['password']):
-                session['email'] = request.form['email']
-                if (session['email'] == 'abc@xyz.com'):
-                    return redirect(url_for('checkOwnerSeats', restaurant_name="subway"))
+                session['email'] = request.form['username']
                 return redirect(url_for('checkSeats', restaurant_name="subway"))
             error = "Invalid Passowrd. Please try again."
             return render_template("LogIn.html", error=error)
+        elif login_owner:
+            if(request.form['password'] == session['owner_password']):
+                ownerDetails = db.Owners.find({"owner_email": request.form['username']})
+                restaurantDetails=db.Restaurants.find({"_id": ownerDetails['Restid']})
+                restaurantName=restaurantDetails['restName']
+                return redirect(url_for('checkOwnerSeats', restaurant_name=restaurantName))
         error="Invalid Username"
         return render_template("LogIn.html", error=error)
     return render_template("LogIn.html", error=error)
+
+
+@app.route('/<string:restaurant_name>/checkOwnerSeats')
+@login_required
+def checkOwnerSeats(restaurant_name):
+    print("you're logged in as:" + session['email'])
+    """user reaches here after selecting the restaurant name
+         """
+     #totalRestaurants = mongo.db.Restaurants
+    #       #rest_cursor = mongo.db.Restaurants.find({"restName": "subway"})
+
+    restID = db.Restaurants.find({"restName": restaurant_name},{"_id":1})
+    print restID
+    myrestID =0
+    for i in restID:
+        myrestID = i["_id"]
+        print myrestID
+    totaltables = db.Tables.find({"Restid": myrestID})
+    tup = []
+    for i in totaltables:
+        if i["isAvailable"] == 0:
+            i["isAvailable"] = "available"
+
+        if i["isAvailable"] == 1:
+            i["isAvailable"] = "booked"
+
+        if i["isAvailable"] == 2:
+            i["isAvailable"] = "unavailable"
+        tup.append((i["isAvailable"]))
+    return render_template("restaurantOwner.html", seat_details=tup, restaurant_name=restaurant_name)
+
 #
 #    # restaurantList = Restaurants.find({"restName": restaurant_seached})
 #    # for restaurant in restaurantList:
@@ -308,18 +344,36 @@ def login():
 #         tup.append((i["isAvailable"]))
 #     return render_template("restaurantOwner.html", seat_details=tup, restaurant_name=restaurant_name)
 #
-# @app.route('/logout')
-# def logout():
-#     if True:
-#         session.clear()
-#         #print("you're logged in as:" + session['email'])
-#         return 'Logged out'
-#     return "noone is logged in"
-#
+@app.route('/logout')
+@login_required
+def logout():
+    if True:
+        session.clear()
+        #print("you're logged in as:" + session['email'])
+        return 'Logged out'
+    return "noone is logged in"
 
+'''
+def requires_roles(*roles):
+    def wrapper(f):
+        @wraps(f)
+        def wrapped(*args, **kwargs):
+            if get_current_user_role() not in roles:
+                return error_response()
+            return f(*args, **kwargs)
+        return wrapped
+    return wrapper
+'''
+
+'''
+@app.route('/user')
+@required_roles('admin', 'user')
+def user_page(self):
+    return "You've got permission to access this page."
+'''
 if __name__ == "__main__":
     app.secret_key= 'mysecret'
-    app.run(host="127.0.0.1", port=9019)
+    app.run(host="127.0.0.1", port=9020)
 
 
 
