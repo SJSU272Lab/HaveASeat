@@ -8,8 +8,8 @@ db.Restaurants.insert(
     {"_id": original_id,
     "restName": "subway",
     "contactNo": "+1(959)242-7494",
-    "Street": "39 West Julian Street"
-    "City": "San Jose"
+    "Street": "39 West Julian Street",
+    "City": "San Jose",
     "State": "California"}
 )
 
