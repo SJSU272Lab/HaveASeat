@@ -73,7 +73,7 @@ def getSeats():
     #'templateSeats':starbucksLayout - starbucksLayout
 
     return json.dumps({'id': 456, 'name': 'PizzaHut!!', 'templateSeats':'subwayLayout','seats':[
-        {'sid':101,'status':'avail'},
+        {'sid':101,'status':'available'},
         {'sid': 102, 'status': 'available'},
         {'sid': 103, 'status': 'booked'},
         {'sid': 104, 'status': 'available'},

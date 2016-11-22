@@ -101,7 +101,7 @@ angular.module('seats')
             };
 
             $scope.changeToGreen = function(dynamic){
-                $scope.model[dynamic] = "btn btn-warning";
+                $scope.model[dynamic] = "btn btn-success";
             };
 
             this.addTableToList =function(table){
@@ -113,7 +113,7 @@ angular.module('seats')
                 var tabObj = {selectedTable:table,dynamicTab:dynamic};
                 seatsCtrl.addTableToList(tabObj);
                 //will be changing based on logic
-                if(table.status==='avail'){
+                if(table.status==="available"){
                  $scope.changeToGreen(dynamic);
                 }
             }
