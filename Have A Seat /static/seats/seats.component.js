@@ -21,9 +21,25 @@ angular.module('seats')
                           restaurantId:seatsCtrl.restaurantId
                         }
                 }).then(function (res) {
-                    seatsCtrl.selectedRestaurant = res.data;
-                    console.log('$rootScope.showSeats  '+$rootScope.showSeats);
-                 seatsCtrl[seatsCtrl.selectedRestaurant.templateSeats] = false;
+                        $scope.selectedRestaurant = res.data;
+                        console.log('$rootScope.showSeats  '+$rootScope.showSeats);
+                        seatsCtrl[$scope.selectedRestaurant.templateSeats] = false;
+                        var seats = $scope.selectedRestaurant.seats;
+                        var index = 0;
+                        seats.forEach(function (seat) {
+                            var d = "dynamic";
+                            if(seat.status==="unavailable"){
+                            d += index;
+                            $scope.model[d] = "btn btn-danger";
+//                            $scope.modelAvailForSelect[d]="true";
+                           }
+                           else if(seat.status==="booked"){
+                            d += index;
+                            $scope.model[d] = "btn btn-warning";
+//                            $scope.modelAvailForSelect[d]="true";
+                           }
+                            index++;
+                        });
                 });
 
              seatsCtrl.pizzaHutLayout =true;
@@ -56,16 +72,37 @@ angular.module('seats')
                     dynamic13 : "btn btn-default",
                     dynamic14 : "btn btn-default",
                     dynamic15 : "btn btn-default"
-             }
+             };
+
+             $scope.modelAvailForSelect = {
+                    dynamic0 : "false",
+                    dynamic1 : "false",
+                    dynamic2 : "false",
+                    dynamic3 : "false",
+                    dynamic4 : "false",
+                    dynamic5 : "false",
+                    dynamic6 : "false",
+                    dynamic7 : "false",
+                    dynamic8 : "false",
+                    dynamic9 : "false",
+                    dynamic10 : "false",
+                    dynamic11 : "false",
+                    dynamic12 : "false",
+                    dynamic13 : "false",
+                    dynamic14 : "false",
+                    dynamic15 : "false"
+             };
+
+
 
 
             this.changeToEmpty = function(dynamic){
                $scope.model[dynamic] = "btn btn-default";
-            }
+            };
 
             $scope.changeToGreen = function(dynamic){
                 $scope.model[dynamic] = "btn btn-warning";
-            }
+            };
 
             this.addTableToList =function(table){
                seatsCtrl.bookedTables.push(table);
