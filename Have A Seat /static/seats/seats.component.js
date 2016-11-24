@@ -14,11 +14,11 @@ angular.module('seats')
              $scope.bookedTables = [];
              $scope.bookedTableIDs = [];
              $scope.restaurantId = $routeParams.resId;
-
-             $scope.pizzaHutLayout =true;
-             $scope.subwayLayout =true;
-             $scope.starbucksLayout =true;
-             $scope.mcDonaldsLayout =true;
+             $scope.layout = {};
+             $scope.layout.pizzaHutLayout =true;
+             $scope.layout.subwayLayout =true;
+             $scope.layout.starbucksLayout =true;
+             $scope.layout.mcDonaldsLayout =true;
 
                 $scope.model = {
                     dynamic0 : "btn btn-default",
@@ -68,7 +68,7 @@ angular.module('seats')
                 }).then(function (res) {
                         $scope.selectedRestaurant = res.data;
                         console.log('$rootScope.showSeats  '+$rootScope.showSeats);
-                        $scope[$scope.selectedRestaurant.templateSeats] = false;
+                        $scope.layout[$scope.selectedRestaurant.templateSeats] = false;
                         var seats = $scope.selectedRestaurant.seats;
                         var index = 0;
                         seats.forEach(function (seat) {
