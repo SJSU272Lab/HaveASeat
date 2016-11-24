@@ -1,10 +1,39 @@
-<div>
-    <H3>Restaurants</H3>
-    <ul class="list-group">
-        <li class="list-group-item" ng-repeat="res in $ctrl.restaurants">
-        <h4>{{res.name}}</h4> <br> Description : {{res.id}}<br>
-        <input type="submit" value="view" class="btn btn-default" ng-click="$ctrl.view(res)">
-        </li>
-    </ul>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+ <div>
+
+                <!--   Pizzahut LAyout
+
+            <div class="row">-->
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="col-md-12">
+
+                            <div>
+                                <div class="panel panel-default">
+                                      <!-- Default panel contents -->
+                                      <div class="panel-heading">Restaurants</div>
+                                      <div class="panel-body">
+                                        <p>Choose any eateries from the diverse range we have </p>
+                                      </div>
+
+                                    <ul class="list-group">
+                                      <li class="list-group-item" ng-repeat="res in $ctrl.restaurants">
+                                          <input type="button" class="btn btn-link" value = {{res.name}} ng-click="$ctrl.view(res)">
+                                           <span class="badge" title="Available Seats">{{res.id}}</span>
+                                          <p class="list-group-item-text"> &nbsp; &nbsp;&nbsp;&nbsp;any description about the restaurant </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
 </div>
