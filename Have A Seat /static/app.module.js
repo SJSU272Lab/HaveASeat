@@ -6,5 +6,6 @@ angular.module('HaveASeat', [
   'seats',
   'index',
   'login',
-  'signup'
+  'signup',
+  'admin'
 ]);

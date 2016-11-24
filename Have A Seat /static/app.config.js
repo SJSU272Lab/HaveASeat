@@ -19,6 +19,9 @@ angular.module('HaveASeat')
 		         when('/signup', {
 		          template: '<signup></signup>'
 		        }).
+		         when('/admin', {
+		          template: '<admin></admin>'
+		        }).
 		        otherwise('/index');
 		 }
 ]);
