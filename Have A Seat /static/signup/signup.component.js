@@ -8,6 +8,26 @@ angular.module('signup')
         '$rootScope',
         '$anchorScroll',
 		function ($http, $scope, $location, $rootScope, $anchorScroll) {
-			var signupCtrl = this;
+			var headerCtrl = this;
+
+			this.signup = function() {
+				$scope.firstName;
+				$scope.lastName;
+                $scope.emailid;
+				$scope.password;
+
+				 $http({
+                    method: 'POST',
+                    url: '/signup',
+                    data:{
+                        cred : { firstName : $scope.firstName ,lastName: $scope.lastName, emailid: $scope.emailid ,password: $scope.password}
+                    }
+
+
+                }).then(function (res) {
+                    restaurantsCtrl.restaurants = res.data;
+                });
+            }
 		}]
+
 });

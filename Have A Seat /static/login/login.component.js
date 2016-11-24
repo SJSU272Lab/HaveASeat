@@ -8,6 +8,22 @@ angular.module('login')
         '$rootScope',
         '$anchorScroll',
 		function ($http, $scope, $location, $rootScope, $anchorScroll) {
-			var loginCtrl = this;
+			var headerCtrl = this;
+
+			this.login = function() {
+                $scope.username;
+				$scope.password;
+
+				 $http({
+                    method: 'POST',
+                    url: '/login',
+                    data:{
+                        cred : { username : $scope.username , password: $scope.password}
+                    }
+                }).then(function (res) {
+                    restaurantsCtrl.restaurants = res.data;
+                });
+
+            }
 		}]
 });

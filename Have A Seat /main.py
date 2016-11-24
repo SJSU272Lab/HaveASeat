@@ -254,11 +254,41 @@ def restaurants():
 #     return render_template("index.html")
 #
 
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    print "I am inside"
+    if (request.method == "POST"):
+        cred = request.get_json()
+        print cred
+        obj = cred['cred']
+        print obj
+        firstname = obj['firstName']
+        lastName = obj['lastName']
+        emailid = obj['emailid']
+        password = obj['password']
+
+
+        print firstname
+        print lastName
+        print emailid
+        print password
+
+
 
 @app.route('/login', methods=['GET','POST'])
 def login():
     error= None
     if request.method == 'POST':
+
+        cred = request.get_json()
+        print cred
+        obj = cred['cred']
+        print obj
+        username = obj['username']
+        password = obj['password']
+        print username
+        print password
+
         login_user = db.Customers.find_one({'email': request.form['username']})
         login_owner=db.Owners.find_one({'owner_email': request.form['username']})
         if login_user:
@@ -373,7 +403,7 @@ def user_page(self):
 '''
 if __name__ == "__main__":
     app.secret_key= 'mysecret'
-    app.run(host="127.0.0.1", port=9020)
+    app.run(host="127.0.0.1", port=9021)
 
 
 

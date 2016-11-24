@@ -2,14 +2,12 @@
 
 <link rel="stylesheet" href="static/css/signUp.css">
 <div class="wrapper">
-    <form class="form-signin">
+    <form class="form-signin"   ng-submit="$ctrl.signup()">
       <h2 class="form-signin-heading">Please Sign Up</h2>
-      <br><input type="text" class="form-control" name="username" placeholder="First Name" required="" autofocus="" />
-      <br><input type="password" class="form-control" name="password" placeholder="Last Name" required=""/>
-      <br><input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
-      <br><input type="password" class="form-control" name="password" placeholder="Password" required=""/>
-
-
+      <br><input type="text" class="form-control" name="firstName"    ng-model="firstName" placeholder="First Name" required="" autofocus=""  value="{{request.form.firstName}}"/>
+      <br><input type="text" class="form-control" name="lastName"  ng-model="lastName" placeholder="Last Name" required="" value="{{request.form.lastName}}"/>
+      <br><input type="text" class="form-control" name="emailid"     ng-model="emailid"   placeholder="Email Address" required="" autofocus="" value="{{request.form.emailid}}" />
+      <br><input type="password" class="form-control" name="password"  ng-model="password"  placeholder="Password" required="" value="{{request.form.password}}"/>
       <br><button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
     </form>
   </div>
