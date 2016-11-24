@@ -12,6 +12,7 @@ angular.module('seats')
 
              var seatsCtrl = this;
              $scope.bookedTables = [];
+             $scope.bookedTableIDs = [];
              $scope.restaurantId = $routeParams.resId;
 
              $scope.pizzaHutLayout =true;
@@ -106,7 +107,11 @@ angular.module('seats')
             };
 
             $scope.addTableToList =function(table){
-               $scope.bookedTables.push(table);
+                    // if not already added then add
+                if ($scope.bookedTableIDs.indexOf(table.selectedTable.sid) === -1) {
+                    $scope.bookedTableIDs.push(table.selectedTable.sid);
+                    $scope.bookedTables.push(table);
+                }
             }
 
             $scope.updateStatus = function(table,dynamic,tableIndex){

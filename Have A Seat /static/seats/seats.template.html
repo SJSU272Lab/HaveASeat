@@ -1,7 +1,7 @@
 <div ng-hide="false">
     <br/>
     <br/>
-    <div class="lead" >A Table of your Choice at :  {{selectedRestaurant.name}}</div>
+
     <div ng-hide="pizzaHutLayout"> --------Subway Layout--------</div>
     <div ng-hide="pizzaHutLayout" > McDonalds Layout</div>
     <div ng-hide="pizzaHutLayout" > Starbucks Layout</div>
@@ -9,11 +9,26 @@
 
     <div>
 
-                <!--   Pizzahut LAyout
-
-            <div class="row">-->
-                <div class="col-md-4"></div>
                 <div class="col-md-4">
+                        <br/>
+                            <br/>
+                    <div class="lead" >Chooos your Table at :  <b>{{selectedRestaurant.name}}</b>
+                        <br/>
+                        <dl class="dl-horizontal">
+                            <dt>Food</dt>
+                            <dd>Veg / Non veg</dd>
+                            <dt>Cuisines</dt>
+                            <dd>Asian / Arabian</dd>
+                            <dt>Food</dt>
+                            <dd>Veg / Non veg</dd>
+                        </dl>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <!--ACTUAL LAYOUT DONT DISTURB-->
                     <div class="col-md-12">
 
                         <div class="col-md-12">
@@ -92,21 +107,36 @@
 
                     </div>
                     </div>
+
                 </div>
+
                 <div class="col-md-4">
-                    <div ng-hide="true"> ThankYou for making a booking with Have A Seat </div>
-                    <br/>
-                    Your Selections...
-                    <input type="button" class="btn btn-primary" value="CheckOut" ng-click="checkOut()"/>
-                    <br/>
 
-                    <ul class="list-group" >
-                        <li ng-repeat="table in bookedTables">
-                        <h4>{{table.selectedTable.sid}}</h4>
-                               <input type="submit" value="UnBook" class="btn btn-default" ng-click="unBook(table)">
-                        </li>
-                    </ul>
+
+                    <div class="col-md-3"></div>
+
+                    <div class="col-md-6">
+
+                        <div ng-hide="true"> ThankYou for making a booking with Have A Seat </div>
+                        <br/>
+                        Your Tables
+                        <input type="button" class="btn btn-primary" value="CheckOut" ng-click="checkOut()"/>
+                        <br/>
+                        <br/>
+
+                        <div class="panel panel-default">
+                                    <ul class="list-group">
+                                      <li class="list-group-item" ng-repeat="table in bookedTables">
+                                           {{table.selectedTable.sid}}
+                                            <input type="button" value="UnBook" class="btn btn-link" ng-click="unBook(table)">
+                                        </li>
+                                    </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3"></div>
+
                 </div>
-
     </div>
 </div>

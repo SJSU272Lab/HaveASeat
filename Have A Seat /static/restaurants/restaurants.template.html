@@ -18,7 +18,7 @@
                             <div>
                                 <div class="panel panel-default">
                                       <!-- Default panel contents -->
-                                      <div class="panel-heading">Restaurants</div>
+                                      <div class="panel-heading">Restaurants <span class="glyphicon glyphicon-cutlery"></span></div>
                                       <div class="panel-body">
                                         <p>Choose any eateries from the diverse range we have </p>
                                       </div>
@@ -26,7 +26,7 @@
                                     <ul class="list-group">
                                       <li class="list-group-item" ng-repeat="res in $ctrl.restaurants">
                                           <input type="button" class="btn btn-link" value = {{res.name}} ng-click="$ctrl.view(res)">
-                                           <span class="badge" title="Available Seats">{{res.id}}</span>
+                                           <span class="badge" title="available tables">{{res.id}}</span>
                                           <p class="list-group-item-text"> &nbsp; &nbsp;&nbsp;&nbsp;any description about the restaurant </p>
                                         </li>
                                     </ul>
