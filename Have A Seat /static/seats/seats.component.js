@@ -136,6 +136,10 @@ angular.module('seats')
 
                    var filteredTables = $scope.bookedTables.filter(filterTables);
                    $scope.bookedTables = filteredTables;
+                   var bookedTableIndex = $scope.bookedTableIDs.indexOf(table.selectedTable.sid);
+                   if(bookedTableIndex !== -1){
+                        $scope.bookedTableIDs.splice(bookedTableIndex, 1);
+                   }
             }
 
            $scope.checkOut= function(){
