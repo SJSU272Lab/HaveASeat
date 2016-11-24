@@ -11,51 +11,15 @@ angular.module('seats')
 		function ($http, $scope, $location,$routeParams, $rootScope, $anchorScroll) {
 
              var seatsCtrl = this;
-             seatsCtrl.bookedTables = [];
-             seatsCtrl.restaurantId = $routeParams.resId;
+             $scope.bookedTables = [];
+             $scope.restaurantId = $routeParams.resId;
 
-                $http({
-                    method: 'POST',
-                    url: '/getSeats',
-                    data:{
-                          restaurantId:seatsCtrl.restaurantId
-                        }
-                }).then(function (res) {
-                        $scope.selectedRestaurant = res.data;
-                        console.log('$rootScope.showSeats  '+$rootScope.showSeats);
-                        seatsCtrl[$scope.selectedRestaurant.templateSeats] = false;
-                        var seats = $scope.selectedRestaurant.seats;
-                        var index = 0;
-                        seats.forEach(function (seat) {
-                            var d = "dynamic";
-                            if(seat.status==="unavailable"){
-                            d += index;
-                            $scope.model[d] = "btn btn-danger";
-//                            $scope.modelAvailForSelect[d]="true";
-                           }
-                           else if(seat.status==="booked"){
-                            d += index;
-                            $scope.model[d] = "btn btn-warning";
-//                            $scope.modelAvailForSelect[d]="true";
-                           }
-                            index++;
-                        });
-                });
+             $scope.pizzaHutLayout =true;
+             $scope.subwayLayout =true;
+             $scope.starbucksLayout =true;
+             $scope.mcDonaldsLayout =true;
 
-             seatsCtrl.pizzaHutLayout =true;
-             seatsCtrl.subwayLayout =true;
-             seatsCtrl.starbucksLayout =true;
-             seatsCtrl.mcDonaldsLayout =true;
-
-                this.setTemplateSeatView = function(templateName){
-                     seatsCtrl.pizzaHutLayout =true;
-                     seatsCtrl.subwayLayout =true;
-                     seatsCtrl.starbucksLayout =true;
-                     seatsCtrl.mcDonaldsLayout =true;
-                     seatsCtrl[templateName] = false;
-                }
-
-             $scope.model = {
+                $scope.model = {
                     dynamic0 : "btn btn-default",
                     dynamic1 : "btn btn-default",
                     dynamic2 : "btn btn-default",
@@ -74,29 +38,66 @@ angular.module('seats')
                     dynamic15 : "btn btn-default"
              };
 
+
              $scope.modelAvailForSelect = {
-                    dynamic0 : "false",
-                    dynamic1 : "false",
-                    dynamic2 : "false",
-                    dynamic3 : "false",
-                    dynamic4 : "false",
-                    dynamic5 : "false",
-                    dynamic6 : "false",
-                    dynamic7 : "false",
-                    dynamic8 : "false",
-                    dynamic9 : "false",
-                    dynamic10 : "false",
-                    dynamic11 : "false",
-                    dynamic12 : "false",
-                    dynamic13 : "false",
-                    dynamic14 : "false",
-                    dynamic15 : "false"
+                    dynamic0 : false,
+                    dynamic1 : false,
+                    dynamic2 : false,
+                    dynamic3 : false,
+                    dynamic4 : false,
+                    dynamic5 : false,
+                    dynamic6 : false,
+                    dynamic7 : false,
+                    dynamic8 : false,
+                    dynamic9 : false,
+                    dynamic10 : false,
+                    dynamic11 : false,
+                    dynamic12 : false,
+                    dynamic13 : false,
+                    dynamic14 : false,
+                    dynamic15 : false
              };
 
+                $http({
+                    method: 'POST',
+                    url: '/getSeats',
+                    data:{
+                          restaurantId:$scope.restaurantId
+                        }
+                }).then(function (res) {
+                        $scope.selectedRestaurant = res.data;
+                        console.log('$rootScope.showSeats  '+$rootScope.showSeats);
+                        $scope[$scope.selectedRestaurant.templateSeats] = false;
+                        var seats = $scope.selectedRestaurant.seats;
+                        var index = 0;
+                        seats.forEach(function (seat) {
+                            var d = "dynamic";
+                            if(seat.status==="unavailable"){
+                            d += index;
+                            $scope.model[d] = "btn btn-danger";
+                            $scope.modelAvailForSelect[d]=true;
+                           }
+                           else if(seat.status==="booked"){
+                            d += index;
+                            $scope.model[d] = "btn btn-warning";
+                            $scope.modelAvailForSelect[d]=true;
+                           }
+                            index++;
+                        });
+                });
+
+
+                this.setTemplateSeatView = function(templateName){
+                     $scope.pizzaHutLayout =true;
+                     $scope.subwayLayout =true;
+                     $scope.starbucksLayout =true;
+                     $scope.mcDonaldsLayout =true;
+                     $scope[templateName] = false;
+                }
 
 
 
-            this.changeToEmpty = function(dynamic){
+            $scope.changeToEmpty = function(dynamic){
                $scope.model[dynamic] = "btn btn-default";
             };
 
@@ -104,35 +105,38 @@ angular.module('seats')
                 $scope.model[dynamic] = "btn btn-success";
             };
 
-            this.addTableToList =function(table){
-               seatsCtrl.bookedTables.push(table);
+            $scope.addTableToList =function(table){
+               $scope.bookedTables.push(table);
             }
 
-            this.updateStatus = function(table,dynamic,tableIndex){
-                console.log(table);
+            $scope.updateStatus = function(table,dynamic,tableIndex){
+//                console.log(table);
                 var tabObj = {selectedTable:table,dynamicTab:dynamic};
-                seatsCtrl.addTableToList(tabObj);
+
                 //will be changing based on logic
                 if(table.status==="available"){
                  $scope.changeToGreen(dynamic);
+                 $scope.addTableToList(tabObj);
                 }
             }
 
-            this.unBook= function(table){
-
+            $scope.unBook= function(table){
                 function filterTables(el) {
                        if(el.selectedTable.sid === table.selectedTable.sid){
                             console.log(el);
-                            seatsCtrl.changeToEmpty(table.dynamicTab);
+                            $scope.changeToEmpty(table.dynamicTab);
                        }
                       return el.selectedTable.sid !== table.selectedTable.sid ;
                    }
 
-                   var filteredTables = seatsCtrl.bookedTables.filter(filterTables);
-                   seatsCtrl.bookedTables = filteredTables;
+                   var filteredTables = $scope.bookedTables.filter(filterTables);
+                   $scope.bookedTables = filteredTables;
             }
-           this.checkOut= function(){
-            alert("ThankYou for making a booking with Have A Seat ");
+
+           $scope.checkOut= function(){
+           var seatsBooked  = $scope.bookedTables.length;
+
+            alert("ThankYou for booking "+ seatsBooked  +" tables with Have A Seat");
             $location.path("/");
            }
     }]
