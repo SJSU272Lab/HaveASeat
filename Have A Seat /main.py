@@ -285,25 +285,32 @@ def login():
         cred = request.get_json()
         print cred
         obj = cred['cred']
-        print obj
+       # print obj
         username = obj['username']
         password = obj['password']
-        print username
-        print password
+        #print username
+        #print password
 
-        login_user = db.Customers.find_one({'email': request.form['username']})
-        login_owner=db.Owners.find_one({'owner_email': request.form['username']})
+        login_user = db.Customers.find_one({'email': username})
+        login_owner=db.Owners.find_one({'owner_email': username})
         if login_user:
+            print (login_user['password'])
+            print("user is here")
             print login_user['password']
-            if (request.form['password'] == login_user['password']):
-                session['email'] = request.form['username']
-                return redirect(url_for('checkSeats', restaurant_name="subway"))
+            if(password == login_user['password']):
+                session['email'] = username
+                #return redirect(url_for('checkSeats', restaurant_name="subway"))
+                print ("I am here")
+                #return ("HII")
+                return json.dumps({'email': login_user['username'], 'name': login_user['customerName']})
             error = "Invalid Passowrd. Please try again."
+           # return json.dumps({'email': username, 'name': login_user['customerName']})
             return render_template("LogIn.html", error=error)
         elif login_owner:
-            if(request.form['password'] == session['owner_password']):
-                ownerDetails = db.Owners.find({"owner_email": request.form['username']})
-                restaurantDetails=db.Restaurants.find({"_id": ownerDetails['Restid']})
+            print("owner is here")
+            if(password == login_owner['owner_password']):
+                ownerDetails = db.Owners.find_one({"owner_email": username})
+                restaurantDetails=db.Restaurants.find_one   ({"_id": ownerDetails['Restid']})
                 restaurantName=restaurantDetails['restName']
                 return redirect(url_for('checkOwnerSeats', restaurant_name=restaurantName))
         error="Invalid Username"
