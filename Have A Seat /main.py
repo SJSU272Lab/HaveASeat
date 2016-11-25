@@ -273,6 +273,8 @@ def signup():
         print emailid
         print password
 
+    return json.dumps({'email': emailid})
+
 
 
 @app.route('/login', methods=['GET','POST'])
@@ -403,7 +405,7 @@ def user_page(self):
 '''
 if __name__ == "__main__":
     app.secret_key= 'mysecret'
-    app.run(host="127.0.0.1", port=9021)
+    app.run(host="127.0.0.1", port=9030)
 
 
 
