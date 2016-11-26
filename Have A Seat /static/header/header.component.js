@@ -10,6 +10,8 @@ angular.module('header')
 		function ($http, $scope, $location, $rootScope, $anchorScroll) {
 			var headerCtrl = this;
 
+
+
 			this.searchRestaurants = function() {
                 $scope.search;
                 var restaurantsSearchUrl ='/restaurants/' + $scope.search;

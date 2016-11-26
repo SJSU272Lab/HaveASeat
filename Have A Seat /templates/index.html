@@ -58,7 +58,7 @@
         <script src="static/app.config.js"></script>
 
 
-        <base href="/" />
+        <!--<base href="/" />-->
 
 
 
@@ -66,7 +66,7 @@
 
     <body>
 
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation"  ng-model="hideHeader">
             <div class="container">
                 <div class="row">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -82,16 +82,25 @@
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav main-nav  clear navbar-right ">
+                        <ul class="nav navbar-nav main-nav  clear navbar-right "   ng-model="logout" >
                             <li>
 
                               <header></header>
                             </li>
 
-                             <li><a class="color_animation" href="about">About Us</a></li>
-                              <li><a class="color_animation" href="login">Login</a></li>
-                            <li><a class="color_animation" href="signup">Signup</a></li>
-                             <li><a class="color_animation" href="contact">Contact US</a></li>
+
+                             <li><a class="color_animation" href="#!/about"    ng-hide="hideHeader">About Us</a></li>
+                              <li><a class="color_animation" href="#!/login"   ng-hide="hideHeader" >Login</a></li>
+                            <li><a class="color_animation" href="#!/signup"   ng-hide="hideHeader" >Signup</a></li>
+                             <li><a class="color_animation" href="#!/contact"  ng-hide="hideHeader" >Contact US</a></li>
+                            <li><a class="color_animation" href="#!/index" ng-show="logout" >logout</a></li>
+
+
+
+
+
+
+
                            <!-- <li><a class="color_animation" href="#Seats">Seats</a></li>
 
                             <li><a class="color_animation" href="#featured">login</a></li>
@@ -108,6 +117,8 @@
 <br/>
 <br/>
 <br/>
+
+
 
         <p style="color:red"></p>
         <div ng-view></div>

@@ -13,5 +13,10 @@ angular.module('index')
 		function ($http, $scope, $location,$routeParams, $rootScope) {
              var indexCtrl = this;
 
+			 $rootScope.hideHeader=false
+			 $rootScope.logout=false
+
+
+
 		}]
 });
