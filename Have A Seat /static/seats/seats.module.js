@@ -1,1 +1,3 @@
-angular.module('seats',[]);
+angular.module('seats',[
+'admin'
+]);

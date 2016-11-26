@@ -2,10 +2,7 @@ angular.module('HaveASeat')
 .config(['$locationProvider','$routeProvider',
          function config($locationProvider, $routeProvider){
 
-
-
-
-           //  $locationProvider.hashPrefix('!');
+             $locationProvider.hashPrefix('!');
 			 $routeProvider.
 		        when('/index', {
 		          template: '<index></index>'
@@ -22,13 +19,13 @@ angular.module('HaveASeat')
 		         when('/signup', {
 		          template: '<signup></signup>'
 		        }).
-		         when('/admin', {
+		         when('/admin/:resId', {
 		          template: '<admin></admin>'
 		        }).
 		        otherwise('/index');
 
 
-			 $locationProvider.html5Mode(true)
+//			 $locationProvider.html5Mode(true)
 		 }
 ]);
 

@@ -72,7 +72,7 @@ def getSeats():
     #'templateSeats':subwayLayout - subwayLayout
     #'templateSeats':starbucksLayout - starbucksLayout
 
-    return json.dumps({'id': 456, 'name': 'PizzaHut!!', 'templateSeats':'subwayLayout','seats':[
+    return json.dumps({'id': 456, 'name': 'PizzaHut!!', 'templateSeats':'pizzaHutLayout','seats':[
         {'sid':101,'status':'available'},
         {'sid': 102, 'status': 'available'},
         {'sid': 103, 'status': 'booked'},
@@ -90,6 +90,18 @@ def getSeats():
         {'sid': 115, 'status': 'available'},
         {'sid': 116, 'status': 'available'},
     ]})
+
+
+@app.route('/changeTableStatus', methods=['POST'])
+def changeTableStatus():
+    print  " Hello I am in at changeTableStatus"
+    restaurant_searched = request.get_json()
+    res=str(restaurant_searched['tableId'])
+    res2=str(restaurant_searched['changeTo'])
+    print res
+    print res2
+    return json.dumps({'status':'successful'})
+
 
 
 @app.route('/restaurants', methods=['POST'])
@@ -303,9 +315,9 @@ def login():
                 print ("I am here")
                 #return ("HII")
                 return json.dumps({'email': login_user['username'], 'name': login_user['customerName']})
-            error = "Invalid Passowrd. Please try again."
-           # return json.dumps({'email': username, 'name': login_user['customerName']})
-            return render_template("LogIn.html", error=error)
+            # error = "Invalid Passowrd. Please try again."
+            # return json.dumps({'email': username, 'name': login_user['customerName']})
+           #  return render_template("LogIn.html", error=error)
         elif login_owner:
             print("owner is here")
             if(password == login_owner['owner_password']):
@@ -314,9 +326,8 @@ def login():
                 restaurantName=restaurantDetails['restName']
                 return redirect(url_for('checkOwnerSeats', restaurant_name=restaurantName))
         error="Invalid Username"
-        return render_template("LogIn.html", error=error)
-    return render_template("LogIn.html", error=error)
-
+        return json.dumps({'status':'failed'})
+    return json.dumps({'status':'failed'})
 
 @app.route('/<string:restaurant_name>/checkOwnerSeats')
 @login_required
