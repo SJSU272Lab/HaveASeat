@@ -278,14 +278,19 @@ def signup():
         lastName = obj['lastName']
         emailid = obj['emailid']
         password = obj['password']
+        checkIfExist=db.Customers.find_one({'email':emailid})
+        if checkIfExist:
+            result= "Email already used"
+        try:
+            print ("Inserted")
+            db.Customers.insert_one({'customerName':firstname+" "+lastName,'email': emailid, 'password': password})
+        except pymongo.errors.DuplicateKeyError:
+            return "User Already Exists!!"
+    print({'customerName': firstname + " " + lastName, 'email': emailid, 'password': password})
+    return json.dumps({'customerName': firstname+" "+lastName, 'email': emailid, 'password': password})
 
 
-        print firstname
-        print lastName
-        print emailid
-        print password
 
-    return json.dumps({'email': emailid})
 
 
 
@@ -315,19 +320,20 @@ def login():
                 print ("I am here")
                 #return ("HII")
                 return json.dumps({'email': login_user['username'], 'name': login_user['customerName']})
-            # error = "Invalid Passowrd. Please try again."
-            # return json.dumps({'email': username, 'name': login_user['customerName']})
-           #  return render_template("LogIn.html", error=error)
+            result = {"error" : "Invalid Passowrd. Please try again."}
         elif login_owner:
             print("owner is here")
             if(password == login_owner['owner_password']):
                 ownerDetails = db.Owners.find_one({"owner_email": username})
                 restaurantDetails=db.Restaurants.find_one   ({"_id": ownerDetails['Restid']})
-                restaurantName=restaurantDetails['restName']
-                return redirect(url_for('checkOwnerSeats', restaurant_name=restaurantName))
-        error="Invalid Username"
-        return json.dumps({'status':'failed'})
-    return json.dumps({'status':'failed'})
+
+
+                return json.dumps({'name': ownerDetails['owner_name'], 'restaurant': restaurantDetails['restName']})
+
+            result = {"error": "Invalid Passowrd. Please try again."}
+
+        return json.dumps({'result': result})
+
 
 @app.route('/<string:restaurant_name>/checkOwnerSeats')
 @login_required
@@ -423,7 +429,7 @@ def user_page(self):
 '''
 if __name__ == "__main__":
     app.secret_key= 'mysecret'
-    app.run(host="127.0.0.1", port=9030)
+    app.run(host="127.0.0.1", port=9044)
 
 
 

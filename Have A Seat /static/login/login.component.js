@@ -7,6 +7,7 @@ angular.module('login')
 		'$location',
         '$rootScope',
         '$anchorScroll',
+
 		function ($http, $scope, $location, $rootScope, $anchorScroll) {
 			var headerCtrl = this;
 
@@ -20,9 +21,22 @@ angular.module('login')
                     data:{
                         cred : { username : $scope.username , password: $scope.password}
                     }
-                }).then(function (res) {
-                    restaurantsCtrl.restaurants = res.data;
+                }).then(function (response) {
+                    headerCtrl.loginDetails = response.data;
+                     $rootScope.loginDetails = response.data;
+                     $rootScope.hideHeader=true
+                     $rootScope.logout=true
+
+
+                     console.log($rootScope.loginDetails.name)
+
+
+
                 });
+
+
+                 $location.path("/index");
+
 
             }
 		}]

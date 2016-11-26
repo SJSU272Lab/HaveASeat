@@ -23,9 +23,6 @@ angular.module('HaveASeat')
 		          template: '<admin></admin>'
 		        }).
 		        otherwise('/index');
-
-
-//			 $locationProvider.html5Mode(true)
 		 }
 ]);
 

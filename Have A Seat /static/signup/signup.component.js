@@ -24,9 +24,15 @@ angular.module('signup')
                     }
 
 
-                }).then(function (res) {
-                    restaurantsCtrl.restaurants = res.data;
+                }).then(function (response) {
+                    headerCtrl.registerDetails= response.data;
+					 $rootScope.registerDetails=response.data;
+					 $rootScope.message=" you are registerd , Please login to proceed";
+
                 });
+
+                $location.path("/login");
+
             }
 		}]
 
