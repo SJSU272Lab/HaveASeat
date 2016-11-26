@@ -1,3 +1,4 @@
+import pymongo
 from pymongo import MongoClient
 import flask
 from flask import Flask,url_for , redirect, session ,flash,request
@@ -266,14 +267,17 @@ def signup():
         lastName = obj['lastName']
         emailid = obj['emailid']
         password = obj['password']
-
-
-        print firstname
-        print lastName
-        print emailid
-        print password
-
-    return json.dumps({'email': emailid})
+        checkIfExist=db.Customers.find_one({'email':emailid})
+        if checkIfExist:
+            print "Email already used"
+            return "Email already used"
+        try:
+            print ("Inserted")
+            db.Customers.insert_one({'customerName':firstname+" "+lastName,'email': emailid, 'password': password})
+        except pymongo.errors.DuplicateKeyError:
+            return "User Already Exists!!"
+    print({'customerName': firstname + " " + lastName, 'email': emailid, 'password': password})
+    return json.dumps({'customerName': firstname+" "+lastName, 'email': emailid, 'password': password})
 
 
 
@@ -412,7 +416,7 @@ def user_page(self):
 '''
 if __name__ == "__main__":
     app.secret_key= 'mysecret'
-    app.run(host="127.0.0.1", port=9030)
+    app.run(host="127.0.0.1", port=9032)
 
 
 
