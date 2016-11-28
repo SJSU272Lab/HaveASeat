@@ -97,9 +97,18 @@
 
     <!--// starBucks Layout -->
 
-    <div ng-hide="layout.starbucksLayout" > Starbucks Layout
+   <div ng-hide="layout.starbucksLayout" > Starbucks Layout
 
           <div class="col-md-4">
+
+                            <br/>
+                            <br/>
+                                <button type="button" class="btn btn-success"> </button> <span style="font-size:medium">Selection</span>
+                            <br/>
+                                <button type="button" class="btn btn-warning"> </button> <span style="font-size:medium">Booked</span>
+                            <br/>
+                                <button type="button" class="btn btn-danger"> </button> <span style="font-size:medium">Dining</span>
+                </div>
 
                 <div class="col-md-4">
 
@@ -146,7 +155,6 @@
                                     <input type="button" value="8" style="width:50px;margin:3px"   ng-disabled="{{modelAvailForSelect.dynamic7}}" ng-class="model.dynamic7" ng-click="updateStatus(selectedRestaurant.seats[7],'dynamic7',7)" />
                                 </div>
                             </div>
-
 
 
                             <div class="col-md-12">
@@ -297,7 +305,7 @@
     </div>
 
         <!--Pizza Hut layout-->
-    <div ng-hide="false">
+    <div ng-hide="layout.pizzaHutLayout">
 
                 <div class="col-md-4">
 
@@ -477,7 +485,6 @@
                     </div>
 
                 </div>
-
 
     </div>
 
