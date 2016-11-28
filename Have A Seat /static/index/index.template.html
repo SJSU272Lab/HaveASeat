@@ -1,33 +1,77 @@
 
-      <div>
-         <div id="top" class="starter_container bg">
+       <div id="top" class="starter_container bg">
             <div class="follow_container">
                 <div class="col-md-6 col-md-offset-3">
                     <h2 class="top-title"> Have A Seat</h2>
-                    <h2 class="white second-title">" Best in the city "</h2>
+                    <h2 class="white second-title">" Best in the city"</h2>
                     <hr>
                 </div>
             </div>
         </div>
 
 
-          <!-- ============ Restaurants List =============
-        <section id ="restaurantlist" class="description_content">
-        <restaurants  ng-hide="$root.showRestaurants"></restaurants>
-        </section>
--->
+         <!-- ============ Reservation  ============= -->
 
-          <!-- ============ SEATS =============
-
-
-
-        <section id="Seats" class="description_content">
-            <div  class="featured background_content">
-                <h1>Our Tables </h1>
+        <section  id="reservation"  class="description_content">
+            <div class="featured background_content">
+                <h1>Reserve a Table!</h1>
             </div>
-            <!--<seats ng-hide="$rootScope.showSeats"></seats>
-            <seats></seats>
-        </section>-->
+            <div class="text-content container">
+                <div class="inner contact">
+                    <!-- Form Area -->
+                    <div class="contact-form">
+                        <!-- Form -->
+                        <form id="contact-us" method="post" action="reserve.php">
+                            <!-- Left Inputs -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-6 col-xs-12">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-xs-6">
+                                                <!-- Name -->
+                                                <input type="text" name="first_name" id="first_name" required="required" class="form" placeholder="First Name" />
+                                                <input type="text" name="last_name" id="last_name" required="required" class="form" placeholder="Last Name" />
+                                                <input type="text" name="state" id="state" required="required" class="form" placeholder="State" />
+                                                <input type="text" name="datepicker" id="datepicker" required="required" class="form" placeholder="Reservation Date" />
+                                            </div>
+
+                                            <div class="col-lg-6 col-md-6 col-xs-6">
+                                                <!-- Name -->
+                                                <input type="text" name="phone" id="phone" required="required" class="form" placeholder="Phone" />
+                                                <input type="text" name="guest" id="guest" required="required" class="form" placeholder="Guest Number" />
+                                                <input type="email" name="email" id="email" required="required" class="form" placeholder="Email" />
+                                                <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Subject" />
+                                            </div>
+
+                                            <div class="col-xs-6 ">
+                                                <!-- Send Button -->
+                                                <button type="submit" id="submit" name="submit" class="text-center form-btn form-btn">Reserve</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 col-xs-12">
+                                        <!-- Message -->
+                                        <div class="right-text">
+                                            <h2>Hours</h2><hr>
+                                            <p>Monday to Friday: 7:30 AM - 11:30 AM</p>
+                                            <p>Saturday & Sunday: 8:00 AM - 9:00 AM</p>
+                                            <p>Monday to Friday: 12:00 PM - 5:00 PM</p>
+                                            <p>Monday to Saturday: 6:00 PM - 1:00 AM</p>
+                                            <p>Sunday to Monday: 5:30 PM - 12:00 AM</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Clear -->
+                            <div class="clear"></div>
+                        </form>
+                    </div><!-- End Contact Form Area -->
+                </div><!-- End Inner -->
+            </div>
+        </section>
+
 
         <!-- ============ About Us ============= -->
 
@@ -36,7 +80,7 @@
                 <div class="col-md-6">
                     <h1>About us</h1>
                     <div class="fa fa-cutlery fa-2x"></div>
-                    <p class="desc-text">Restaurant is a place for simplicity. Good food, good beer, and good service. But what if your desire restaurant is full, do not worry  we’re good at finding it in all the right places, even in your dining experience. We’re the one who will make sure you get a seat in restaurant whenever you plan to go out for food. Come join us and see what simplicity tastes like.</p>
+                    <p class="desc-text">Restaurant is a place for simplicity. Good food, good beer, and good service. Simple is the name of the game, and we’re good at finding it in all the right places, even in your dining experience. We’re a small group from Denver, Colorado who make simple food possible. Come join us and see what simplicity tastes like.</p>
                 </div>
                 <div class="col-md-6">
                     <div class="img-section">
@@ -57,10 +101,12 @@
         <!-- ============ Our Beer  ============= -->
 
 
-
         <section id ="beer" class="description_content">
+        </section>
+
+        <section id ="beerqq" class="description_content">
             <div  class="beer background_content">
-                <h1>Great <span>Places</span> at your finger tip</h1>
+                <h1>Great <span>Place</span> to enjoy</h1>
             </div>
             <div class="text-content container">
                 <div class="col-md-5">
@@ -72,7 +118,7 @@
                 <div class="col-md-6 col-md-offset-1">
                     <h1>OUR BEER</h1>
                     <div class="icon-beer fa-2x"></div>
-                    <p class="desc-text">We’re all about your love of beer and food. New and bold flavors enter restaurants doors every week, and we would be more than happy to get you a seat there. While we enjoy the classics, we’re always passionate about discovering something new, so stop by and experience our craft at its best.</p>
+                    <p class="desc-text">Here at Restaurant we’re all about the love of beer. New and bold flavors enter our doors every week, and we can’t help but show them off. While we enjoy the classics, we’re always passionate about discovering something new, so stop by and experience our craft at its best.</p>
                 </div>
             </div>
         </section>
@@ -100,65 +146,56 @@
 
 
 
+        <!-- ============ Featured Dish  ============= -->
 
-
-        <!-- ============ Reservation  ============= -->
-
-        <section  id="reservation"  class="description_content">
-            <div class="featured background_content">
-                <h1>Reserve a Table!</h1>
+        <section id="featured" class="description_content">
+            <div  class="featured background_content">
+                <h1>Our Featured Dishes <span>Menu</span></h1>
             </div>
             <div class="text-content container">
-                <div class="inner contact">
-                    <!-- Form Area -->
-                    <div class="contact-form">
-                        <!-- Form -->
-                        <form id="contact-us" method="post" action="reserve.php">
-                            <!-- Left Inputs -->
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-8 col-md-6 col-xs-12">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-xs-6">
-                                                <!-- Name -->
-                                                <input type="text" name="first_name" id="first_name" required="required" class="form" placeholder="First Name" />
-                                                <input type="text" name="last_name" id="last_name" required="required" class="form" placeholder="Last Name" />
-                                                <input type="text" name="state" id="state" required="required" class="form" placeholder="State" />
-                                                <!--<input type="text" name="datepicker" id="datepicker" required="required" class="form" placeholder="Reservation Date" />-->
-                                            </div>
+                <div class="col-md-6">
+                    <h1>Have a look to our dishes!</h1>
+                    <div class="icon-hotdog fa-2x"></div>
+                    <p class="desc-text">Each food is handmade at the crack of dawn, using only the simplest of ingredients to bring out smells and flavors that beckon the whole block. Stop by anytime and experience simplicity at its finest.</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="image_box_story2">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
 
-                                            <div class="col-lg-6 col-md-6 col-xs-6">
-                                                <!-- Name -->
-                                                <input type="text" name="phone" id="phone" required="required" class="form" placeholder="Phone" />
-                                                <!--<input type="text" name="guest" id="guest" required="required" class="form" placeholder="Guest Number" />-->
-                                                <input type="email" name="email" id="email" required="required" class="form" placeholder="Email" />
-                                                <!--<input type="text" name="subject" id="subject" required="required" class="form" placeholder="Subject" />-->
-                                            </div>
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="static/images/slider1.jpg"  alt="...">
+                                    <div class="carousel-caption">
 
-                                            <div class="col-xs-6 ">
-                                                <!-- Send Button -->
-                                                <button type="submit" id="submit" name="submit" class="text-center form-btn form-btn">Sign Up</button>
-                                            </div>
-
-                                        </div>
                                     </div>
+                                </div>
+                                <div class="item">
+                                    <img src="static/images/slider2.jpg" alt="...">
+                                    <div class="carousel-caption">
 
-                                    <div class="col-lg-4 col-md-6 col-xs-12">
-                                        <!-- Message -->
-                                        <div class="right-text">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="static/images/slider3.JPG" alt="...">
+                                    <div class="carousel-caption">
 
-                                            <img src="static/images/Sign-up.png"  alt="...">
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Clear -->
-                            <div class="clear"></div>
-                        </form>
-                    </div><!-- End Contact Form Area -->
-                </div><!-- End Inner -->
+                        </div>
+                    </ul>
+                </div>
             </div>
         </section>
+
+
 
         <!-- ============ Social Section  ============= -->
 
@@ -175,7 +212,7 @@
                 </div>
                 <div class="col-md-4">
                     <span class="social_heading">OR DIAL</span>
-                    <span class="social_info"><a class="color_animation" href="tel:883-335-6524">(+1) 669-265-7685</a></span>
+                    <span class="social_info"><a class="color_animation" href="tel:883-335-6524">(941) 883-335-6524</a></span>
                 </div>
             </div>
         </section>
@@ -225,14 +262,12 @@
 
         <!-- ============ Footer Section  ============= -->
 
-     <footer class="sub_footer">
+        <footer class="sub_footer">
             <div class="container">
-                <div class="col-md-4"><p class="sub-footer-text text-center">&copy; Have A Seat 2016, by Team 5</p></div>
+                <div class="col-md-4"><p class="sub-footer-text text-center">&copy; Restaurant 2014, Theme by <a href="https://themewagon.com/">ThemeWagon</a></p></div>
                 <div class="col-md-4"><p class="sub-footer-text text-center">Back to <a href="#top">TOP</a></p>
                 </div>
                 <div class="col-md-4"><p class="sub-footer-text text-center">Built With Care By <a href="#" target="_blank">Us</a></p></div>
             </div>
         </footer>
 
-
-</div>

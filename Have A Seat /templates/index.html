@@ -15,10 +15,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="static/css/font-awesome.min.css" rel="stylesheet">
         <link rel="icon" href="favicon-1.ico" type="image/x-icon">
-         <link rel="stylesheet" href="../static/css/structure.css">
-
-
-
 
 
         <script type="text/javascript" src="static/js/jquery-1.10.2.min.js"> </script>
@@ -58,15 +54,15 @@
         <script src="static/app.config.js"></script>
 
 
-        <!--<base href="/" />-->
-
 
 
     </head>
 
     <body>
 
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation"  ng-model="hideHeader">
+        <!---->
+
+         <nav class="navbar navbar-default navbar-fixed-top" role="navigation"  ng-model="hideHeader">
             <div class="container">
                 <div class="row">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -100,21 +96,12 @@
             </div><!-- /.container-fluid -->
         </nav>
 
-<br/>
-<br/>
-<br/>
-<br/>
+<br/><br/><br/><br/>
+     <ng-view></ng-view>
 
-
-
-        <p style="color:red"></p>
-        <div ng-view></div>
 
 
 
 
     </body>
-
-
-
 </html>
