@@ -1,3 +1,4 @@
+import pymongo
 from pymongo import MongoClient
 import flask
 from flask import Flask,url_for , redirect, session ,flash,request
@@ -11,8 +12,8 @@ from functools import  wraps
 #from flask_login import LoginManager
 
 app= Flask(__name__)
-con = MongoClient()
-db = con.Have_A_Seat
+con = MongoClient("mongodb://abcd:qwerty@ds111798.mlab.com:11798/have_a_seat")
+db = con.have_a_seat
 
 
 #list=[]
@@ -44,8 +45,8 @@ def Homepage():
             global dic
             dic = {"Restaurant": [[list, link]]}
 
-        # print dic
-        #return redirect(url_for('restaurantList'))
+        print dic
+    #return redirect(url_for('restaurantList'))
 
     return render_template("index.html")
 
@@ -62,59 +63,67 @@ def Homepage():
 @app.route('/getSeats', methods=['POST'])
 def getSeats():
     print  " Hello I am in"
-    reqObj = request.get_json()
-    res=str(reqObj['restaurantId'])
-    print '------------------------'
-    print res
+    reqObj = request.get_json() #NEED REQUEST JSON
+    #print reqObj
+    rid=int(reqObj['restaurantId'])
+    #print '------------------------'
+    print rid
+    rObj = db.Restaurants.find_one({"_id": rid})
 
     #'templateSeats':pizzaHutLayout - pizzaHutLayout
     #'templateSeats':mcDonaldsLayout - mcDonaldsLayout
     #'templateSeats':subwayLayout - subwayLayout
     #'templateSeats':starbucksLayout - starbucksLayout
 
-    return json.dumps({'id': 456, 'name': 'PizzaHut!!', 'templateSeats':'pizzaHutLayout','seats':[
-        {'sid':101,'status':'available'},
-        {'sid': 102, 'status': 'available'},
-        {'sid': 103, 'status': 'booked'},
-        {'sid': 104, 'status': 'available'},
-        {'sid': 105, 'status': 'unavailable'},
-        {'sid': 106, 'status': 'unavailable'},
-        {'sid': 107, 'status': 'booked'},
-        {'sid': 108, 'status': 'available'},
-        {'sid': 109, 'status': 'booked'},
-        {'sid': 110, 'status': 'unavailable'},
-        {'sid': 111, 'status': 'unavailable'},
-        {'sid': 112, 'status': 'available'},
-        {'sid': 113, 'status': 'available'},
-        {'sid': 114, 'status': 'unavailable'},
-        {'sid': 115, 'status': 'available'},
-        {'sid': 116, 'status': 'available'},
-    ]})
+    s_list = []
+    sObj = db.Tables.find({"Restid":rid})
 
+    for seat in sObj:
+        print "Printing in sOBj"
+        s_list.append({'sid':seat["_id"], 'status': seat['isAvailable']})
 
-@app.route('/changeTableStatus', methods=['POST'])
-def changeTableStatus():
-    print  " Hello I am in at changeTableStatus"
-    restaurant_searched = request.get_json()
-    res=str(restaurant_searched['tableId'])
-    res2=str(restaurant_searched['changeTo'])
-    print res
-    print res2
-    return json.dumps({'status':'successful'})
+    print s_list
 
+    return json.dumps({'id': rid, 'name': rObj["restName"], 'templateSeats':'pizzaHutLayout','seats':s_list})
+    # return json.dumps({'id': 456, 'name': rObj["restName"], 'templateSeats':'subwayLayout','seats':[
+    #     {'sid':101,'status':'available'},
+    #     {'sid': 102, 'status': 'available'},
+    #     {'sid': 103, 'status': 'booked'},
+    #     {'sid': 104, 'status': 'available'},
+    #     {'sid': 105, 'status': 'unavailable'},
+    #     {'sid': 106, 'status': 'unavailable'},
+    #     {'sid': 107, 'status': 'booked'},
+    #     {'sid': 108, 'status': 'available'},
+    #     {'sid': 109, 'status': 'booked'},
+    #     {'sid': 110, 'status': 'unavailable'},
+    #     {'sid': 111, 'status': 'unavailable'},
+    #     {'sid': 112, 'status': 'available'},
+    #     {'sid': 113, 'status': 'available'},
+    #     {'sid': 114, 'status': 'unavailable'},
+    #     {'sid': 115, 'status': 'available'},
+    #     {'sid': 116, 'status': 'available'},
+    # ]})
 
 
 @app.route('/restaurants', methods=['POST'])
 def restaurants():
     print  " Hello I am in"
     restaurant_searched = request.get_json()
-    res=str(restaurant_searched['search'])
-    print res
-    return json.dumps([{'id': 123, 'name': 'aaa'}, {'id': 456, 'name': 'bbb'}, {'id': 789, 'name': 'ccc'}])
+
+    restname=str(restaurant_searched['search'])
+    # print res
+    dic=[]
+    counter=1
+    listOfRestaurants= db.Restaurants.find({"restName":restname})
+    for i in listOfRestaurants:
+        dic.append({"id":i['_id'], "name":str(i["restName"])})
+    dic.append({"name": "Peanuts", "Street":"abc", "City": "nhb", "State":"CA"})
+    print dic
+    return json.dumps(dic)
 
     #return render_template("index.html")
 
-    restaurant_searched = request.get_json()
+    #restaurant_searched = request.get_json()
     # print restaurant_searched
     # restaurantList = db.Restaurants.find({"restName": str(restaurant_searched['search'])})
     # for restaurant in restaurantList:
@@ -280,7 +289,8 @@ def signup():
         password = obj['password']
         checkIfExist=db.Customers.find_one({'email':emailid})
         if checkIfExist:
-            result= "Email already used"
+            print "Email already used"
+            return "Email already used"
         try:
             print ("Inserted")
             db.Customers.insert_one({'customerName':firstname+" "+lastName,'email': emailid, 'password': password})
@@ -288,9 +298,6 @@ def signup():
             return "User Already Exists!!"
     print({'customerName': firstname + " " + lastName, 'email': emailid, 'password': password})
     return json.dumps({'customerName': firstname+" "+lastName, 'email': emailid, 'password': password})
-
-
-
 
 
 
@@ -305,34 +312,35 @@ def login():
        # print obj
         username = obj['username']
         password = obj['password']
-        #print username
-        #print password
+        print username
+        print password
 
-        login_user = db.Customers.find_one({'email': username})
+        login_user = db.Customers.find_one({'Email': username})
         login_owner=db.Owners.find_one({'owner_email': username})
         if login_user:
-            print (login_user['password'])
+            print (login_user['Password'])
             print("user is here")
-            print login_user['password']
-            if(password == login_user['password']):
-                session['email'] = username
+            print login_user['Password']
+            if(password == login_user['Password']):
+                session['Email'] = username
                 #return redirect(url_for('checkSeats', restaurant_name="subway"))
                 print ("I am here")
                 #return ("HII")
-                return json.dumps({'email': login_user['username'], 'name': login_user['customerName']})
-            result = {"error" : "Invalid Passowrd. Please try again."}
+                return json.dumps({'email': login_user['Email'], 'name': login_user['customerName']})
+            error = "Invalid Passowrd. Please try again."
+           # return json.dumps({'email': username, 'name': login_user['customerName']})
+            return render_template("LogIn.html", error=error)
         elif login_owner:
             print("owner is here")
             if(password == login_owner['owner_password']):
                 ownerDetails = db.Owners.find_one({"owner_email": username})
-                restaurantDetails=db.Restaurants.find_one   ({"_id": ownerDetails['Restid']})
-
-
-                return json.dumps({'name': ownerDetails['owner_name'], 'restaurant': restaurantDetails['restName']})
-
-            result = {"error": "Invalid Passowrd. Please try again."}
-
-        return json.dumps({'result': result})
+                session['Email'] = username
+                restaurantDetails=db.Restaurants.find_one({"_id": ownerDetails['Restid']})
+                restaurantName=restaurantDetails['restName']
+                return redirect(url_for('checkOwnerSeats', restaurant_name=restaurantName))
+        error="Invalid Username"
+        return render_template("LogIn.html", error=error)
+    return render_template("LogIn.html", error=error)
 
 
 @app.route('/<string:restaurant_name>/checkOwnerSeats')
@@ -400,6 +408,17 @@ def checkOwnerSeats(restaurant_name):
 #         tup.append((i["isAvailable"]))
 #     return render_template("restaurantOwner.html", seat_details=tup, restaurant_name=restaurant_name)
 #
+
+@app.route('/bookSeat',methods=['POST'])
+@login_required
+def bookseat_user():
+    print "Booking seats"
+    seats = request.get_json()
+    #Need RestaurantID/Name, seatsID,
+    #I will update the DB
+
+
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -429,7 +448,7 @@ def user_page(self):
 '''
 if __name__ == "__main__":
     app.secret_key= 'mysecret'
-    app.run(host="127.0.0.1", port=9044)
+    app.run(host="127.0.0.1", port=8000, debug=True)
 
 
 
