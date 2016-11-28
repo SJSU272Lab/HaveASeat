@@ -25,6 +25,11 @@
 
                                     <ul class="list-group">
                                       <li class="list-group-item" ng-repeat="res in $ctrl.restaurants">
+
+                                           <!--<a href="#!/phones/{{phone.id}}" class="thumb">-->
+                                           <a class="thumb">
+                                              <img ng-src="static/images/restaurants/res1.jpg" style="height:140px;width75px" alt="{{res.name}}" />
+                                           </a>
                                           <input type="button" class="btn btn-link" value = {{res.name}} ng-click="$ctrl.view(res)">
                                            <span class="badge" title="available tables">{{res.id}}</span>
                                           <p class="list-group-item-text"> {{res.address}}</p>
