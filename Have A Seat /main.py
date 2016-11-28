@@ -66,9 +66,14 @@ def getSeats():
     reqObj = request.get_json() #NEED REQUEST JSON
     #print reqObj
     rid=int(reqObj['restaurantId'])
-    #print '------------------------'
+    print '------------------------'
+
+
+
     print rid
     rObj = db.Restaurants.find_one({"_id": rid})
+
+    print  " Hello I am in ridddddd"
 
     #'templateSeats':pizzaHutLayout - pizzaHutLayout
     #'templateSeats':mcDonaldsLayout - mcDonaldsLayout
@@ -80,11 +85,14 @@ def getSeats():
 
     for seat in sObj:
         print "Printing in sOBj"
-        s_list.append({'sid':seat["_id"], 'status': seat['isAvailable']})
+        s_list.append({'sid':seat["TableNo"], 'status': seat['isAvailable']})
 
     print s_list
 
     return json.dumps({'id': rid, 'name': rObj["restName"], 'templateSeats':'pizzaHutLayout','seats':s_list})
+
+
+
     # return json.dumps({'id': 456, 'name': rObj["restName"], 'templateSeats':'subwayLayout','seats':[
     #     {'sid':101,'status':'available'},
     #     {'sid': 102, 'status': 'available'},
@@ -107,7 +115,7 @@ def getSeats():
 
 @app.route('/restaurants', methods=['POST'])
 def restaurants():
-    print  " Hello I am in"
+    print  " Hello I am in Restaurents"
     restaurant_searched = request.get_json()
 
     restname=str(restaurant_searched['search'])
@@ -115,9 +123,11 @@ def restaurants():
     dic=[]
     counter=1
     listOfRestaurants= db.Restaurants.find({"restName":restname})
+    
+
     for i in listOfRestaurants:
-        dic.append({"id":i['_id'], "name":str(i["restName"])})
-    dic.append({"name": "Peanuts", "Street":"abc", "City": "nhb", "State":"CA"})
+        dic.append({"id":i['_id'], "name":str(i["restName"]), "address":str(i['Street'])})
+    #dic.append({"name": "Peanuts", "Street":"abc", "City": "nhb", "State":"CA"})
     print dic
     return json.dumps(dic)
 

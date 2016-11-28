@@ -11,10 +11,12 @@ angular.module('seats')
 		function ($http, $scope, $location,$routeParams, $rootScope, $anchorScroll) {
 
              var seatsCtrl = this;
+
              $scope.bookedTables = [];
              $scope.bookedTableIDs = [];
              $scope.restaurantId = $routeParams.resId;
              $scope.layout = {};
+
              $scope.layout.pizzaHutLayout =true;
              $scope.layout.subwayLayout =true;
              $scope.layout.starbucksLayout =true;
@@ -67,18 +69,24 @@ angular.module('seats')
                         }
                 }).then(function (res) {
                         $scope.selectedRestaurant = res.data;
+
                         console.log('$rootScope.showSeats  '+$rootScope.showSeats);
+
                         $scope.layout[$scope.selectedRestaurant.templateSeats] = false;
+
                         var seats = $scope.selectedRestaurant.seats;
+
                         var index = 0;
+
                         seats.forEach(function (seat) {
+
                             var d = "dynamic";
-                            if(seat.status==="unavailable"){
+                            if(seat.status===2){
                             d += index;
                             $scope.model[d] = "btn btn-danger";
                             $scope.modelAvailForSelect[d]=true;
                            }
-                           else if(seat.status==="booked"){
+                           else if(seat.status===1){
                             d += index;
                             $scope.model[d] = "btn btn-warning";
                             $scope.modelAvailForSelect[d]=true;
@@ -119,7 +127,7 @@ angular.module('seats')
                 var tabObj = {selectedTable:table,dynamicTab:dynamic};
 
                 //will be changing based on logic
-                if(table.status==="available"){
+                if(table.status===0){
                  $scope.changeToGreen(dynamic);
                  $scope.addTableToList(tabObj);
                 }
