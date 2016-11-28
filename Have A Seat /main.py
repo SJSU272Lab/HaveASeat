@@ -113,6 +113,17 @@ def getSeats():
     # ]})
 
 
+@app.route('/seatBooked', methods=['POST'])
+def SeatBooked():
+    print "hellooooooo"
+    seatSelected= request.get_json()
+    print "hellooooooo"
+    print seatSelected;
+
+
+
+
+
 @app.route('/restaurants', methods=['POST'])
 def restaurants():
     #counter=0
