@@ -115,18 +115,26 @@ def getSeats():
 
 @app.route('/restaurants', methods=['POST'])
 def restaurants():
+    #counter=0
     print  " Hello I am in Restaurents"
     restaurant_searched = request.get_json()
 
     restname=str(restaurant_searched['search'])
     # print res
     dic=[]
-    counter=1
+    counter=0
     listOfRestaurants= db.Restaurants.find({"restName":restname})
-    
+
 
     for i in listOfRestaurants:
-        dic.append({"id":i['_id'], "name":str(i["restName"]), "address":str(i['Street'])})
+        sObj = db.Tables.find({"Restid": i['_id']})
+        for seat in sObj:
+            if(seat['isAvailable']==0):
+                counter+=1
+
+
+
+        dic.append({"Availability":counter, "name":str(i["restName"]), "address":str(i['Street']),"id":i['_id']})
     #dic.append({"name": "Peanuts", "Street":"abc", "City": "nhb", "State":"CA"})
     print dic
     return json.dumps(dic)
