@@ -118,7 +118,7 @@ angular.module('seats')
                     // if not already added then add
                 if ($scope.bookedTableIDs.indexOf(table.selectedTable.sid) === -1) {
                     $scope.bookedTableIDs.push(table.selectedTable.sid);
-                    $scope.bookedTables.push(table);
+                    $scope.bookedTables.push(table.selectedTable);
                 }
             }
 
@@ -152,6 +152,16 @@ angular.module('seats')
 
            $scope.checkOut= function(){
            var seatsBooked  = $scope.bookedTables.length;
+
+                $http({
+                    method: 'POST',
+                    url: '/seatBooked',
+                    data: {
+                        seat: $scope.bookedTables
+                    }
+                }).then(function (res) {
+                    console.log(res);
+                });
 
             alert("ThankYou for booking "+ seatsBooked  +" tables with Have A Seat");
             $location.path("/");
