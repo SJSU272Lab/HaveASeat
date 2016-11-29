@@ -341,40 +341,42 @@ def login():
     if request.method == 'POST':
 
         cred = request.get_json()
+        print "hellllllooooooo"
         print cred
         obj = cred['cred']
-       # print obj
-        username = obj['username']
-        password = obj['password']
-        print username
-        print password
+        username = str(obj['username'])
+        password = str(obj['password'])
 
-        login_user = db.Customers.find_one({'Email': username})
+        print username
+
+        login_user = db.Customers.find_one({'email': username})
         login_owner=db.Owners.find_one({'owner_email': username})
+
+        print login_user
+
         if login_user:
-            print (login_user['Password'])
+            print (login_user['password'])
             print("user is here")
-            print login_user['Password']
-            if(password == login_user['Password']):
+            print login_user['password']
+            if(password == login_user['password']):
                 session['Email'] = username
-                #return redirect(url_for('checkSeats', restaurant_name="subway"))
-                print ("I am here")
-                #return ("HII")
-                return json.dumps({'email': login_user['Email'], 'name': login_user['customerName']})
+                return json.dumps({'login_type':"user",'email': login_user['email'], 'name': login_user['customerName']})
             error = "Invalid Passowrd. Please try again."
-           # return json.dumps({'email': username, 'name': login_user['customerName']})
-            return render_template("LogIn.html", error=error)
         elif login_owner:
             print("owner is here")
+            print login_owner['owner_password']
             if(password == login_owner['owner_password']):
+
                 ownerDetails = db.Owners.find_one({"owner_email": username})
                 session['Email'] = username
                 restaurantDetails=db.Restaurants.find_one({"_id": ownerDetails['Restid']})
                 restaurantName=restaurantDetails['restName']
-                return redirect(url_for('checkOwnerSeats', restaurant_name=restaurantName))
-        error="Invalid Username"
-        return render_template("LogIn.html", error=error)
-    return render_template("LogIn.html", error=error)
+                return json.dumps({'restid':ownerDetails['Restid'], 'login_type':"owner",'email': login_owner['owner_email'], 'name': login_owner['owner_name']})
+            error = "Invalid Passowrd. Please try again."
+        else:
+            error="Invalid Username"
+        return json.dumps({'error': error})
+    return json.dump({})
 
 
 

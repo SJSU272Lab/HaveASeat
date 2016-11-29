@@ -10,6 +10,7 @@ angular.module('login')
 
 		function ($http, $scope, $location, $rootScope, $anchorScroll) {
 			var headerCtrl = this;
+            var loginUrl;
 
 			this.login = function() {
                 $scope.username;
@@ -22,20 +23,39 @@ angular.module('login')
                         cred : { username : $scope.username , password: $scope.password}
                     }
                 }).then(function (response) {
+
                     headerCtrl.loginDetails = response.data;
-                     $rootScope.loginDetails = response.data;
-                     $rootScope.hideHeader=true
-                     $rootScope.logout=true
+                    $rootScope.loginDetails = response.data;
 
 
-                     console.log($rootScope.loginDetails.name)
+                     if(($rootScope.loginDetails.error==="Invalid Passowrd. Please try again.") || ($rootScope.loginDetails.error==="Invalid Username"))
+                     {
+                        $rootScope.hideHeader=false;
+                        $rootScope.logout=false;
+                        $rootScope.message=$rootScope.loginDetails.error;
+                         loginUrl="/login"
 
 
+                     }
+                     else if($rootScope.loginDetails.login_type==="user")
+                     {   $rootScope.hideHeader=true
+                         $rootScope.logout=true
+                         loginUrl="/index"
+                     }
+
+                     else if($rootScope.loginDetails.login_type==="owner")
+                     {   $rootScope.hideHeader=true
+                         $rootScope.logout=true
+                         loginUrl="/admin/"+ $rootScope.loginDetails.restid;
+                     }
+
+
+                   $location.path(loginUrl);
 
                 });
 
 
-                 $location.path("/index");
+
 
 
             }

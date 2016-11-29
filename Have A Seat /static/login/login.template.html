@@ -1,6 +1,14 @@
 <link rel="stylesheet" href="static/css/signUp.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 <div class="wrapper">
-     {{$root.registerDetails.customerName}} {{$root.message}}
+    <span style="color: red" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {{$root.registerDetails.customerName}} {{$root.message}}</span>
     <form method="POST" class="form-signin" ng-submit="$ctrl.login()">
       <h2 class="form-signin-heading">Login</h2>
       <br><input type="text" class="form-control" name="username" placeholder="Email Address"  ng-model="username" required="" autofocus=""  value="{{request.form.username}}"/>
