@@ -372,6 +372,34 @@ def login():
     return render_template("LogIn.html", error=error)
 
 
+@app.route('/seatsBooked')
+def seatsBooked():
+    res = request.get_json() #request object is of form {'restid': 123, 'tables': [{"sid": 1, "isAvailable":0},{"sid":2,"isAvailable":2}]}
+    restID = res['restid']
+    tables = res['tables']
+    session['Tables'] = tables
+    for table in tables:
+        db.Tables.update({"Restid": restID, "TableNo": table["sid"]}, {'$set': {"isAvailable": table["isAvailable"]}},upsert=False)
+        print "updated", table["sid"]
+
+    dict = {}
+    dict['status'] = "success" #just for returning something
+    return json.dumps(dict)
+
+@app.route("/timerout")
+def revertseats():
+    res = request.get_json() # request object is of form {'restid': 123} ---May or may not give the table numbers
+    tables = session['Tables'] # if table ids not given in request object
+    for table in tables:
+        db.Tables.update({"Restid": restID, "TableNo": table["sid"]}, {'$set': {"isAvailable": 0}},upsert=False)
+        print "reverted back", table["sid"]
+
+    dict = {}
+    dict['status'] = "success" #just for returning something
+    return json.dumps(dict)
+
+
+
 @app.route('/<string:restaurant_name>/checkOwnerSeats')
 @login_required
 def checkOwnerSeats(restaurant_name):
@@ -437,16 +465,6 @@ def checkOwnerSeats(restaurant_name):
 #         tup.append((i["isAvailable"]))
 #     return render_template("restaurantOwner.html", seat_details=tup, restaurant_name=restaurant_name)
 #
-
-@app.route('/bookSeat',methods=['POST'])
-@login_required
-def bookseat_user():
-    print "Booking seats"
-    seats = request.get_json()
-    #Need RestaurantID/Name, seatsID,
-    #I will update the DB
-
-
 
 @app.route('/logout')
 @login_required
