@@ -155,8 +155,15 @@ angular.module('seats')
            $scope.checkOut= function(restid){
            var seatsBooked  =$scope.bookedTables.length;
 
-               $scope.seatsBookeddetails  = {Restid:restid,tables:$scope.bookedTables};
 
+
+                var onlyTables = [];
+
+                    $scope.bookedTables.forEach(function (el) {
+                    onlyTables.push(el.selectedTable);
+                });
+
+                $scope.seatsBookeddetails  = {Restid:restid,tables:onlyTables};
 
                 $http({
                     method: 'POST',
