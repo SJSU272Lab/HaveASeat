@@ -10,6 +10,7 @@ from bson.objectid import ObjectId
 import json
 from functools import  wraps
 #from flask_login import LoginManager
+import tweepy
 
 app= Flask(__name__)
 con = MongoClient("mongodb://abcd:qwerty@ds111798.mlab.com:11798/have_a_seat")
@@ -22,6 +23,10 @@ db = con.have_a_seat
 #login_manager=LoginManager()
 #login_manager.init_app(app)
 
+def get_api(cfg):
+  auth = tweepy.OAuthHandler(cfg['consumer_key'], cfg['consumer_secret'])
+  auth.set_access_token(cfg['access_token'], cfg['access_token_secret'])
+  return tweepy.API(auth)
 
 def login_required(f):
     @wraps(f)
@@ -113,12 +118,12 @@ def getSeats():
     # ]})
 
 
-@app.route('/seatBooked', methods=['POST'])
-def SeatBooked():
-    print "hellooooooo"
-    seatSelected= request.get_json()
-    print "hellooooooo"
-    print seatSelected;
+# @app.route('/seatBooked', methods=['POST'])
+# def SeatBooked():
+#     print "hellooooooo"
+#     seatSelected= request.get_json()
+#     print "hellooooooo"
+#     print seatSelected;
 
 
 
@@ -372,7 +377,7 @@ def login():
     return render_template("LogIn.html", error=error)
 
 
-@app.route('/seatsBooked')
+@app.route('/seatsBooked',methods='POST')
 def seatsBooked():
     res = request.get_json() #request object is of form {'restid': 123, 'tables': [{"sid": 1, "isAvailable":0},{"sid":2,"isAvailable":2}]}
     restID = res['restid']
@@ -465,6 +470,33 @@ def checkOwnerSeats(restaurant_name):
 #         tup.append((i["isAvailable"]))
 #     return render_template("restaurantOwner.html", seat_details=tup, restaurant_name=restaurant_name)
 #
+
+@app.route('/bookSeat',methods=['POST'])
+@login_required
+def bookseat_user():
+    print "Booking seats"
+    seats = request.get_json()
+    #Need RestaurantID/Name, seatsID,
+    #I will update the DB
+
+@app.route('/tweet')
+def tweet():
+  # Fill in the values noted in previous step here
+  cfg = {
+    "consumer_key"        : "TNiA7eKg5UmSKhZd77rHSQ3sJ",
+    "consumer_secret"     : "i3aOZi7wQBkg9QRtB8VfhDjAgNuZ1QsxyB8dDFdxtUoFyIqW1f",
+    "access_token"        : "803523740172632064-dbuOv0OWdzWZKVowoHkvLF9rjXFwrz1",
+    "access_token_secret" : "1ABNMundXyNGinSgTCs6PeVuI2wmJyd9WDgPyneqLwni5"
+    }
+  res = request.get_json()
+  restID = res["restid"]
+  restTweet = res["tweetmessage"]
+  restObj = db.Restaurants.find_one({'_id':restID})
+  api = get_api(cfg)
+  tweet = restObj['restName'] + "says: "+restTweet
+  status = api.update_status(status=tweet)
+  dict = {"status":"success"}
+  return json.dumps(dict)
 
 @app.route('/logout')
 @login_required
