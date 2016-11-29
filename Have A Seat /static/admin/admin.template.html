@@ -406,21 +406,52 @@
 
 
                         <div class="col-md-12">
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                 </div>
 
-                                <div class="col-md-6">
-                                       <!--<br/>-->
-                                       <!--<br/>-->
+                                <div class="col-md-8">
+                                       <br/>
+                                       <br/>
 
-                                   <!--<br/>-->
-                                     <!--Available Tables : {{availTables}}-->
-                                    <!--<br/>-->
-                                         <!--Booked Tables : {{bookTables}}-->
-                                    <!--<br/>-->
-                                     <!--Dining Tables : {{dineTables}}-->
+                                    <!--TWITTER FORM-->
+
+
+
+
+		<br/>
+
+			<form>
+				<div style="margin-bottom: 15px">
+					<textarea class="form-control" rows="3"
+                  placeholder="Tweet about your restaurant" ng-model="tweet"
+                            name=tweet >
+
+                  </textarea>
+
+
+				</div>
+				<div >
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    <input class="btn btn-primary"
+                           type="button"
+                           value="Tweet"
+						   ng-click="sendTweet()">
+
+					&nbsp;&nbsp;&nbsp;
+				</div>
+			</form>
+
+
+
+
+
+
+
+
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                 </div>
                             </div>
 
@@ -481,7 +512,6 @@
                     </div>
 
                     <div class="col-md-3">
-
                     </div>
 
                 </div>
