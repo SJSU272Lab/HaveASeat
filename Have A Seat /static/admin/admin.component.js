@@ -20,6 +20,26 @@ angular.module('admin')
              $scope.layout.starbucksLayout =true;
              $scope.layout.mcDonaldsLayout =true;
 
+             $scope.tweet='';
+
+             $scope.sendTweet = function(){
+                console.log('can u see tweet '+$scope.tweet);
+
+                    //sendTweet
+
+                    $http({
+                        method: 'POST',
+                        url: '/sendTweet',
+                        data:{
+                            adminTweet:$scope.tweet
+                        }
+                    }).then(function (res) {
+                        console.log('tweet send succesfully');
+                        $scope.tweet='';
+                    });
+
+                 }
+
                 $scope.status = 'avail';
 //                $scope.availTables = 0;
 //                $scope.bookTables = 0;
