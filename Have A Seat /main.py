@@ -118,12 +118,12 @@ def getSeats():
     # ]})
 
 
-@app.route('/seatBooked', methods=['POST'])
-def SeatBooked():
-    print "hellooooooo"
-    seatSelected= request.get_json()
-    print "hellooooooo"
-    print seatSelected;
+# @app.route('/seatBooked', methods=['POST'])
+# def SeatBooked():
+#     print "hellooooooo"
+#     seatSelected= request.get_json()
+#     print "hellooooooo"
+#     print seatSelected;
 
 
 
@@ -377,7 +377,7 @@ def login():
     return render_template("LogIn.html", error=error)
 
 
-@app.route('/seatsBooked')
+@app.route('/seatsBooked',methods='POST')
 def seatsBooked():
     res = request.get_json() #request object is of form {'restid': 123, 'tables': [{"sid": 1, "isAvailable":0},{"sid":2,"isAvailable":2}]}
     restID = res['restid']
