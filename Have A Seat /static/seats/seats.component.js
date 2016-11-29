@@ -116,9 +116,11 @@ angular.module('seats')
 
             $scope.addTableToList =function(table){
                     // if not already added then add
-                if ($scope.bookedTableIDs.indexOf(table.selectedTable.sid) === -1) {
+                if ($scope.bookedTableIDs.indexOf(table.selectedTable.sid) === -1)
+                {
                     $scope.bookedTableIDs.push(table.selectedTable.sid);
-                    $scope.bookedTables.push(table.selectedTable);
+                    table.selectedTable.status =1;
+                    $scope.bookedTables.push(table);
                 }
             }
 
@@ -135,30 +137,32 @@ angular.module('seats')
 
             $scope.unBook= function(table){
                 function filterTables(el) {
-                       if(el.selectedTable.sid === table.selectedTable.sid){
+                       if(el.sid === table.sid){
                             console.log(el);
                             $scope.changeToEmpty(table.dynamicTab);
                        }
-                      return el.selectedTable.sid !== table.selectedTable.sid ;
+                      return el.sid !== table.sid ;
                    }
 
                    var filteredTables = $scope.bookedTables.filter(filterTables);
                    $scope.bookedTables = filteredTables;
-                   var bookedTableIndex = $scope.bookedTableIDs.indexOf(table.selectedTable.sid);
+                   var bookedTableIndex = $scope.bookedTableIDs.indexOf(table.sid);
                    if(bookedTableIndex !== -1){
                         $scope.bookedTableIDs.splice(bookedTableIndex, 1);
                    }
             }
 
-           $scope.checkOut= function(){
-           var seatsBooked  = $scope.bookedTables.length;
+           $scope.checkOut= function(restid){
+           var seatsBooked  =$scope.bookedTables.length;
+
+               $scope.seatsBookeddetails  = {Restid:restid,tables:$scope.bookedTables};
+
 
                 $http({
                     method: 'POST',
-                    url: '/seatBooked',
-                    data: {
-                        seat: $scope.bookedTables
-                    }
+                    url: '/seatsBooked',
+                    data: $scope.seatsBookeddetails
+
                 }).then(function (res) {
                     console.log(res);
                 });
