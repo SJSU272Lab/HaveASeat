@@ -41,10 +41,12 @@ angular.module('login')
                      {   $rootScope.hideHeader=true
                          $rootScope.logout=true
                          loginUrl="/index"
+
                      }
 
                      else if($rootScope.loginDetails.login_type==="owner")
                      {   $rootScope.hideHeader=true
+                        // $rootScope.hideSearch=true
                          $rootScope.logout=true
                          loginUrl="/admin/"+ $rootScope.loginDetails.restid;
                      }

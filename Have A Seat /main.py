@@ -68,17 +68,9 @@ def Homepage():
 @app.route('/getSeats', methods=['POST'])
 def getSeats():
     print  " Hello I am in"
-    reqObj = request.get_json() #NEED REQUEST JSON
-    #print reqObj
+    reqObj = request.get_json()
     rid=int(reqObj['restaurantId'])
-    print '------------------------'
-
-
-
-    print rid
     rObj = db.Restaurants.find_one({"_id": rid})
-
-    print  " Hello I am in ridddddd"
 
     #'templateSeats':pizzaHutLayout - pizzaHutLayout
     #'templateSeats':mcDonaldsLayout - mcDonaldsLayout
@@ -89,7 +81,6 @@ def getSeats():
     sObj = db.Tables.find({"Restid":rid})
 
     for seat in sObj:
-        print "Printing in sOBj"
         s_list.append({'sid':seat["TableNo"], 'status': seat['isAvailable']})
 
     print s_list

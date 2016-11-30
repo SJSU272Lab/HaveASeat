@@ -93,17 +93,19 @@ angular.module('admin')
                 }).then(function (res) {
                         $scope.selectedRestaurant = res.data;
                         console.log('$rootScope.showSeats  '+$rootScope.showSeats);
+
                         $scope.layout[$scope.selectedRestaurant.templateSeats] = false;
                         var seats = $scope.selectedRestaurant.seats;
+
                         var index = 0;
                         seats.forEach(function (seat) {
                             var d = "dynamic";
-                            if(seat.status==="unavailable"){
+                            if(seat.status===2){
                             d += index;
                             $scope.model[d] = "btn btn-danger";
                             $scope.modelAvailForSelect[d]=true;
                            }
-                           else if(seat.status==="booked"){
+                           else if(seat.status===1){
                             d += index;
                             $scope.model[d] = "btn btn-warning";
                             $scope.modelAvailForSelect[d]=true;

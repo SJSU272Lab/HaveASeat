@@ -1,9 +1,9 @@
-<form   ng-submit="$ctrl.searchRestaurants()" class="navbar-form navbar-left" >
+<form   ng-submit="$ctrl.searchRestaurants()" class="navbar-form navbar-left"   ng-model="hideHeader">
 <div class="form-group">
-<input type="text" class="form-control" placeholder="search" name="search"  ng-model="search" value="{{request.form.search}}">
+<input type="text" class="form-control"     ng-hide="hideHeader"  placeholder="search" name="search"  ng-model="search" value="{{request.form.search}}">
     <span style="color:white" aria-hidden="true"></span>
 </div>
-<input type="submit" href="#beer" class="btn btn-default" value="Search">
+<input type="submit" href="#beer"      ng-hide="hideHeader"   class="btn btn-default" value="Search">
 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: white" >{{$root.loginDetails.name}}</span>
 
