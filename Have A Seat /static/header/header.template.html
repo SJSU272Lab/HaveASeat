@@ -1,10 +1,16 @@
-<form   ng-submit="$ctrl.searchRestaurants()" class="navbar-form navbar-left"   ng-model="hideSearch">
-<div class="form-group">
-<input type="text" class="form-control"     ng-hide="hideSearch"  placeholder="search" name="search"  ng-model="search" value="{{request.form.search}}">
-    <span style="color:white" aria-hidden="true"></span>
-</div>
-<input type="submit" href="#beer"      ng-hide="hideSearch"   class="btn btn-default" value="Search">
 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: white" >{{$root.loginDetails.name}}</span>
+<ul class="nav navbar-nav main-nav  clear navbar-right "   ng-model="logout" >
+    <li>
+    <form   ng-submit="$ctrl.searchRestaurants()" class="navbar-form navbar-left"   ng-model="hideSearch">
+        <div class="form-group">
+            <input type="text" class="form-control"     ng-hide="hideSearch"  placeholder="search" name="search"  ng-model="search" value="{{request.form.search}}">
+            <span style="color:white" aria-hidden="true"></span>
+        </div>
+        <input type="submit" href="#beer"      ng-hide="hideSearch"   class="btn btn-default" value="Search">
+        <span style="color: white" > Hi, {{$root.loginDetails.name}}</span>
+    </form>
+    </li>
+    <li><a class="color_animation" href="#!/about">About Us</a></li>
+    <li><a class="color_animation" href="#!/logout">Logout</a></li>
 
-</form>
+</ul>

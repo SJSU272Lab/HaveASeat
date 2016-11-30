@@ -16,7 +16,12 @@ angular.module('index')
 			 $rootScope.hideHeader=false
 			 $rootScope.logout=false
 
-
+                if(!$rootScope.loggedIn)
+            	 {
+                     $rootScope.hideHeader=true;
+                     $rootScope.hideWelcomeHeader = false;
+                     $rootScope.hideAdminHeader = true;
+            	 }
 
 		}]
 });

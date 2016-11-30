@@ -30,6 +30,7 @@
         <script src="static/header/header.module.js"></script>
         <script src="static/header/header.component.js"></script>
 
+
         <script src="static/restaurants/restaurants.module.js"></script>
         <script src="static/restaurants/restaurants.component.js"></script>
 
@@ -49,6 +50,17 @@
 
         <script src="static/admin/admin.module.js"></script>
         <script src="static/admin/admin.component.js"></script>
+
+        <script src="static/welcomeheader/welcomeheader.module.js"></script>
+        <script src="static/welcomeheader/welcomeheader.component.js"></script>
+
+        <script src="static/adminheader/adminheader.module.js"></script>
+        <script src="static/adminheader/adminheader.component.js"></script>
+
+
+         <script src="static/logout/logout.module.js"></script>
+         <script src="static/logout/logout.component.js"></script>
+
 
         <script src="static/app.module.js"></script>
         <script src="static/app.config.js"></script>
@@ -81,15 +93,10 @@
                         <ul class="nav navbar-nav main-nav  clear navbar-right "   ng-model="logout" >
                             <li>
 
-                              <header></header>
+                              <header ng-hide="hideHeader"></header>
+                              <welcomeheader ng-hide="hideWelcomeHeader"></welcomeheader>
+                              <adminheader ng-hide="hideAdminHeader"></adminheader>
                             </li>
-
-                             <li><a class="color_animation" href="#!/about"    ng-hide="hideHeader">About Us</a></li>
-                              <li><a class="color_animation" href="#!/login"   ng-hide="hideHeader" >Login</a></li>
-                            <li><a class="color_animation" href="#!/signup"   ng-hide="hideHeader" >Signup</a></li>
-                             <li><a class="color_animation" href="#!/contact"  ng-hide="hideHeader" >Contact US</a></li>
-                            <li><a class="color_animation" href="#!/index" ng-show="logout" >logout</a></li>
-
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>
@@ -97,6 +104,8 @@
         </nav>
 
 <br/><br/><br/><br/>
+
+
      <ng-view></ng-view>
 
 

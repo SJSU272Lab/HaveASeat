@@ -9,8 +9,8 @@ angular.module('header')
         '$anchorScroll',
 		function ($http, $scope, $location, $rootScope, $anchorScroll) {
 			var headerCtrl = this;
-
 				console.log('roooot'+$rootScope.hideSearch);
+
 
 			this.searchRestaurants = function() {
                 $scope.search;

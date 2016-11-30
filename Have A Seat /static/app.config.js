@@ -22,6 +22,9 @@ angular.module('HaveASeat')
 		         when('/admin/:resId', {
 		          template: '<admin></admin>'
 		        }).
+		         when('/logout', {
+		          template: '<logout></logout>'
+		        }).
 		        otherwise('/index');
 		 }
 ]);

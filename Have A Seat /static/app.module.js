@@ -7,5 +7,8 @@ angular.module('HaveASeat', [
   'index',
   'login',
   'signup',
-  'admin'
+  'admin',
+  'welcomeheader',
+  'adminheader',
+  'logout'
 ]);

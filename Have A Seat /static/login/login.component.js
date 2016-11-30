@@ -30,24 +30,28 @@ angular.module('login')
 
                      if(($rootScope.loginDetails.error==="Invalid Passowrd. Please try again.") || ($rootScope.loginDetails.error==="Invalid Username"))
                      {
-                        $rootScope.hideHeader=false;
-                        $rootScope.logout=false;
-                        $rootScope.message=$rootScope.loginDetails.error;
+//                        $rootScope.hideHeader=false;
+//                        $rootScope.logout=false;
+//                        $rootScope.message=$rootScope.loginDetails.error;
                          loginUrl="/login"
 
 
                      }
                      else if($rootScope.loginDetails.login_type==="user")
-                     {   $rootScope.hideHeader=true
-                         $rootScope.logout=true
+                     {   $rootScope.hideHeader=false;
+                         $rootScope.hideWelcomeHeader = true;
+                         $rootScope.hideAdminHeader = true;
+                         $rootScope.loggedIn=true
                          loginUrl="/index"
 
                      }
 
                      else if($rootScope.loginDetails.login_type==="owner")
-                     {   $rootScope.hideHeader=true
-                         $rootScope.hideSearch=true
-                         $rootScope.logout=true
+                     {
+                         $rootScope.hideHeader=true;
+                         $rootScope.hideWelcomeHeader = true;
+                         $rootScope.hideAdminHeader = false;
+                         $rootScope.loggedIn=true
                          loginUrl="/admin/"+ $rootScope.loginDetails.restid;
                      }
 
