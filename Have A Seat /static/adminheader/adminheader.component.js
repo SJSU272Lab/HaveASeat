@@ -12,5 +12,11 @@ angular.module('adminheader')
 
 			console.log('adminheader');
 
+			$scope.logout = function(){
+			    console.log('Loggin out from admin');
+			    //should send logging out request to server here
+                $location.path('/logout');
+			}
+
 		}]
 });

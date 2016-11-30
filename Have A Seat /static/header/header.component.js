@@ -17,5 +17,11 @@ angular.module('header')
                 var restaurantsSearchUrl ='/restaurants/' + $scope.search;
                 $location.path(restaurantsSearchUrl);
             }
+
+            $scope.logout = function(){
+			    console.log('Loggin out from user');
+			    //should send logging out request to server here
+                $location.path('/logout');
+			}
 		}]
 });
