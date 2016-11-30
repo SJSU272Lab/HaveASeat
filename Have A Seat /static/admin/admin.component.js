@@ -91,6 +91,11 @@ angular.module('admin')
                           restaurantId:$scope.restaurantId
                         }
                 }).then(function (res) {
+
+                         $rootScope.hideHeader=true
+                         $rootScope.hideSearch=true
+                         $rootScope.logout=true
+
                         $scope.selectedRestaurant = res.data;
                         console.log('$rootScope.showSeats  '+$rootScope.showSeats);
 

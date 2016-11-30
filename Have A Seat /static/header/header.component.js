@@ -10,7 +10,7 @@ angular.module('header')
 		function ($http, $scope, $location, $rootScope, $anchorScroll) {
 			var headerCtrl = this;
 
-
+				console.log('roooot'+$rootScope.hideSearch);
 
 			this.searchRestaurants = function() {
                 $scope.search;

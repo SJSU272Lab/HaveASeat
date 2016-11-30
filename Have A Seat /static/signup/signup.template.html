@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="static/css/signUp.css">
 <div class="wrapper">
+
     <form class="form-signin"   ng-submit="$ctrl.signup()">
       <h2 class="form-signin-heading">Please Sign Up</h2>
       <br><input type="text" class="form-control" name="firstName"    ng-model="firstName" placeholder="First Name" required="" autofocus=""  value="{{request.form.firstName}}"/>

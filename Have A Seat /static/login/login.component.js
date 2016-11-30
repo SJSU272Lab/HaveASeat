@@ -46,7 +46,7 @@ angular.module('login')
 
                      else if($rootScope.loginDetails.login_type==="owner")
                      {   $rootScope.hideHeader=true
-                        // $rootScope.hideSearch=true
+                         $rootScope.hideSearch=true
                          $rootScope.logout=true
                          loginUrl="/admin/"+ $rootScope.loginDetails.restid;
                      }
@@ -55,8 +55,6 @@ angular.module('login')
                    $location.path(loginUrl);
 
                 });
-
-
 
 
 

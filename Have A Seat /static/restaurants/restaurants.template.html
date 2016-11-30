@@ -6,19 +6,30 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
- <div>
+ <div align="left">
 
                 <!--   Pizzahut LAyout
 
+
+
+
             <div class="row">-->
+
+
+
+     <style>
+body {
+    background-image: url("static/images/restaurants/res_back.jpg");
+}
+</style>
                 <div class="col-md-2"></div>
-                <div class="col-md-8">
+                <div class="col-md-8" align="left">
                     <div class="col-md-12">
 
                             <div>
-                                <div class="panel panel-default">
+                                <div class="panel panel-default" align="left">
                                       <!-- Default panel contents -->
-                                      <div class="panel-heading">Restaurants <span class="glyphicon glyphicon-cutlery"></span></div>
+                                      <div class="navbar-brand"><span style="color: black">Restaurants </span><span class="glyphicon glyphicon-cutlery"></span></div>
                                       <div class="panel-body">
                                         <p>Choose any eateries from the diverse range we have </p>
                                       </div>
@@ -30,7 +41,7 @@
                                            <a class="thumb">
                                               <img ng-src="static/images/restaurants/res1.jpg" style="height:140px;width75px" alt="{{res.name}}" />
                                            </a>
-                                          <input type="button" class="btn btn-link" value = {{res.name}} ng-click="$ctrl.view(res)">
+                                          <input type="button"  value = {{res.name}} ng-click="$ctrl.view(res)">
                                            <span class="badge" title="available tables">Seats Available  <h4>{{res.Availability}}</h4></span>
                                           <p class="list-group-item-text"> {{res.address}}</p>
                                         </li>
