@@ -374,12 +374,19 @@ def login():
 @app.route('/seatsBooked', methods=['POST'])
 def seatsBooked():
     res = request.get_json() #request object is of form {'Restid': 123, 'tables': [{"sid": 1, "status":0},{"sid":2,"status":2}]}
-    print "hello" ,res
     restID = int(res['Restid'])
 
+    print res
+
     tables = (res['tables'])
+    print tables
+
     session['Tables'] = tables
+
+
     for table in tables:
+        print int(table["sid"])
+        print int(table["status"])
         db.Tables.update({"Restid": restID, "TableNo": int(table["sid"])},{'$set': {"isAvailable":int(table["status"])}}, upsert=False)
         print "updated", table["sid"]
 
@@ -387,6 +394,29 @@ def seatsBooked():
     dict = {}
     dict['status'] = "success" #just for returning something
     return json.dumps(dict)
+
+
+
+@app.route('/seatsBookedAdmin', methods=['POST'])
+def seatsBookedAdmin():
+    res = request.get_json() #request object is of form {'Restid': 123, 'tables': [{"sid": 1, "status":0},{"sid":2,"status":2}]}
+    restID = int(res['Restid'])
+
+    print res
+
+    tables = (res['tables'])
+    print tables
+
+    session['Tables'] = tables
+
+    db.Tables.update({"Restid": restID, "TableNo": int(tables["sid"])},{'$set': {"isAvailable":int(tables["status"])}}, upsert=False)
+   # print "updated", table["sid"]
+
+
+    dict = {}
+    dict['status'] = "success" #just for returning something
+    return json.dumps(dict)
+
 
 
 

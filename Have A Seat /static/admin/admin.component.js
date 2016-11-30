@@ -127,11 +127,12 @@ angular.module('admin')
             $scope.sendChangeCommand = function(table, status){
                     $http({
                     method: 'POST',
-                    url: '/changeTableStatus',
-                    data:{
-                          tableId:table.sid,
-                          changeTo : status
-                        }
+                    url: '/seatsBookedAdmin',
+                    data: {Restid: $scope.restaurantId,tables:{sid:table.sid, status : status}}
+                    // data: {
+                    //       tableId:table.sid,
+                    //       changeTo : status
+                    //     }
                 }).then(function (res) {
                         console.log('Changed the status from server');
                 });
@@ -141,7 +142,7 @@ angular.module('admin')
             $scope.changeToEmpty = function(dynamic,table){
                $scope.model[dynamic] = "btn btn-default";
                console.log('at avail table',table);
-               $scope.sendChangeCommand(table,'avail');
+               $scope.sendChangeCommand(table,0);
             };
 
             /*$scope.changeToGreen = function(dynamic,table){
@@ -151,13 +152,13 @@ angular.module('admin')
              $scope.changeToOrange= function(dynamic,table){
                 $scope.model[dynamic] = "btn btn-warning";
                 console.log('at booked table',table);
-                $scope.sendChangeCommand(table,'book');
+                $scope.sendChangeCommand(table,1);
             };
 
              $scope.changeToRed= function(dynamic,table){
                 $scope.model[dynamic] = "btn btn-danger";
                 console.log('at dine table',table);
-                $scope.sendChangeCommand(table,'dine');
+                $scope.sendChangeCommand(table,2);
             };
 
             $scope.addTableToList =function(table){
@@ -218,22 +219,22 @@ angular.module('admin')
                  console.log('seletect dynamic ' +$scope.selectedDynamic);
 
                 //will be changing based on logic
-                if($scope.status==="avail"){
+                if($scope.status==="0"){
                     console.log('Changing staus to GREEEN ');
                      $scope.changeToEmpty($scope.selectedDynamic,$scope.selectedTable);
                 }
 
-                if($scope.status==="book"){
+                if($scope.status==="1"){
                     console.log('Changing staus to ORbage');
                      $scope.changeToOrange($scope.selectedDynamic,$scope.selectedTable);
                 }
 
-                if($scope.status==="dine"){
+                if($scope.status==="2"){
                     console.log('Changing staus to REDDDD');
                      $scope.changeToRed($scope.selectedDynamic,$scope.selectedTable);
                 }
 
-                $scope.status = 'avail';
+                $scope.status = '0';
             }
     }]
 });
