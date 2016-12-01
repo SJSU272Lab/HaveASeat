@@ -14,9 +14,6 @@ angular.module('logout')
             $rootScope.hideHeader=true;
             $rootScope.hideWelcomeHeader = false;
             $rootScope.hideAdminHeader = true;
-            $rootScope.bookingDone;
-            $scope.hideTimer = !$rootScope.bookingDone;
-            console.log('root boking Done ',$rootScope.bookingDone);
 
             ////////////////////////////////////
 
@@ -48,9 +45,7 @@ angular.module('logout')
                 }
 
 
-                if($rootScope.bookingDone){
                     startTimer();
-                }
             ////////////////////////////////////
 
              $http({
