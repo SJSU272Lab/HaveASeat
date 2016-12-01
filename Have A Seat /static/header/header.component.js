@@ -21,7 +21,15 @@ angular.module('header')
             $scope.logout = function(){
 			    console.log('Loggin out from user');
 			    //should send logging out request to server here
-                $location.path('/logout');
+
+                $http({
+                    method: 'GET',
+                    url: '/logout',
+                }).then(function (res) {
+                    console.log('Logged out user');
+                    $location.path('/');
+                });
+
 			}
 		}]
 });
