@@ -172,6 +172,7 @@ angular.module('seats')
 
                 }).then(function (res) {
                     console.log(res);
+                    $rootScope.bookingDone = true;
                 });
 
             alert("ThankYou for booking "+ seatsBooked  +" tables with Have A Seat");

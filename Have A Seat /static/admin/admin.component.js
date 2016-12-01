@@ -24,12 +24,8 @@ angular.module('admin')
 
 
              $http({
-                    method: 'POST',
-                    url: '/isValidAdmin',
-                    data:{
-                          restaurantId:$scope.restaurantId,
-                          user: $rootScope.loginDetails
-                        }
+                    method: 'GET',
+                    url: '/loggedinUser',
                 }).then(function (res) {
 
                 if(res.data.isValidAdmin){
