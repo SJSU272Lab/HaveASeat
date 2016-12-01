@@ -154,9 +154,21 @@ angular.module('seats')
 
            $scope.checkOut= function(restid){
            var seatsBooked  =$scope.bookedTables.length;
+           $rootScope.loginDetails;
+           if($rootScope.loginDetails===undefined
+           || $rootScope.loginDetails === null
+           || $rootScope.loginDetails=== "null")
+           {
+            console.log('login details not logged in ',$rootScope.loginDetails);
+            alert("Please Login to book table.");
+            $location.path('/');
+           }
 
 
 
+
+
+            else{
                 var onlyTables = [];
 
                     $scope.bookedTables.forEach(function (el) {
@@ -175,7 +187,7 @@ angular.module('seats')
                     alert("ThankYou for booking "+ seatsBooked  +" tables with Have A Seat");
                     $location.path("/logout");
                 });
-
+            }
 
            }
     }]
