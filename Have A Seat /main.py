@@ -312,20 +312,23 @@ def signup():
         lastName = obj['lastName']
         emailid = obj['emailid']
         password = obj['password']
-        checkIfExist=db.Customers.find_one({'email':emailid})
+        checkIfExist=db.Customers.find_one({'Email':emailid})
         if checkIfExist:
             result= "Email already used"
+            return json.dumps({'result':result})
         try:
-            print ("Inserted")
+
             hashpass=bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
             print hashpass
-            db.Customers.insert_one({'customerName':firstname+" "+lastName,'email': emailid, 'password': hashpass})
+            db.Customers.insert_one({'customerName':firstname+" "+lastName,'Email': emailid, 'Password': hashpass})
+            print ("Inserted")
             print "done"
         except pymongo.errors.DuplicateKeyError:
             print "In Except"
             return "User Already Exists!!"
     print({'customerName': firstname + " " + lastName, 'email': emailid, 'password': password})
     return json.dumps({'customerName': firstname+" "+lastName, 'email': emailid, 'password': password})
+
 
 
 
@@ -337,8 +340,11 @@ def login():
         cred = request.get_json()
         print cred
         obj = cred['cred']
+       # print obj
         username = obj['username']
         password = obj['password']
+        print username
+        print password
 
         login_user = db.Customers.find_one({'Email': username})
         login_owner=db.Owners.find_one({'owner_email': username})
@@ -346,28 +352,44 @@ def login():
             print (login_user['Password'])
             print("user is here")
             print login_user['Password']
+            #if(password == login_user['Password']):
             if bcrypt.hashpw(password.encode('utf-8'),
-                             login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+                             login_user['Password'].encode('utf-8')) == login_user['Password'].encode('utf-8'):
+                print("password found")
                 session['Email'] = username
+                #return redirect(url_for('checkSeats', restaurant_name="subway"))
+                print ("I am here")
+                #return ("HII")
                 return json.dumps({'email': login_user['Email'], 'name': login_user['customerName']})
+            print("password NOT found")
             error = "Invalid Passowrd. Please try again."
+           # return json.dumps({'email': username, 'name': login_user['customerName']})
+            #return render_template("LogIn.html", error=error)
+
         elif login_owner:
             print("owner is here")
-            print login_owner['owner_password']
-            if bcrypt.hashpw(password.encode('utf-8'),
-                             login_owner['owner_password'].encode('utf-8')) == login_owner['owner_password'].encode('utf-8'):
-
+            print password.encode('utf-8')
+          #  if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) ==
+           #         login_user['password'].encode('utf-8'):
+            #if bcrypt.hashpw(password.encode('utf-8'),
+            #                 login_owner['owner_password'].encode('utf-8')) == login_owner['owner_password'].encode('utf-8'):
+            #if(password == login_owner['owner_password']):
+            if (password == login_owner['owner_password']):
+                print "Owner has signed in"
                 ownerDetails = db.Owners.find_one({"owner_email": username})
                 session['Email'] = username
                 restaurantDetails=db.Restaurants.find_one({"_id": ownerDetails['Restid']})
                 restaurantName=restaurantDetails['restName']
+
                 return json.dumps({'email': login_owner['owner_email'], 'name': login_owner['owner_name']})
             error = "Invalid Passowrd. Please try again."
+                #return redirect(url_for('checkOwnerSeats', restaurant_name=restaurantName))
         else:
             error="Invalid Username"
+            print ("Invalid user")
         return json.dumps({'error': error})
-    return json.dump({})
-
+       # return render_template("LogIn.html", error=error)
+        return json.dump({})
 
 @app.route('/isValidAdmin', methods=['POST'])
 def isValidAdmin():
@@ -579,8 +601,4 @@ def user_page(self):
 '''
 if __name__ == "__main__":
     app.secret_key= 'mysecret'
-    app.run(host="127.0.0.1", port=8000, debug=True)
-
-
-
-
+    app.run(host="0.0.0.0", port=5000, debug=True)
