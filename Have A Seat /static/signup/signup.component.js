@@ -31,9 +31,16 @@ angular.module('signup')
 
                 });
 
-                $location.path("/login");
 
-            }
+
+            },
+
+            redirct= function() {
+
+				 $location.path("/login");
+
+			}
+
 		}]
 
 });
