@@ -41,8 +41,9 @@ body {
                                            <a class="thumb">
                                               <img ng-src="static/images/restaurants/{{res.name}}.jpg" style="height:140px;width75px" alt="{{res.name}}" />
                                            </a>
-                                          <input type="button"  value = {{res.name}} ng-click="$ctrl.view(res)">
-                                           <span class="badge" title="available tables">Seats Available  <h4>{{res.Availability}}</h4></span>
+
+                                           <span class="badge" title="available tables">Seats Available  <h4>{{res.Availability}}</h4>
+                                           <br/><span style="color: black"><input type="button"  value = "View" ng-click="$ctrl.view(res)"></span> </span>
                                           <p class="list-group-item-text"> {{res.address}}</p>
                                         </li>
                                     </ul>
@@ -50,6 +51,7 @@ body {
                             </div>
 
                     </div>
+                </div>
                 </div>
                 <div class="col-md-2"></div>
 </div>
