@@ -39,7 +39,7 @@ body {
 
                                            <!--<a href="#!/phones/{{phone.id}}" class="thumb">-->
                                            <a class="thumb">
-                                              <img ng-src="static/images/restaurants/res1.jpg" style="height:140px;width75px" alt="{{res.name}}" />
+                                              <img ng-src="static/images/restaurants/{{res.name}}.jpg" style="height:140px;width75px" alt="{{res.name}}" />
                                            </a>
                                           <input type="button"  value = {{res.name}} ng-click="$ctrl.view(res)">
                                            <span class="badge" title="available tables">Seats Available  <h4>{{res.Availability}}</h4></span>
