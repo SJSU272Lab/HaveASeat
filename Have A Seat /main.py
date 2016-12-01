@@ -507,6 +507,22 @@ def bookseat_user():
     #Need RestaurantID/Name, seatsID,
     #I will update the DB
 
+@app.route('/loggedinUser', methods=['GET'])
+def loggedinUser():
+    currentUserEmail=session['email']
+    login_user = db.Customers.find_one({'Email': currentUserEmail})
+    login_owner = db.Owners.find_one({'owner_email': currentUserEmail})
+    if 'email' in session:
+        if login_user:
+            return json.dumps({"Role":"Customer"})
+        if login_owner:
+            ownerDetails = db.Owners.find_one({"owner_email": currentUserEmail})
+            restaurantDetails = db.Restaurants.find_one({"_id": ownerDetails['Restid']})
+            restaurantName = restaurantDetails['restName']
+            return json.dumps({"Role":"Owner", "Restid":ownerDetails['Restid']})
+    return json.dumps({"error":"no user loggedin"})
+
+
 @app.route('/tweet')
 def tweet():
   # Fill in the values noted in previous step here
