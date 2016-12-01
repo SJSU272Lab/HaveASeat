@@ -58,6 +58,7 @@ angular.module('login')
 
                    $location.path(loginUrl);
 
+
                 });
 
 

@@ -369,6 +369,14 @@ def login():
     return json.dump({})
 
 
+@app.route('/isValidAdmin', methods=['POST'])
+def isValidAdmin():
+    res = request.get_json() #request object is of form {'Restid': 123, 'tables': [{"sid": 1, "status":0},{"sid":2,"status":2}]}
+    print res
+
+    return json.dumps({'isValidAdmin':'true'})
+
+
 
 @app.route('/seatsBooked', methods=['POST'])
 def seatsBooked():

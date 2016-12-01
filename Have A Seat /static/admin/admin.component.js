@@ -22,6 +22,64 @@ angular.module('admin')
 
              $scope.tweet='';
 
+
+             $http({
+                    method: 'POST',
+                    url: '/isValidAdmin',
+                    data:{
+                          restaurantId:$scope.restaurantId,
+                          user: $rootScope.loginDetails
+                        }
+                }).then(function (res) {
+
+                if(res.data.isValidAdmin){
+                     $http({
+                    method: 'POST',
+                    url: '/getSeats',
+                    data:{
+                          restaurantId:$scope.restaurantId
+                        }
+                }).then(function (res) {
+
+                         $rootScope.hideHeader=true
+                         $rootScope.hideSearch=true
+                         $rootScope.logout=true
+
+                        $scope.selectedRestaurant = res.data;
+                        console.log('$rootScope.showSeats  '+$rootScope.showSeats);
+
+                        $scope.layout[$scope.selectedRestaurant.templateSeats] = false;
+                        var seats = $scope.selectedRestaurant.seats;
+
+                        var index = 0;
+                        seats.forEach(function (seat) {
+                            var d = "dynamic";
+                            if(seat.status===2){
+                            d += index;
+                            $scope.model[d] = "btn btn-danger";
+                            $scope.modelAvailForSelect[d]=true;
+                           }
+                           else if(seat.status===1){
+                            d += index;
+                            $scope.model[d] = "btn btn-warning";
+                            $scope.modelAvailForSelect[d]=true;
+                           }
+                            index++;
+                        });
+                });
+                }
+
+                else{
+                    $location.path('/');
+
+                }
+
+                });
+
+
+
+
+
              $scope.sendTweet = function(){
                 console.log('can u see tweet '+$scope.tweet);
 
@@ -65,7 +123,7 @@ angular.module('admin')
              };
 
 
-             $scope.modelAvailForSelect = {
+            $scope.modelAvailForSelect = {
                     dynamic0 : false,
                     dynamic1 : false,
                     dynamic2 : false,
@@ -84,43 +142,11 @@ angular.module('admin')
                     dynamic15 : false
              };
 
-                $http({
-                    method: 'POST',
-                    url: '/getSeats',
-                    data:{
-                          restaurantId:$scope.restaurantId
-                        }
-                }).then(function (res) {
-
-                         $rootScope.hideHeader=true
-                         $rootScope.hideSearch=true
-                         $rootScope.logout=true
-
-                        $scope.selectedRestaurant = res.data;
-                        console.log('$rootScope.showSeats  '+$rootScope.showSeats);
-
-                        $scope.layout[$scope.selectedRestaurant.templateSeats] = false;
-                        var seats = $scope.selectedRestaurant.seats;
-
-                        var index = 0;
-                        seats.forEach(function (seat) {
-                            var d = "dynamic";
-                            if(seat.status===2){
-                            d += index;
-                            $scope.model[d] = "btn btn-danger";
-                            $scope.modelAvailForSelect[d]=true;
-                           }
-                           else if(seat.status===1){
-                            d += index;
-                            $scope.model[d] = "btn btn-warning";
-                            $scope.modelAvailForSelect[d]=true;
-                           }
-                            index++;
-                        });
-                });
 
 
-                this.setTemplateSeatView = function(templateName){
+
+
+            this.setTemplateSeatView = function(templateName){
                      $scope.pizzaHutLayout =true;
                      $scope.subwayLayout =true;
                      $scope.starbucksLayout =true;
