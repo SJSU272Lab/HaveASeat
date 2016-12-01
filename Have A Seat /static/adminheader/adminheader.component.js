@@ -14,8 +14,13 @@ angular.module('adminheader')
 
 			$scope.logout = function(){
 			    console.log('Loggin out from admin');
-			    //should send logging out request to server here
-                $location.path('/logout');
+			    console.log('root',$rootScope);
+			    $rootScope.loginDetails = null;
+			    $rootScope.hideAdminHeader = true;
+			    $rootScope.hideHeader = true;
+			    $rootScope.hideWelcomeHeader = true;
+			    $rootScope.loggedIn = false;
+                $location.path('/');
 			}
 
 		}]

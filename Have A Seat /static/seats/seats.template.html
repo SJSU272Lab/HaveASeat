@@ -463,7 +463,7 @@
                         <div class="panel panel-default">
                                     <ul class="list-group">
                                       <li class="list-group-item" ng-repeat="table in bookedTables">
-                                           {{table.sid}}
+                                           Table #{{table.selectedTable.sid}}
                                             <input type="button" value="UnBook" class="btn btn-link" ng-click="unBook(table)">
                                         </li>
                                     </ul>

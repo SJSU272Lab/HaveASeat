@@ -25,23 +25,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="logout.template.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/logout/logout.template.html">
+      <file leaf-file-name="adminheader.template.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/adminheader/adminheader.template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logout.component.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/logout/logout.component.js">
+      <file leaf-file-name="adminheader.component.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/adminheader/adminheader.component.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -50,8 +48,8 @@
       <file leaf-file-name="header.template.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/header/header.template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+            <state relative-caret-position="210">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#div#0;n#form#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#form#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
@@ -60,32 +58,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="seats.template.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/seats/seats.template.html">
+      <file leaf-file-name="admin.component.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/admin/admin.component.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="10" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="10" />
+            <state relative-caret-position="213">
+              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="563" column="19" selection-start-line="563" selection-start-column="19" selection-end-line="563" selection-end-column="19" />
+            <state relative-caret-position="-474">
+              <caret line="53" column="36" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.component.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/header/header.component.js">
+      <file leaf-file-name="welcomeheader.template.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/welcomeheader/welcomeheader.template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="255">
+              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#0;n#form#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,64 +93,39 @@
       <file leaf-file-name="seats.component.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/seats/seats.component.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="175" column="46" selection-start-line="175" selection-start-column="46" selection-end-line="175" selection-end-column="46" />
+            <state relative-caret-position="399">
+              <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.template.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/index/index.template.html">
+      <file leaf-file-name="seats.template.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/seats/seats.template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding>
-                <element signature="n#section#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#section#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#section#1;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#1;n#section#1;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#1;n#section#1;n#!!top" expanded="false" />
-                <element signature="n#section#2;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#ul#0;n#div#1;n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#ul#0;n#div#1;n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#ol#0;n#div#0;n#ul#0;n#div#1;n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#ul#0;n#div#1;n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#ul#0;n#div#1;n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#ul#0;n#div#1;n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#div#0;n#ul#0;n#div#1;n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#ul#0;n#div#1;n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#0;n#div#0;n#ul#0;n#div#1;n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#2;n#div#0;n#div#0;n#ul#0;n#div#1;n#div#1;n#section#2;n#!!top" expanded="false" />
-                <element signature="n#section#3;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#section#3;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#section#3;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#section#3;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#1;n#div#0;n#section#3;n#!!top" expanded="false" />
-                <element signature="n#section#4;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#section#4;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#section#4;n#!!top" expanded="false" />
-                <element signature="n#ul#0;n#div#0;n#div#0;n#section#4;n#!!top" expanded="false" />
-                <element signature="n#section#5;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#section#5;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#section#5;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#1;n#section#5;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#section#5;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#section#5;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#section#5;n#!!top" expanded="false" />
-                <element signature="n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#section#5;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#section#5;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#section#5;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#section#5;n#!!top" expanded="false" />
-                <element signature="n#footer#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#footer#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#footer#0;n#!!top" expanded="false" />
-                <marker date="1480622335797" expanded="false" signature="6166:6383" ph="..." />
-              </folding>
+            <state relative-caret-position="132">
+              <caret line="465" column="50" selection-start-line="465" selection-start-column="50" selection-end-line="465" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="restaurants.template.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/restaurants/restaurants.template.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.component.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/index/index.component.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -183,7 +158,6 @@
         <option value="$PROJECT_DIR$/static/login/login.template.html" />
         <option value="$PROJECT_DIR$/static/signup/signup.template.html" />
         <option value="$PROJECT_DIR$/static/signup/signup.component.js" />
-        <option value="$PROJECT_DIR$/static/seats/seats.template.html" />
         <option value="$PROJECT_DIR$/static/adminHeader/admingHeader.template.html" />
         <option value="$PROJECT_DIR$/static/adminHeader/adminHeader.module.js" />
         <option value="$PROJECT_DIR$/static/adminHeader/adminHeader.component.js" />
@@ -194,18 +168,19 @@
         <option value="$PROJECT_DIR$/static/app.config.js" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/adminheader/adminheader.template.html" />
-        <option value="$PROJECT_DIR$/static/header/header.template.html" />
-        <option value="$PROJECT_DIR$/static/adminheader/adminheader.component.js" />
         <option value="$PROJECT_DIR$/static/login/login.component.js" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/static/index/index.template.html" />
-        <option value="$PROJECT_DIR$/static/admin/admin.component.js" />
-        <option value="$PROJECT_DIR$/static/welcomeheader/welcomeheader.template.html" />
         <option value="$PROJECT_DIR$/static/welcomeheader/welcomeheader.component.js" />
         <option value="$PROJECT_DIR$/static/header/header.component.js" />
         <option value="$PROJECT_DIR$/static/seats/seats.component.js" />
         <option value="$PROJECT_DIR$/static/logout/logout.component.js" />
         <option value="$PROJECT_DIR$/static/logout/logout.template.html" />
+        <option value="$PROJECT_DIR$/static/header/header.template.html" />
+        <option value="$PROJECT_DIR$/static/adminheader/adminheader.component.js" />
+        <option value="$PROJECT_DIR$/static/admin/admin.component.js" />
+        <option value="$PROJECT_DIR$/static/welcomeheader/welcomeheader.template.html" />
+        <option value="$PROJECT_DIR$/static/seats/seats.template.html" />
       </list>
     </option>
   </component>
@@ -308,6 +283,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="welcomeheader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Have A Seat " />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Have A Seat " />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="seats" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -682,13 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/restaurants/restaurants.template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/admin/admin.module.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -762,30 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/index/index.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="55" selection-start-line="20" selection-start-column="21" selection-end-line="22" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/adminheader/adminheader.template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="63" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/adminheader/adminheader.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/login/login.component.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="795">
@@ -802,36 +764,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/admin/admin.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/welcomeheader/welcomeheader.component.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/welcomeheader/welcomeheader.template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#0;n#form#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="53" column="36" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -889,29 +825,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/header/header.template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#0;n#form#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#form#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/seats/seats.template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="10" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="563" column="19" selection-start-line="563" selection-start-column="19" selection-end-line="563" selection-end-column="19" />
+        <state relative-caret-position="583">
+          <caret line="582" column="0" selection-start-line="582" selection-start-column="0" selection-end-line="582" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -920,22 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/header/header.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/seats/seats.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="175" column="46" selection-start-line="175" selection-start-column="46" selection-end-line="175" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -955,6 +856,99 @@
           <folding>
             <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/header/header.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-474">
+          <caret line="53" column="36" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/index/index.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/adminheader/adminheader.template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/adminheader/adminheader.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/admin/admin.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/header/header.template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#form#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#form#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/restaurants/restaurants.template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/welcomeheader/welcomeheader.template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#form#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/seats/seats.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/seats/seats.template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="465" column="50" selection-start-line="465" selection-start-column="50" selection-end-line="465" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

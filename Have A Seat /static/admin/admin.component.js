@@ -29,8 +29,8 @@ angular.module('admin')
                 }).then(function (res) {
 
                       console.log(res.data.isValidAdmin);
-
-                if(res.data.isValidAdmin==='True'){
+                    console.log('isPOsrpto ',res.data.Restid+"" === $scope.restaurantId);
+                if( (res.data.isValidAdmin==='True') && (res.data.Restid+"" === $scope.restaurantId)){
                      $http({
                     method: 'POST',
                     url: '/getSeats',
@@ -68,8 +68,12 @@ angular.module('admin')
                 }
 
                 else{
+                    $rootScope.loginDetails = null;
+                    $rootScope.hideAdminHeader = true;
+                    $rootScope.hideHeader = true;
+                    $rootScope.hideWelcomeHeader = true;
+                    $rootScope.loggedIn = false;
                     $location.path('/');
-
                 }
 
                 });
