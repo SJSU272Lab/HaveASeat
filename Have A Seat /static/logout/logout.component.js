@@ -19,8 +19,8 @@ angular.module('logout')
 
             $scope.countdown;
               function startTimer(duration, display) {
-              duration = 60*5;
-              minutes = 5;
+              duration = 60*15;
+              minutes = 15;
               seconds = 60;
                 var timer = duration, minutes, seconds;
               var countDownerMethod = setInterval(function () {
