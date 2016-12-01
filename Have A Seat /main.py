@@ -11,7 +11,7 @@ import json
 from functools import  wraps
 #from flask_login import LoginManager
 import tweepy
-
+import bcrypt
 app= Flask(__name__)
 con = MongoClient("mongodb://abcd:qwerty@ds111798.mlab.com:11798/have_a_seat")
 db = con.have_a_seat
@@ -314,12 +314,15 @@ def signup():
         password = obj['password']
         checkIfExist=db.Customers.find_one({'email':emailid})
         if checkIfExist:
-            print "Email already used"
-            return "Email already used"
+            result= "Email already used"
         try:
             print ("Inserted")
-            db.Customers.insert_one({'customerName':firstname+" "+lastName,'email': emailid, 'password': password})
+            hashpass=bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+            print hashpass
+            db.Customers.insert_one({'customerName':firstname+" "+lastName,'email': emailid, 'password': hashpass})
+            print "done"
         except pymongo.errors.DuplicateKeyError:
+            print "In Except"
             return "User Already Exists!!"
     print({'customerName': firstname + " " + lastName, 'email': emailid, 'password': password})
     return json.dumps({'customerName': firstname+" "+lastName, 'email': emailid, 'password': password})
@@ -332,37 +335,33 @@ def login():
     if request.method == 'POST':
 
         cred = request.get_json()
-        print "hellllllooooooo"
         print cred
         obj = cred['cred']
-        username = str(obj['username'])
-        password = str(obj['password'])
+        username = obj['username']
+        password = obj['password']
 
-        print username
-
-        login_user = db.Customers.find_one({'email': username})
+        login_user = db.Customers.find_one({'Email': username})
         login_owner=db.Owners.find_one({'owner_email': username})
-
-        print login_user
-
         if login_user:
-            print (login_user['password'])
+            print (login_user['Password'])
             print("user is here")
-            print login_user['password']
-            if(password == login_user['password']):
+            print login_user['Password']
+            if bcrypt.hashpw(password.encode('utf-8'),
+                             login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
                 session['Email'] = username
-                return json.dumps({'login_type':"user",'email': login_user['email'], 'name': login_user['customerName']})
+                return json.dumps({'email': login_user['Email'], 'name': login_user['customerName']})
             error = "Invalid Passowrd. Please try again."
         elif login_owner:
             print("owner is here")
             print login_owner['owner_password']
-            if(password == login_owner['owner_password']):
+            if bcrypt.hashpw(password.encode('utf-8'),
+                             login_owner['owner_password'].encode('utf-8')) == login_owner['owner_password'].encode('utf-8'):
 
                 ownerDetails = db.Owners.find_one({"owner_email": username})
                 session['Email'] = username
                 restaurantDetails=db.Restaurants.find_one({"_id": ownerDetails['Restid']})
                 restaurantName=restaurantDetails['restName']
-                return json.dumps({'restid':ownerDetails['Restid'], 'login_type':"owner",'email': login_owner['owner_email'], 'name': login_owner['owner_name']})
+                return json.dumps({'email': login_owner['owner_email'], 'name': login_owner['owner_name']})
             error = "Invalid Passowrd. Please try again."
         else:
             error="Invalid Username"
