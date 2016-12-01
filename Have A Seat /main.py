@@ -360,7 +360,7 @@ def login():
                 #return redirect(url_for('checkSeats', restaurant_name="subway"))
                 print ("I am here")
                 #return ("HII")
-                return json.dumps({'email': login_user['Email'], 'name': login_user['customerName']})
+                return json.dumps({'templateSeats':'pizzaHutLayout','login_type':'user','email': login_user['Email'], 'name': login_user['customerName']})
             print("password NOT found")
             error = "Invalid Passowrd. Please try again."
            # return json.dumps({'email': username, 'name': login_user['customerName']})
@@ -381,15 +381,14 @@ def login():
                 restaurantDetails=db.Restaurants.find_one({"_id": ownerDetails['Restid']})
                 restaurantName=restaurantDetails['restName']
 
-                return json.dumps({'email': login_owner['owner_email'], 'name': login_owner['owner_name']})
+                return json.dumps({'templateSeats':'pizzaHutLayout','restid':ownerDetails['Restid'], 'login_type':'owner','email': login_owner['owner_email'], 'name': login_owner['owner_name']})
             error = "Invalid Passowrd. Please try again."
                 #return redirect(url_for('checkOwnerSeats', restaurant_name=restaurantName))
         else:
             error="Invalid Username"
             print ("Invalid user")
         return json.dumps({'error': error})
-       # return render_template("LogIn.html", error=error)
-        return json.dump({})
+
 
 @app.route('/isValidAdmin', methods=['POST'])
 def isValidAdmin():
@@ -539,17 +538,18 @@ def bookseat_user():
 
 @app.route('/loggedinUser', methods=['GET'])
 def loggedinUser():
-    currentUserEmail=session['email']
-    login_user = db.Customers.find_one({'Email': currentUserEmail})
-    login_owner = db.Owners.find_one({'owner_email': currentUserEmail})
-    if 'email' in session:
+    if 'Email' in session:
+        currentUserEmail=session['Email']
+        login_user = db.Customers.find_one({'Email': currentUserEmail})
+        login_owner = db.Owners.find_one({'owner_email': currentUserEmail})
+
         if login_user:
-            return json.dumps({"Role":"Customer"})
+            return json.dumps({"Role":"Customer", "isValidAdmin":'False'})
         if login_owner:
             ownerDetails = db.Owners.find_one({"owner_email": currentUserEmail})
             restaurantDetails = db.Restaurants.find_one({"_id": ownerDetails['Restid']})
             restaurantName = restaurantDetails['restName']
-            return json.dumps({"Role":"Owner", "Restid":ownerDetails['Restid']})
+            return json.dumps({"Role":"Owner", "Restid":ownerDetails['Restid'], "isValidAdmin":'True'})
     return json.dumps({"error":"no user loggedin"})
 
 

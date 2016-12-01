@@ -28,7 +28,9 @@ angular.module('admin')
                     url: '/loggedinUser',
                 }).then(function (res) {
 
-                if(res.data.isValidAdmin){
+                      console.log(res.data.isValidAdmin);
+
+                if(res.data.isValidAdmin==='True'){
                      $http({
                     method: 'POST',
                     url: '/getSeats',
