@@ -12,6 +12,10 @@ angular.module('welcomeheader')
 
 			console.log('welcomeheader');
 
-
+            this.searchRestaurants = function() {
+                $scope.search;
+                var restaurantsSearchUrl ='/restaurants/' + $scope.search;
+                $location.path(restaurantsSearchUrl);
+            }
 		}]
 });
