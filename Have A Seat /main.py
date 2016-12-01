@@ -126,11 +126,18 @@ def restaurants():
     print  " Hello I am in Restaurents"
     restaurant_searched = request.get_json()
 
+
     restname=str(restaurant_searched['search'])
-    # print res
+
+    print restname
+    restname=restname.lower().replace(" ", "")
+
     dic=[]
     counter=0
     listOfRestaurants= db.Restaurants.find({"restName":restname})
+
+    if listOfRestaurants.count()==0:
+        listOfRestaurants=db.Restaurants.find({"City": restname})
 
 
     for i in listOfRestaurants:
