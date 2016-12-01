@@ -14,5 +14,16 @@ angular.module('logout')
             $rootScope.hideHeader=true;
             $rootScope.hideWelcomeHeader = false;
             $rootScope.hideAdminHeader = true;
+
+             $http({
+                    method: 'POST',
+                    url: '/logout',
+                    data:{
+                          user: $rootScope.loginDetails
+                        }
+                }).then(function (res) {
+                    $location.path('/');
+                });
+
 		}]
 });
