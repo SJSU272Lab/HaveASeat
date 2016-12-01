@@ -14,6 +14,44 @@ angular.module('logout')
             $rootScope.hideHeader=true;
             $rootScope.hideWelcomeHeader = false;
             $rootScope.hideAdminHeader = true;
+            $rootScope.bookingDone;
+            $scope.hideTimer = !$rootScope.bookingDone;
+            console.log('root boking Done ',$rootScope.bookingDone);
+
+            ////////////////////////////////////
+
+            $scope.countdown;
+              function startTimer(duration, display) {
+              duration = 60*5;
+              minutes = 5;
+              seconds = 60;
+                var timer = duration, minutes, seconds;
+              var countDownerMethod = setInterval(function () {
+                    minutes = parseInt(timer / 60, 10)
+                    seconds = parseInt(timer % 60, 10);
+
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                    var elem = document.getElementById("countdown");
+                    elem.textContent = minutes + ":" + seconds;
+
+                    if (--timer < 0) {
+                        console.log(' clearing the timer');
+                        clearInterval(countDownerMethod);
+
+                      var elem = document.getElementById("countdown");
+                    elem.textContent = minutes + ":" + seconds;
+                    }
+
+                }, 1000);
+                }
+
+
+                if($rootScope.bookingDone){
+                    startTimer();
+                }
+            ////////////////////////////////////
 
              $http({
                     method: 'POST',
@@ -24,6 +62,9 @@ angular.module('logout')
                 }).then(function (res) {
                     $location.path('/');
                 });
+
+
+
 
 		}]
 });
