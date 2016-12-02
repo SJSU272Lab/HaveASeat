@@ -14,7 +14,8 @@ angular.module('logout')
             $rootScope.hideHeader=true;
             $rootScope.hideWelcomeHeader = false;
             $rootScope.hideAdminHeader = true;
-
+            var time = new Date().getTime();
+            $scope.timerID = 'countDown'+time;
 
              if(($rootScope.loginDetails !== undefined) && ($rootScope.loginDetails !== null) ){
                 $scope.hideLoginSignup = true;
@@ -54,14 +55,14 @@ angular.module('logout')
                     minutes = minutes < 10 ? "0" + minutes : minutes;
                     seconds = seconds < 10 ? "0" + seconds : seconds;
 
-                    var elem = document.getElementById("countdown");
+                    var elem = document.getElementById($scope.timerID);
                     elem.textContent = minutes + ":" + seconds;
 
                     if (--timer < 0) {
                         console.log(' clearing the timer');
                         clearInterval(countDownerMethod);
 
-                      var elem = document.getElementById("countdown");
+                      var elem = document.getElementById($scope.timerID);
                     elem.textContent = minutes + ":" + seconds;
                     }
 
