@@ -107,8 +107,10 @@ def getSeats():
         s_list.append({'sid':seat["TableNo"], 'status': seat['isAvailable']})
 
     print s_list
+    layout=str(rObj["restName"] +'Layout')
 
-    return json.dumps({'id': rid, 'name': rObj["restName"], 'templateSeats':'pizzaHutLayout','seats':s_list})
+    print layout
+    return json.dumps({'id': rid, 'name': rObj["restName"], 'templateSeats': layout,'seats':s_list})
 
 
 
@@ -454,7 +456,9 @@ def seatsBooked():
     bookedRest = db.Restaurants.find_one({"_id": restID})
     for table in tables:
         print int(table["sid"])
-        print int(table["status"])
+        print "hello----->",int(table["status"])
+
+
         db.Tables.update({"Restid": restID, "TableNo": int(table["sid"])},{'$set': {"isAvailable":int(table["status"])}}, upsert=False)
         print "updated", table["sid"]
         counter=counter+1

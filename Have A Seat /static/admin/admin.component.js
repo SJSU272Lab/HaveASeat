@@ -15,9 +15,9 @@ angular.module('admin')
              $scope.bookedTableIDs = [];
              $scope.restaurantId = $routeParams.resId;
              $scope.layout = {};
-             $scope.layout.pizzaHutLayout =true;
+             $scope.layout.pizzahutLayout =true;
              $scope.layout.subwayLayout =true;
-             $scope.layout.starbucksLayout =true;
+             $scope.layout.peanutsLayout =true;
              $scope.layout.mcDonaldsLayout =true;
 
              $scope.tweet='';
@@ -81,22 +81,41 @@ angular.module('admin')
                             $scope.layout[$scope.selectedRestaurant.templateSeats] = false;
                             var seats = $scope.selectedRestaurant.seats;
 
-                            var index = 0;
-                            seats.forEach(function (seat) {
-                                var d = "dynamic";
-                                if(seat.status===2){
-                                d += index;
-                                $scope.model[d] = "btn btn-danger";
-                                $scope.modelAvailForSelect[d]=true;
-                               }
-                               else if(seat.status===1){
-                                d += index;
-                                $scope.model[d] = "btn btn-warning";
-                                $scope.modelAvailForSelect[d]=true;
-                               }
-                                index++;
-                            });
-                    });
+                            var seatsLayout=[];
+
+                       if($scope.selectedRestaurant.name==='pizzahut')
+                       {
+                                  seatsLayout = [0,3,5,7,8,10,11];
+                       }
+                       else if($scope.selectedRestaurant.name==='peanuts')
+                       {
+                                 seatsLayout = [1,2,4,5,6,7,8,9,10,11];
+                       }
+                       else if($scope.selectedRestaurant.name==='subway')
+                       {
+                              seatsLayout = [1,4,5,6,8,9,10,11,13];
+                       }
+
+                           var index=0;
+
+                        seats.forEach(function (seat) {
+
+                            var d = "dynamic";
+                            if(seat.status===2){
+                            d += seatsLayout[index];
+                            $scope.model[d] = "btn btn-danger";
+                            $scope.modelAvailForSelect[d]=true;
+                           }
+                           else if(seat.status===1){
+                            d += seatsLayout[index];
+                            $scope.model[d] = "btn btn-warning";
+                            $scope.modelAvailForSelect[d]=true;
+                           }
+                            index++;
+                        });
+
+                    seatsCtrl.setTemplateSeatView(res.data.templateSeats);
+                });
                     }
 
 
@@ -183,9 +202,9 @@ angular.module('admin')
 
 
             this.setTemplateSeatView = function(templateName){
-                     $scope.pizzaHutLayout =true;
+                     $scope.pizzahutLayout =true;
                      $scope.subwayLayout =true;
-                     $scope.starbucksLayout =true;
+                     $scope.peanutsLayout =true;
                      $scope.mcDonaldsLayout =true;
                      $scope[templateName] = false;
                 }
