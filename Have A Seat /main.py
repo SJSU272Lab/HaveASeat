@@ -11,6 +11,7 @@ import json
 from functools import  wraps
 #from flask_login import LoginManager
 import tweepy
+from random import randint
 import bcrypt
 app= Flask(__name__)
 con = MongoClient("mongodb://abcd:qwerty@ds111798.mlab.com:11798/have_a_seat")
@@ -22,6 +23,25 @@ db = con.have_a_seat
 
 #login_manager=LoginManager()
 #login_manager.init_app(app)
+
+
+r1= "This restaurant gives huge discounts at 9:00 pm...Love it!"
+r2= "Awesome food, great service ! Book the seats when you find one..because you may not find it later"
+r3= "I wish I could find more seats here... :("
+r4= "Love the ambience inside !! Worth the money"
+r5= "Quick and fast service--just go for it !"
+r6= "Service is not good"
+
+u1= "Anthony Stone"
+u2= "Norris Wallace"
+u3= "Bobby Fischer"
+u4= "Samual Hunt"
+u5= "Chris Newman"
+u6= "Ronald Ross"
+
+review_list=[r1,r2,r3,r4,r5]
+user_list=[u1,u2,u3,u4,u5]
+
 
 def get_api(cfg):
   auth = tweepy.OAuthHandler(cfg['consumer_key'], cfg['consumer_secret'])
@@ -146,9 +166,18 @@ def restaurants():
             if(seat['isAvailable']==0):
                 counter+=1
 
+    global user_list
+    global review_list
+
+    quotes_dict = {}
+
+    for i in range(listOfRestaurants.count()):
+        quotes_dict[user_list[randint(0,len(user_list)-1)]] = review_list[randint(0,len(review_list)-1)]
 
 
-        dic.append({"Availability":counter, "name":str(i["restName"]), "address":str(i['Street']),"id":i['_id']})
+
+
+        dic.append({"quotes_dict": quotes_dict,"Availability":counter, "name":str(i["restName"]), "address":str(i['Street']),"id":i['_id']})
     #dic.append({"name": "Peanuts", "Street":"abc", "City": "nhb", "State":"CA"})
     print dic
     return json.dumps(dic)
