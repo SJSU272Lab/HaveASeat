@@ -615,10 +615,10 @@ def tweet():
   dict = {"status":"success"}
   return json.dumps(dict)
 
-@app.route('/logout')
-@login_required
+@app.route('/logout', methods=['GET', 'POST'])
+#@login_required
 def logout():
-    if True:
+    if 'Email' in session:
         session.clear()
         #print("you're logged in as:" + session['email'])
         return 'Logged out'
