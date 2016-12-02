@@ -30,41 +30,47 @@ angular.module('admin')
 
                       console.log(res.data.isValidAdmin);
                     console.log('isPOsrpto ',res.data.Restid+"" === $scope.restaurantId);
-                if( (res.data.isValidAdmin==='True') && (res.data.Restid+"" === $scope.restaurantId)){
-                     $http({
-                    method: 'POST',
-                    url: '/getSeats',
-                    data:{
-                          restaurantId:$scope.restaurantId
-                        }
-                }).then(function (res) {
 
-                         $rootScope.hideHeader=true
-                         $rootScope.hideSearch=true
-                         $rootScope.logout=true
+               if(($rootScope.loginDetails !== undefined) && ($rootScope.loginDetails !== null) ){
 
-                        $scope.selectedRestaurant = res.data;
-                        console.log('$rootScope.showSeats  '+$rootScope.showSeats);
 
-                        $scope.layout[$scope.selectedRestaurant.templateSeats] = false;
-                        var seats = $scope.selectedRestaurant.seats;
 
-                        var index = 0;
-                        seats.forEach(function (seat) {
-                            var d = "dynamic";
-                            if(seat.status===2){
-                            d += index;
-                            $scope.model[d] = "btn btn-danger";
-                            $scope.modelAvailForSelect[d]=true;
-                           }
-                           else if(seat.status===1){
-                            d += index;
-                            $scope.model[d] = "btn btn-warning";
-                            $scope.modelAvailForSelect[d]=true;
-                           }
-                            index++;
-                        });
-                });
+                    if( (res.data.isValidAdmin==='True') && (res.data.Restid+"" === $scope.restaurantId)){
+                         $http({
+                        method: 'POST',
+                        url: '/getSeats',
+                        data:{
+                              restaurantId:$scope.restaurantId
+                            }
+                    }).then(function (res) {
+
+                             $rootScope.hideHeader=true
+                             $rootScope.hideSearch=true
+                             $rootScope.logout=true
+
+                            $scope.selectedRestaurant = res.data;
+                            console.log('$rootScope.showSeats  '+$rootScope.showSeats);
+
+                            $scope.layout[$scope.selectedRestaurant.templateSeats] = false;
+                            var seats = $scope.selectedRestaurant.seats;
+
+                            var index = 0;
+                            seats.forEach(function (seat) {
+                                var d = "dynamic";
+                                if(seat.status===2){
+                                d += index;
+                                $scope.model[d] = "btn btn-danger";
+                                $scope.modelAvailForSelect[d]=true;
+                               }
+                               else if(seat.status===1){
+                                d += index;
+                                $scope.model[d] = "btn btn-warning";
+                                $scope.modelAvailForSelect[d]=true;
+                               }
+                                index++;
+                            });
+                    });
+                    }
                 }
 
                 else{
@@ -75,6 +81,7 @@ angular.module('admin')
                     $rootScope.loggedIn = false;
                     $location.path('/');
                 }
+
 
                 });
 
