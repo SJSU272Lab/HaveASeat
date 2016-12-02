@@ -231,7 +231,7 @@ angular.module('seats')
            {
             console.log('login details not logged in ',$rootScope.loginDetails);
             alert("Please Login to book table.");
-            $location.path('/');
+            $location.path('/login');
            }
 
 
