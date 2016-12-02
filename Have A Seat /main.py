@@ -580,7 +580,6 @@ def bookseat_user():
     #I will update the DB
 
 @app.route('/loggedinUser', methods=['GET'])
-
 def loggedinUser():
     if 'Email' in session:
         currentUserEmail=session['Email']
@@ -588,12 +587,12 @@ def loggedinUser():
         login_owner = db.Owners.find_one({'owner_email': currentUserEmail})
 
         if login_user:
-            return json.dumps({"Role":"Customer", "isValidAdmin":'False'})
+            return json.dumps({"Role":"Customer", "isValidAdmin":'False', "Email":login_user['Email'], "Name":login_user['customerName']})
         if login_owner:
             ownerDetails = db.Owners.find_one({"owner_email": currentUserEmail})
             restaurantDetails = db.Restaurants.find_one({"_id": ownerDetails['Restid']})
             restaurantName = restaurantDetails['restName']
-            return json.dumps({"Role":"Owner", "Restid":ownerDetails['Restid'], "isValidAdmin":'True'})
+            return json.dumps({"Role":"Owner", "Restid":ownerDetails['Restid'], "isValidAdmin":'True', "Email":ownerDetails['owner_email'], "Name":ownerDetails["owner_name"]})
     return json.dumps({"error":"no user loggedin"})
 
 
