@@ -40,14 +40,15 @@ angular.module('admin')
             }
 
             $scope.logout = function(){
-			    console.log('Loggin out from admin');
-			    console.log('root',$rootScope);
-			    $rootScope.loginDetails = null;
-			    $rootScope.hideAdminHeader = true;
-			    $rootScope.hideHeader = true;
-			    $rootScope.hideWelcomeHeader = true;
-			    $rootScope.loggedIn = false;
-                $location.path('/');
+			     $http({
+                    method: 'GET',
+                    url: '/logout',
+                }).then(function (res) {
+                    console.log(res);
+                    console.log('Loggin out from admin');
+
+                    $location.path('/');
+                    });
 			}
 
 

@@ -11,14 +11,18 @@ angular.module('restaurants')
 		function ($http, $scope, $location,$routeParams, $rootScope, $anchorScroll) {
                 var restaurantsCtrl = this;
                 restaurantsCtrl.search = $routeParams.search;
+                        $scope.showUser = false;
+                        $scope.showLogout = true;
 
             $http({
                     method: 'GET',
                     url: '/loggedinUser',
                 }).then(function (res) {
-                    console.log(res);
-                    console.log($rootScope.loginDetails);
+                    if(res.data.Email){
                         $scope.userName = res.data.Email;
+                        $scope.showUser = true
+                        $scope.showLogout = false;
+                    }
                 });
 
 

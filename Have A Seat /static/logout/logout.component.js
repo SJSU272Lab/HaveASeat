@@ -72,16 +72,6 @@ angular.module('logout')
                     startTimer();
             ////////////////////////////////////
 
-             $http({
-                    method: 'POST',
-                    url: '/logout',
-                    data:{
-                          user: $rootScope.loginDetails
-                        }
-                }).then(function (res) {
-                    $location.path('/');
-                });
-
 
 
 

@@ -12,6 +12,21 @@ angular.module('seats')
 
              var seatsCtrl = this;
 
+            $scope.showUser = false;
+            $scope.showLogout = true;
+
+
+            $http({
+                    method: 'GET',
+                    url: '/loggedinUser',
+                }).then(function (res) {
+                    console.log(res);
+                    if(res.data.Email){
+                       $scope.userName = res.data.Email;
+                        $scope.showUser = true
+                        $scope.showLogout = false;
+                    }
+                });
 
 
                 $scope.logoutZZ = function(){
@@ -41,16 +56,6 @@ angular.module('seats')
                 var restaurantsSearchUrl ='/restaurants/' + $scope.search;
                 $location.path(restaurantsSearchUrl);
             }
-
-            $http({
-                    method: 'GET',
-                    url: '/loggedinUser',
-                }).then(function (res) {
-                    console.log(res);
-
-                     console.log($rootScope.loginDetails);
-                            $scope.userName  = res.data.Email;
-                });
 
              if(($rootScope.loginDetails !== undefined) && ($rootScope.loginDetails !== null) ){
                 $scope.hideLoginSignup = true;
@@ -215,6 +220,10 @@ angular.module('seats')
 
            $scope.checkOut= function(restid){
            var seatsBooked  =$scope.bookedTables.length;
+           if(seatsBooked  <1){
+           alert('No Seats available / selected to book ');
+            return;
+           }
            $rootScope.loginDetails;
            if($rootScope.loginDetails===undefined
            || $rootScope.loginDetails === null
