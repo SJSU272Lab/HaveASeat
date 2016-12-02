@@ -10,6 +10,30 @@ angular.module('signup')
 		function ($http, $scope, $location, $rootScope, $anchorScroll) {
 			var headerCtrl = this;
 
+
+            this.searchRestaurants = function() {
+                $scope.search;
+                var restaurantsSearchUrl ='/restaurants/' + $scope.search;
+                $location.path(restaurantsSearchUrl);
+            }
+
+             if(($rootScope.loginDetails !== undefined) && ($rootScope.loginDetails !== null) ){
+                $scope.hideLoginSignup = true;
+                $scope.showLogout= false;
+
+            }
+
+            $scope.logout = function(){
+			    console.log('Loggin out from admin');
+			    console.log('root',$rootScope);
+			    $rootScope.loginDetails = null;
+			    $rootScope.hideAdminHeader = true;
+			    $rootScope.hideHeader = true;
+			    $rootScope.hideWelcomeHeader = true;
+			    $rootScope.loggedIn = false;
+                $location.path('/');
+			}
+
 			this.signup = function() {
 				$scope.firstName;
 				$scope.lastName;

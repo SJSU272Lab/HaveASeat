@@ -12,6 +12,63 @@ angular.module('seats')
 
              var seatsCtrl = this;
 
+
+
+                $scope.logoutZZ = function(){
+                console.log('someeee');
+                 $http({
+                    method: 'GET',
+                    url: '/logout',
+                }).then(function (res) {
+                    console.log(res);
+                    console.log('Loggin out from admin');
+                    console.log('root',$rootScope);
+                    $rootScope.loginDetails = null;
+                    $rootScope.hideAdminHeader = true;
+                    $rootScope.hideHeader = true;
+                    $rootScope.hideWelcomeHeader = true;
+                    $rootScope.loggedIn = false;
+                    $location.path('/');
+                    });
+                    }
+
+
+
+
+
+            this.searchRestaurants = function() {
+                $scope.search;
+                var restaurantsSearchUrl ='/restaurants/' + $scope.search;
+                $location.path(restaurantsSearchUrl);
+            }
+
+            $http({
+                    method: 'GET',
+                    url: '/loggedinUser',
+                }).then(function (res) {
+                    console.log(res);
+                    if(res.data.error){
+                    $location.path('/');
+                    }
+                });
+
+             if(($rootScope.loginDetails !== undefined) && ($rootScope.loginDetails !== null) ){
+                $scope.hideLoginSignup = true;
+                $scope.showLogout= false;
+
+            }
+
+
+            $scope.logout = function(){
+			    console.log('Loggin out from admin');
+			    console.log('root',$rootScope);
+			    $rootScope.loginDetails = null;
+			    $rootScope.hideAdminHeader = true;
+			    $rootScope.hideHeader = true;
+			    $rootScope.hideWelcomeHeader = true;
+			    $rootScope.loggedIn = false;
+                $location.path('/');
+			}
              $scope.bookedTables = [];
              $scope.bookedTableIDs = [];
              $scope.restaurantId = $routeParams.resId;

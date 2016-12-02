@@ -7,6 +7,9 @@ angular.module('HaveASeat')
 		        when('/index', {
 		          template: '<index></index>'
 		        }).
+		        when('/home', {
+		          template: '<home></home>'
+		        }).
                 when('/restaurants/:search', {
 		          template: '<restaurants></restaurants>'
 		        }).

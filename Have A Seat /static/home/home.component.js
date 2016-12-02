@@ -1,9 +1,9 @@
 /**
  * Created by amitpandey on 11/14/16.
  */
-angular.module('index')
-.component('index', {
-	templateUrl: 'static/index/index.template.html',
+angular.module('home')
+.component('home', {
+	templateUrl: 'static/home/home.template.html',
 	controller: [
 		'$http',
 		'$scope',
@@ -16,16 +16,35 @@ angular.module('index')
 
 
 
+                $http({
+                    method: 'GET',
+                    url: '/loggedinUser',
+                }).then(function (res) {
+                    console.log(res);
+                    if(res.data.error){
+                    $location.path('/');
+                    }
+                });
 
-            $scope.logout = function(){
-			    console.log('Loggin out from admin');
-			    console.log('root',$rootScope);
-			    $rootScope.loginDetails = null;
-			    $rootScope.hideAdminHeader = true;
-			    $rootScope.hideHeader = true;
-			    $rootScope.hideWelcomeHeader = true;
-			    $rootScope.loggedIn = false;
-                $location.path('/');
+            $scope.logoutZZ = function(){
+                console.log('someeee');
+                 $http({
+                    method: 'GET',
+                    url: '/logout',
+                }).then(function (res) {
+                    console.log(res);
+                    console.log('Loggin out from admin');
+                    console.log('root',$rootScope);
+                    $rootScope.loginDetails = null;
+                    $rootScope.hideAdminHeader = true;
+                    $rootScope.hideHeader = true;
+                    $rootScope.hideWelcomeHeader = true;
+                    $rootScope.loggedIn = false;
+                    $location.path('/');
+                    });
+//                });
+
+
 			}
 
             this.searchRestaurants = function() {

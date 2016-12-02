@@ -580,6 +580,7 @@ def bookseat_user():
     #I will update the DB
 
 @app.route('/loggedinUser', methods=['GET'])
+
 def loggedinUser():
     if 'Email' in session:
         currentUserEmail=session['Email']

@@ -10,5 +10,6 @@ angular.module('HaveASeat', [
   'admin',
   'welcomeheader',
   'adminheader',
-  'logout'
+  'logout',
+  'home'
 ]);

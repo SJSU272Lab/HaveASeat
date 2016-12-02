@@ -15,6 +15,30 @@ angular.module('logout')
             $rootScope.hideWelcomeHeader = false;
             $rootScope.hideAdminHeader = true;
 
+
+             if(($rootScope.loginDetails !== undefined) && ($rootScope.loginDetails !== null) ){
+                $scope.hideLoginSignup = true;
+                $scope.showLogout= false;
+
+            }
+
+            this.searchRestaurants = function() {
+                $scope.search;
+                var restaurantsSearchUrl ='/restaurants/' + $scope.search;
+                $location.path(restaurantsSearchUrl);
+            }
+
+            $scope.logout = function(){
+			    console.log('Loggin out from admin');
+			    console.log('root',$rootScope);
+			    $rootScope.loginDetails = null;
+			    $rootScope.hideAdminHeader = true;
+			    $rootScope.hideHeader = true;
+			    $rootScope.hideWelcomeHeader = true;
+			    $rootScope.loggedIn = false;
+                $location.path('/');
+			}
+
             ////////////////////////////////////
 
             $scope.countdown;

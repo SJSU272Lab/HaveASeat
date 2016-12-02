@@ -22,6 +22,33 @@ angular.module('admin')
 
              $scope.tweet='';
 
+              $http({
+                    method: 'GET',
+                    url: '/loggedinUser',
+                }).then(function (res) {
+                    console.log(res);
+                    if(res.data.error){
+                    $location.path('/');
+                    }
+                });
+
+            this.searchRestaurants = function() {
+                $scope.search;
+                var restaurantsSearchUrl ='/restaurants/' + $scope.search;
+                $location.path(restaurantsSearchUrl);
+            }
+
+            $scope.logout = function(){
+			    console.log('Loggin out from admin');
+			    console.log('root',$rootScope);
+			    $rootScope.loginDetails = null;
+			    $rootScope.hideAdminHeader = true;
+			    $rootScope.hideHeader = true;
+			    $rootScope.hideWelcomeHeader = true;
+			    $rootScope.loggedIn = false;
+                $location.path('/');
+			}
+
 
              $http({
                     method: 'GET',
