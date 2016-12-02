@@ -13,6 +13,9 @@ from functools import  wraps
 import tweepy
 from random import randint
 import bcrypt
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 app= Flask(__name__)
 con = MongoClient("mongodb://abcd:qwerty@ds111798.mlab.com:11798/have_a_seat")
 db = con.have_a_seat
@@ -447,13 +450,16 @@ def seatsBooked():
     print tables
 
     session['Tables'] = tables
-
-
+    counter=0
+    bookedRest = db.Restaurants.find_one({"_id": restID})
     for table in tables:
         print int(table["sid"])
         print int(table["status"])
         db.Tables.update({"Restid": restID, "TableNo": int(table["sid"])},{'$set': {"isAvailable":int(table["status"])}}, upsert=False)
         print "updated", table["sid"]
+        counter=counter+1
+    if counter>0:
+        emailCustomer(counter,bookedRest['restName'], bookedRest['City'])
 
 
     dict = {}
@@ -617,6 +623,22 @@ def logout():
         #print("you're logged in as:" + session['email'])
         return 'Logged out'
     return "noone is logged in"
+
+def emailCustomer(counter, name, city):
+    sender ="haveaseat.team5@gmail.com"
+    receiver = "sidanasparsh@gmail.com"
+    message = MIMEMultipart()
+    message['From'] = sender
+    message['To'] = receiver
+    message['Subject'] = "Seats Booked, Happy Dining!"
+    print("Please reach the restaurant within the next 15 minutes!")
+    body = "You have booked "+str(counter)+" seats(s) at " + " "+ name+", "+ city + ". Please reach the restaurant within the next 15 minutes"
+    message.attach(MIMEText(body, 'plain'))
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(sender, "haveaseat")
+    server.sendmail(sender, receiver, message.as_string())
+    server.quit()
 
 '''
 def requires_roles(*roles):
