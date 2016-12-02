@@ -47,9 +47,9 @@ angular.module('seats')
                     url: '/loggedinUser',
                 }).then(function (res) {
                     console.log(res);
-                    if(res.data.error){
-                    $location.path('/');
-                    }
+
+                     console.log($rootScope.loginDetails);
+                            $scope.userName  = res.data.Email;
                 });
 
              if(($rootScope.loginDetails !== undefined) && ($rootScope.loginDetails !== null) ){

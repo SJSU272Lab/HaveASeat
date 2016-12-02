@@ -15,7 +15,6 @@ angular.module('home')
             $scope.showLogout= true;
 
 
-
                 $http({
                     method: 'GET',
                     url: '/loggedinUser',
@@ -23,6 +22,10 @@ angular.module('home')
                     console.log(res);
                     if(res.data.error){
                     $location.path('/');
+                    }
+                    else{
+                            console.log($rootScope.loginDetails);
+                            $scope.userName  = res.data.Email;
                     }
                 });
 

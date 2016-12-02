@@ -30,6 +30,7 @@ angular.module('admin')
                     if(res.data.error){
                     $location.path('/');
                     }
+
                 });
 
             this.searchRestaurants = function() {
@@ -57,8 +58,6 @@ angular.module('admin')
 
                       console.log(res.data.isValidAdmin);
                     console.log('isPOsrpto ',res.data.Restid+"" === $scope.restaurantId);
-
-               if(($rootScope.loginDetails !== undefined) && ($rootScope.loginDetails !== null) ){
 
 
 
@@ -98,7 +97,7 @@ angular.module('admin')
                             });
                     });
                     }
-                }
+
 
                 else{
                     $rootScope.loginDetails = null;

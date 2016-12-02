@@ -12,15 +12,13 @@ angular.module('restaurants')
                 var restaurantsCtrl = this;
                 restaurantsCtrl.search = $routeParams.search;
 
-
             $http({
                     method: 'GET',
                     url: '/loggedinUser',
                 }).then(function (res) {
                     console.log(res);
-                    if(res.data.error){
-                    $location.path('/');
-                    }
+                    console.log($rootScope.loginDetails);
+                        $scope.userName = res.data.Email;
                 });
 
 
@@ -41,25 +39,6 @@ angular.module('restaurants')
                     $location.path('/');
                     });
                     }
-
-         if(($rootScope.loginDetails !== undefined) && ($rootScope.loginDetails !== null) ){
-                $scope.hideLoginSignup = true;
-                $scope.showLogout= false;
-
-            }
-
-
-
-        $scope.logout = function(){
-			    console.log('Loggin out from admin');
-			    console.log('root',$rootScope);
-			    $rootScope.loginDetails = null;
-			    $rootScope.hideAdminHeader = true;
-			    $rootScope.hideHeader = true;
-			    $rootScope.hideWelcomeHeader = true;
-			    $rootScope.loggedIn = false;
-                $location.path('/');
-			}
 
 
             this.searchRestaurants = function() {

@@ -23,10 +23,13 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control"     ng-hide="hideSearch"  placeholder="search" name="search"  ng-model="search" value="{{request.form.search}}">
                                     <span style="color:white" aria-hidden="true"></span>
+                                    <input type="submit" class="btn btn-default" value="Search">
+                                    <span style="color: white" > Hi, {{userName}}</span>
                                 </div>
-                                <input type="submit" class="btn btn-default" value="Search">
+
                                 </form>
                             </li>
+
                             <li><a class="color_animation" href="#!/about"    ng-hide="hideHeader">About Us</a></li>
                             <li><a class="color_animation" href="#!/contact"  ng-hide="hideHeader" >Contact US</a></li>
                            <li><a class="color_animation" href="" ng-click="logoutZZ()" >Logout</a></li>
