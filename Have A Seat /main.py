@@ -158,26 +158,27 @@ def restaurants():
 
     if listOfRestaurants.count()==0:
         listOfRestaurants=db.Restaurants.find({"City": restname})
+    
+    global user_list
+    global review_list
 
+    quotes = []
 
     for i in listOfRestaurants:
         sObj = db.Tables.find({"Restid": i['_id']})
         for seat in sObj:
             if(seat['isAvailable']==0):
                 counter+=1
+        quotes.append({"rname": user_list[randint(0, len(user_list) - 1)],
+                       "review": review_list[randint(0, len(review_list) - 1)]})
 
-    global user_list
-    global review_list
-
-    quotes_dict = {}
-
-    for i in range(listOfRestaurants.count()):
-        quotes_dict[user_list[randint(0,len(user_list)-1)]] = review_list[randint(0,len(review_list)-1)]
+#     for i in range(listOfRestaurants.count()):
+#         quotes_dict[user_list[randint(0,len(user_list)-1)]] = review_list[randint(0,len(review_list)-1)]
 
 
 
 
-        dic.append({"quotes_dict": quotes_dict,"Availability":counter, "name":str(i["restName"]), "address":str(i['Street']),"id":i['_id']})
+        dic.append({"quotes": quotes,"Availability":counter, "name":str(i["restName"]), "address":str(i['Street']),"id":i['_id']})
     #dic.append({"name": "Peanuts", "Street":"abc", "City": "nhb", "State":"CA"})
     print dic
     return json.dumps(dic)
