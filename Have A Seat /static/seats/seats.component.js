@@ -194,18 +194,22 @@ angular.module('seats')
 
             $scope.unBook= function(table){
                 function filterTables(el) {
-                       if(el.sid === table.sid){
+                       if(el.selectedTable.sid === table.selectedTable.sid){
                             console.log(el);
                             $scope.changeToEmpty(table.dynamicTab);
                        }
-                      return el.sid !== table.sid ;
+                      return el.selectedTable.sid !== table.selectedTable.sid ;
                    }
 
                    var filteredTables = $scope.bookedTables.filter(filterTables);
+                   console.log($scope.bookedTables);
                    $scope.bookedTables = filteredTables;
-                   var bookedTableIndex = $scope.bookedTableIDs.indexOf(table.sid);
+
+                   var bookedTableIndex = $scope.bookedTableIDs.indexOf(table.selectedTable.sid);
+
                    if(bookedTableIndex !== -1){
                         $scope.bookedTableIDs.splice(bookedTableIndex, 1);
+                        table.selectedTable.status = 0;
                    }
             }
 
