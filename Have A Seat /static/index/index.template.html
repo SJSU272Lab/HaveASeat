@@ -163,16 +163,25 @@
 
 
         <!-- ============ Social Section  ============= -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 
         <section class="social_connect">
             <div class="text-content container">
                 <div class="col-md-12">
                     <span class="social_heading">FOLLOW</span>
                     <ul class="social_icons">
-                        <li><a class="icon-twitter color_animation" href="#" target="_blank"></a></li>
+                       <!-- <li><a class="icon-twitter color_animation" href="#" target="_blank"></a></li>
                         <li><a class="icon-github color_animation" href="#" target="_blank"></a></li>
                         <li><a class="icon-linkedin color_animation" href="#" target="_blank"></a></li>
-                        <li><a class="icon-mail color_animation" href="#"></a></li>
+                        <li><a class="icon-mail color_animation" href="#"></a></li>-->
+                        <li class="fb-like" data-href="http://haveaseat.mybluemix.net" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></li>
                     </ul>
                 </div>
                 <!--<div class="col-md-4">-->
