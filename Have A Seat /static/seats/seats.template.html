@@ -44,7 +44,11 @@
 
 
 
-
+ <style>
+body {
+    background-image: url("static/images/restaurants/res_back.jpg");
+}
+</style>
 
 
 
@@ -169,9 +173,9 @@
 
 
     </div>
-    <div ng-hide="layout.peanutsLayout" > 
+    <div ng-hide="layout.peanutsLayout"   style="color: black" >
 
-          <div class="col-md-4">
+          <div class="col-md-4" style="background-color: Yellow" >
 
                             <br/>
                             <br/>
@@ -185,16 +189,18 @@
                             <dt>Food</dt>
                             <dd>Veg / Non veg</dd>
                         </dl>
+                        <div  style="background-color: black">
 
-                         <button type="button" class="btn btn-success"> </button> <span style="font-size:medium">Selection</span>
+                            <button type="button" class="btn btn-success"> </button> <span style="font-size:medium">Selection</span>
                             <br/>
                             <button type="button" class="btn btn-warning"> </button> <span style="font-size:medium">Booked</span>
                             <br/>
                             <button type="button" class="btn btn-danger"> </button> <span style="font-size:medium">Dining</span>
+                            </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4"  style="background-color: #784E45">
 
                     <!--ACTUAL LAYOUT DONT DISTURB-->
                     <div class="col-md-12">
@@ -264,7 +270,9 @@
                                 </div>
                                 <div class="col-md-3">
                                 </div>
+
                             </div>
+
 
                     </div>
                     </div>
@@ -519,7 +527,7 @@
 
                     <div class="col-md-3"></div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="background-color: Orange">
 
                         <div ng-hide="true"> ThankYou for making a booking with Have A Seat </div>
                         <br/>
