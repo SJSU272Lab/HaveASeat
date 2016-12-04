@@ -176,8 +176,8 @@
 
 <div   style="background-color:green;  right: 05px; width: 400px;
     height: 140px;   top: 410px; position: absolute;" align="left">
- <input type="submit"   class="btn btn-primary"  value="Send Offer"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<br/><br><input style="width: 200px;" type="text" placeholder="Phone number" class="form-control">
+ <input type="submit"   class="btn btn-primary"  value="Send Offer"  ng-click="sendOffer()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/><br><input style="width: 200px;" type="text" placeholder="Phone number"  name="phoneNumber"  ng-model="phoneNumber" class="form-control">
 </div>
 
 
@@ -421,27 +421,15 @@
         <!--Pizza Hut layout-->
     <div ng-hide="layout.pizzahutLayout">
 
-     <div class="col-md-4">
 
-                            <br/>
-                            <br/>
-                    <div>
-
-
-                         <button type="button" class="btn btn-avail"> </button> <span style="font-size:medium">Avail</span>
-                            <br/>
-                            <button type="button" class="btn btn-warning"> </button> <span style="font-size:medium">Booked</span>
-                            <br/>
-                            <button type="button" class="btn btn-danger"> </button> <span style="font-size:medium">Dining</span>
-                    </div>
-                </div>
 
                 <div class="col-md-4">
 
                     <!--ACTUAL LAYOUT DONT DISTURB-->
-                    <div class="col-md-12">
+                    <div class="col-md-12"   style="background-color:blanchedalmond; left: 550px;  width: 400px;
+    height: 240px;   top: 0px; position: absolute;" align="left">
 
-                        <div class="col-md-12">
+                        <div  >
                             <div class="lead" > &nbsp;&nbsp;&nbsp;</div>
                         </div>
 
@@ -519,7 +507,7 @@
 
 
 
-                        <div class="col-md-12">
+                        <div class="col-md-12"   >
                                 <div class="col-md-2">
                                 </div>
 
@@ -534,28 +522,28 @@
 
 		<br/>
 
-			<form>
-				<div style="margin-bottom: 15px">
-					<textarea class="form-control" rows="3"
-                  placeholder="Tweet about your restaurant" ng-model="tweet"
-                            name=tweet >
+			<!--<form>-->
+				<!--<div style="margin-bottom: 15px">-->
+					<!--<textarea class="form-control" rows="3"-->
+                  <!--placeholder="Tweet about your restaurant" ng-model="tweet"-->
+                            <!--name=tweet >-->
 
-                  </textarea>
+                  <!--</textarea>-->
 
 
-				</div>
-				<div >
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;
-                    <input class="btn btn-primary"
-                           type="button"
-                           value="Tweet"
-						   ng-click="sendTweet()">
+				<!--</div>-->
+				<!--<div >-->
+					<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+					<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+                    <!--&nbsp;&nbsp;-->
+                    <!--<input class="btn btn-primary"-->
+                           <!--type="button"-->
+                           <!--value="Tweet"-->
+						   <!--ng-click="sendTweet()">-->
 
-					&nbsp;&nbsp;&nbsp;
-				</div>
-			</form>
+					<!--&nbsp;&nbsp;&nbsp;-->
+				<!--</div>-->
+			<!--</form>-->
 
 
 
@@ -566,8 +554,28 @@
 
                                 </div>
                                 <div class="col-md-2">
+
+                                    <div class="col-md-4">
+
+                            <br/>
+                            <br/>
+
+                </div>
                                 </div>
+
                             </div>
+
+                         <div    style="background-color:blanchedalmond; left: 0px;  width: 400px;
+    height: 100px;   top: 220px; position: absolute;" align="left"  >
+                     <br>
+                             <br>
+
+                         <button type="button" class="btn btn-avail"> </button> <span style="font-size:medium">Avail</span>
+                            <br/>
+                            <button type="button" class="btn btn-warning"> </button> <span style="font-size:medium">Booked</span>
+                            <br/>
+                            <button type="button" class="btn btn-danger"> </button> <span style="font-size:medium">Dining</span>
+                    </div>
 
                     </div>
                     </div>

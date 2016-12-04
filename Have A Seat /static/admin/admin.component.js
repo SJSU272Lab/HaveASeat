@@ -432,8 +432,22 @@ angular.module('admin')
 			}
 
 
+			$scope.sendOffer=function () {
+
+                var phoneNumber=$scope.phoneNumber;
+                console.log(phoneNumber)   ;
+
+                $http({
 
 
+                    method: 'POST',
+                    url: '/sendOffer',
+                    data: {phoneNumber: phoneNumber}
+
+                }).then(function (res) {
+
+                });
+            }
 
 
 

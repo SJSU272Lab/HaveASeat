@@ -18,6 +18,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import datetime
 from time import gmtime, strftime
+from twilio.rest import TwilioRestClient
+
 
 app= Flask(__name__)
 con = MongoClient("mongodb://abcd:qwerty@ds111798.mlab.com:11798/have_a_seat")
@@ -726,6 +728,30 @@ def emailWinner(email, restname):
     server.login(sender, "haveaseat")
     server.sendmail(sender, receiver, message.as_string())
     server.quit()
+
+
+
+@app.route('/sendOffer', methods=['POST'])
+def sendOffer():
+    print "I am in phone function"
+    data = request.get_json()
+    print data
+    print data['phoneNumber']
+    account_sid = "AC42a81cddc97b00c9f7e086deae7201e7"
+    auth_token = "55efaf36d23012f806dbf23b0e8539e6"
+    client = TwilioRestClient(account_sid, auth_token)
+
+    client.messages.create(to="+1"+data['phoneNumber'],
+                           from_="+14093163978",
+                           body="Hello there I am happy!")
+
+
+
+    print "success"
+    return json.dumps({'Message': "Offer Successfully Sent"})
+
+
+
 '''
 def requires_roles(*roles):
     def wrapper(f):
