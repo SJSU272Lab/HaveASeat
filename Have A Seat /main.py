@@ -681,26 +681,35 @@ def emailCustomer(counter, name, city, email):
     server.sendmail(sender, receiver, message.as_string())
     server.quit()
 
-@app.route('/exploration')
+@app.route('/exploration',methods=['POST'])
 def exploration():
+    print "Hello from Exploration"
     data=request.get_json()
     slot=data['Slot']
+    print slot
     winner=db.Exploration.find_one({"Slot":slot})
     currentOwner=db.Owners.find_one({"owner_email": session['Email']})
     currentRestaurant=currentOwner['Restid']
-    emailWinner(winner['Email'] , currentRestaurant['restName'])
-    return json.dumps({'Name':winner['CustomerName'], 'Email': winner['CustomerEmail']})
+    print "1st" ,currentRestaurant
+
+   # print "2nd " ,currentRestaurant['restName']
+
+    emailWinner(winner['customerEmail'], "subway")
+   # return json.dumps({'Name':winner['customerEmail'], 'Email': winner['customerName']})
+    return json.dumps({'Name': winner['customerName'], 'Email': winner['customerEmail']})
 
 
-@app.route('/exploitation')
+@app.route('/exploitation', methods=['POST'])
 def exploitation():
+    print "Hello from Exploitaion"
     data=request.get_json()
     slot=data['Slot']
-    winner= db.Exploration.find_one({"Slot":slot})
+    winner= db.Exploitation.find_one({"Slot":slot})
     currentOwner = db.Owners.find_one({"owner_email": session['Email']})
     currentRestaurant = currentOwner['Restid']
-    emailWinner(winner['Email'], currentRestaurant['restName'])
-    return json.dumps({'Name':winner['customerName'], 'Email': winner['Email']})
+    emailWinner(winner['customerEmail'], "subway")
+    #return json.dumps({'Name':winner['customerName'], 'Email': winner['Email']})
+    return json.dumps({'Name': winner['customerName'],'Email':winner['customerEmail']})
 
 def emailWinner(email, restname):
     sender ="haveaseat.team5@gmail.com"

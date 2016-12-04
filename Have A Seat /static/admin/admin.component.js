@@ -342,5 +342,100 @@ angular.module('admin')
 
                 $scope.status = '0';
             }
+
+             $scope.exploration = function(){
+
+            var timeSelected;
+                 var slotCode;
+
+                 if($scope.time==="0")
+                 {
+                     timeSelected="10:00 am - 1:00 pm";
+                      slotCode=0;
+                 }
+                 if($scope.time==="1")
+                 {
+                     timeSelected="1:00pm - 4:00 pm";
+                      slotCode=1;
+                 }
+                 if($scope.time==="2")
+                 {
+                        timeSelected="4:00pm - 7:00 pm";
+                      slotCode=2;
+                 }
+                 if($scope.time==="3")
+                 {
+                       timeSelected="7:00pm - 10:00 pm";
+                      slotCode=3;
+                 }
+
+                           console.log(timeSelected);
+
+			     $http({
+                    method: 'POST',
+                    url: '/exploration',
+                     data: {Slot: slotCode, timeSlot:timeSelected  }
+                }).then(function (res)
+                 {
+                     console.log(res.data)     ;
+                     $scope.name=  res.data['Name']  ;
+                     $scope.email   =  res.data['Email']  ;
+
+
+
+
+                  //  $location.path('/');
+                 });
+			}
+
+			 $scope.exploitation = function(){
+
+                  var timeSelected;
+                 var slotCode;
+
+                       if($scope.time==="0")
+                       {
+                           timeSelected="10:00 am - 1:00 pm";
+                           slotCode=0;
+
+                       }
+                       if($scope.time==="1")
+                       {
+                           timeSelected="1:00pm - 4:00 pm";
+                           slotCode=1;
+                       }
+                       if($scope.time==="2")
+                       {
+                              timeSelected="4:00pm - 7:00 pm";
+                           slotCode=2;
+                       }
+                       if($scope.time==="3")
+                       {
+                             timeSelected="7:00pm - 10:00 pm";
+                           slotCode=3;
+                       }
+
+                                 console.log(timeSelected);
+
+
+			     $http({
+                    method: 'POST',
+                    url: '/exploitation',
+                     data:{Slot: slotCode, timeSlot:timeSelected  }
+                }).then(function (res)
+                 {
+                        $scope.name1=  res.data['Name']  ;
+                        $scope.email1   =  res.data['Email']  ;
+
+                 //   $location.path('/');
+                 });
+			}
+
+
+
+
+
+
+
     }]
 });

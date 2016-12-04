@@ -129,7 +129,25 @@
                     </div>
                     </div>
 
-                </div></div>
+
+
+</div>
+</div>
+
+<br/><br/><br/>
+<div>
+ <input type="submit"   class="btn btn-default"  value="Exploration Mode"  data-toggle="modal" data-target="#AnalysisModal" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span>{{name}}</span>
+<span>{{email}}</span></div>
+      <div>
+       <input type="submit"    class="btn btn-default" value="Exploitation Mode"  data-toggle="modal" data-target="#AnalysisExploitationModal" />
+
+<span>{{name1}}</span>
+<span>{{email1}}</span>
+    </div>
+
+
+
 
     <!--// Subway  Layout -->
 
@@ -543,6 +561,103 @@
                             </div>
 
                         <!--MODALLLLLL-->
+
+
+
+                        <!--MODALLLLLL for Analysis Exploration-->
+
+                            <div class="container">
+                            <!-- Modal -->
+                            <div class="modal fade" id="AnalysisModal" role="dialog">
+                            <div class="modal-dialog  modal-sm">
+
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  <h4 class="modal-title">Action</h4>
+                                </div>
+                                <div class="modal-body">
+                                  <p>Select the Analysis Time</p>
+                                       <div class="radio">
+                                              <label><input type="radio" name="optradio"value="0" ng-model="time" >10:00 am - 1:00 pm
+                                                  &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            </div>
+                                            <div class="radio">
+                                              <label><input type="radio" name="optradio" value="1" ng-model="time">1:00pm - 4:00 pm
+                                                  &nbsp;&nbsp;&nbsp;</label>
+                                              </div>
+                                            <div class="radio">
+                                              <label><input type="radio" name="optradio" value="2" ng-model="time">4:00pm - 7:00 pm
+                                                  &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        </div>
+                                     <div class="radio">
+                                              <label><input type="radio" name="optradio" value="3" ng-model="time">7:00pm - 10:00 pm
+                                                  &nbsp;&nbsp;</label>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="exploration()">Apply</button>
+                                </div>
+                              </div>
+
+                            </div>
+                            </div>
+
+                            </div>
+
+                        <!--MODALLLLLL-->
+
+
+
+
+
+
+                        <!--MODALLLLLL for Analysis Exploitation-->
+
+                            <div class="container">
+                            <!-- Modal -->
+                            <div class="modal fade" id="AnalysisExploitationModal" role="dialog">
+                            <div class="modal-dialog  modal-sm">
+
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  <h4 class="modal-title">Action</h4>
+                                </div>
+                                <div class="modal-body">
+                                  <p>Select the Analysis Time</p>
+                                       <div class="radio">
+                                              <label><input type="radio" name="optradio"value="0" ng-model="time" >10:00 am - 1:00 pm
+                                                  &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            </div>
+                                            <div class="radio">
+                                              <label><input type="radio" name="optradio" value="1" ng-model="time">1:00pm - 4:00 pm
+                                                  &nbsp;&nbsp;&nbsp;</label>
+                                            </div>
+                                            <div class="radio">
+                                              <label><input type="radio" name="optradio" value="2" ng-model="time">4:00pm - 7:00 pm
+                                                  &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        </div>
+                                     <div class="radio">
+                                              <label><input type="radio" name="optradio" value="3" ng-model="time">7:00pm - 10:00 pm
+                                                  &nbsp;&nbsp;&nbsp;&nbsp; </button> </label>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="exploitation()">Apply</button>
+                                </div>
+                              </div>
+
+                            </div>
+                            </div>
+
+                            </div>
+
+                        <!--MODALLLLLL-->
+
+
 
 
                     </div>
