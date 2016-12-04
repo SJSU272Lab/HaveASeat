@@ -493,8 +493,9 @@ def seatsBooked():
         db.Tables.update({"Restid": restID, "TableNo": int(table["sid"])},{'$set': {"isAvailable":int(table["status"])}}, upsert=False)
         print "updated", table["sid"]
         counter=counter+1
-    if counter>0:
-        emailCustomer(counter,bookedRest['restName'], bookedRest['City'])
+        currentUser=db.Customers.find_one({'Email':session['Email']})
+    if counter>0 and currentUser:
+        emailCustomer(counter,bookedRest['restName'], bookedRest['City'], currentUser['Email'])
 
 
     dict = {}
@@ -659,15 +660,15 @@ def logout():
         return 'Logged out'
     return "noone is logged in"
 
-def emailCustomer(counter, name, city):
+def emailCustomer(counter, name, city, email):
     sender ="haveaseat.team5@gmail.com"
-    receiver = "sidanasparsh@gmail.com"
+    receiver = email
     message = MIMEMultipart()
     message['From'] = sender
     message['To'] = receiver
     message['Subject'] = "Seats Booked, Happy Dining!"
     print("Please reach the restaurant within the next 15 minutes!")
-    body = "You have booked "+str(counter)+" seats(s) at " + " "+ name+", "+ city + ". Please reach the restaurant within the next 15 minutes"
+    body = "You have booked "+str(counter)+" seats(s) at " + " "+ name + ". Please reach the restaurant within the next 15 minutes"
     message.attach(MIMEText(body, 'plain'))
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
@@ -675,6 +676,20 @@ def emailCustomer(counter, name, city):
     server.sendmail(sender, receiver, message.as_string())
     server.quit()
 
+@app.route('/exploration')
+def exploration():
+    data=request.get_json()
+    slot=data['Slot']
+    winner=db.Exploration.find_one({"Slot":slot})
+    return json.dumps({'Name':winner['CustomerName'], 'Email': winner['CustomerEmail']})
+
+
+@app.route('/exploitation')
+def exploitation():
+    data=request.get_json()
+    slot=data['Slot']
+    winner= db.Exploration.find_one({"Slot":slot})
+    return json.dumps({'Name':winner['CustomerName'], 'Email': winner['CustomerEmail']})
 '''
 def requires_roles(*roles):
     def wrapper(f):
@@ -696,6 +711,9 @@ def requires_roles(*roles):
 def user_page(self):
     return "You've got permission to access this page."
 '''
-if __name__ == "__main__":
+if __name__ == "__main__":  #main source running
     app.secret_key= 'mysecret'
     app.run(host="0.0.0.0", port=5000, debug=True)
+
+
+    
