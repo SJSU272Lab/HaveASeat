@@ -32,6 +32,21 @@
 
 
 
+<div class="col-md-4"    style="background-color:green; width: 450px;
+    height: 300px;  left: 5px; top: 90px; position: absolute;" align="left"  >
+
+    Restaurant Image
+
+ </div>
+<div class="col-md-4"    style="background-color:green; width: 450px;
+    height: 300px;  left: 5px; top: 410px; position: absolute;" align="left"  >
+
+    About Restaurant
+
+ </div>
+
+
+
 
 
 <div>
@@ -39,22 +54,10 @@
     <!--// Peanuts Layout -->
     <div ng-hide="layout.peanutsLayout">
 
-                <div class="col-md-4">
-
-                            <br/>
-                            <br/>
-                    <div >
 
 
-                         <button type="button" class="btn btn-default"> </button> <span style="font-size:medium">Avail</span>
-                            <br/>
-                            <button type="button" class="btn btn-warning"> </button> <span style="font-size:medium">Booked</span>
-                            <br/>
-                            <button type="button" class="btn btn-danger"> </button> <span style="font-size:medium">Dining</span>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
+                <div class="col-md-4"    style="background-color:blanchedalmond; width: 500px;
+    height: 300px;  left: 500px; top: 90px; position: absolute;" align="left"     >
 
                     <!--ACTUAL LAYOUT DONT DISTURB-->
                     <div class="col-md-12">
@@ -127,6 +130,23 @@
                             </div>
 
                     </div>
+
+                    <br/><br/>
+                    <div class="col-md-4">
+
+                            <br/>
+                            <br/>
+                    <div   >
+
+
+                         <button type="button" class="btn btn-default"> </button> <span style="font-size:medium">Avail</span>
+                            <br/>
+                            <button type="button" class="btn btn-warning"> </button> <span style="font-size:medium">Booked</span>
+                            <br/>
+                            <button type="button" class="btn btn-danger"> </button> <span style="font-size:medium">Dining</span>
+                    </div>
+                </div>
+
                     </div>
 
 
@@ -135,16 +155,56 @@
 </div>
 
 <br/><br/><br/>
-<div>
- <input type="submit"   class="btn btn-default"  value="Exploration Mode"  data-toggle="modal" data-target="#AnalysisModal" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span>{{name}}</span>
-<span>{{email}}</span></div>
-      <div>
-       <input type="submit"    class="btn btn-default" value="Exploitation Mode"  data-toggle="modal" data-target="#AnalysisExploitationModal" />
 
-<span>{{name1}}</span>
-<span>{{email1}}</span>
+
+      <div    style="background-color:green;  right: 05px; width: 400px;
+    height: 140px;   top: 90px; position: absolute;" align="left">
+       <input type="submit"   class="btn btn-primary"  value="Exploitation Mode"  data-toggle="modal" data-target="#AnalysisExploitationModal" />
+          <br/><br/>&nbsp;Name :<span style="color: white">&nbsp;{{name1}}</span>
+ <br/><br/>&nbsp;Email: <span style="color: white">&nbsp;{{email1}}</span>
+      </div>
+
+
+<div   style="background-color:green; width: 400px;
+    height: 140px;  right: 05px; top: 250px; position: absolute;" align="left">
+ <input type="submit"  class="btn btn-primary"  value="Exploration Mode"  data-toggle="modal" data-target="#AnalysisModal" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <br/><br/>&nbsp;Name :<span style="color: white">&nbsp;{{name}}</span>
+ <br/><br/>&nbsp;Email: <span style="color: white">&nbsp;{{email}}</span></div>
+
+
+
+
+<div   style="background-color:green;  right: 05px; width: 400px;
+    height: 140px;   top: 410px; position: absolute;" align="left">
+ <input type="submit"   class="btn btn-primary"  value="Send Offer"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/><br><input style="width: 200px;" type="text" placeholder="Phone number" class="form-control">
+</div>
+
+
+<div    style="background-color:green; right: 05px;  width: 400px;
+    height: 140px;   top: 570px; position: absolute;" align="left" >
+    <form>
+		<input class="btn btn-primary"
+                           type="button"
+                           value="Tweet"
+						   ng-click="sendTweet()">
+
+        <div style="margin-bottom: 15px">
+					<textarea class="form-control" rows="3"
+                  placeholder="Tweet about your restaurant" ng-model="tweet"
+                            name=tweet >
+
+                  </textarea>
+
+
+				</div>
+
+			</form>
     </div>
+
+
+
+
 
 
 
@@ -671,3 +731,9 @@
 
 
 </div>
+
+<footer   style="background-color:black;  right: 05px; width: 100%;
+    height: 50px;   bottom: 0px; position: absolute;"  >
+
+
+</footer>
