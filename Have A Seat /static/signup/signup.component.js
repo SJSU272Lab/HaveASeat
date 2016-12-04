@@ -51,7 +51,8 @@ angular.module('signup')
                 }).then(function (response) {
                     headerCtrl.registerDetails= response.data;
 					 $rootScope.registerDetails=response.data;
-					 $rootScope.message=" you are registerd , Please login to proceed";
+					 $rootScope.message=  $scope.firstName + " " +$scope.lastName +" you are registerd , Please login to proceed";
+
 
                 });
 

@@ -56,12 +56,14 @@
 
 <div class="wrapper">
 
-    <span style="color: red" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        {{$root.registerDetails.customerName}} {{$root.message}}</span>
+     <div align="center">
+
+       <span> {{$root.message}} </span>
+
+         </div>
     <form method="POST" class="form-signin" ng-submit="$ctrl.login()">
       <h2 class="form-signin-heading">Login</h2>
-      <br><input type="text" class="form-control" name="username" placeholder="Email Address"  ng-model="username" required="" autofocus=""  value="{{request.form.username}}"/>
+      <br><input type="email"       class="form-control" name="username" placeholder="Email Address"  ng-model="username" required="" autofocus=""  value="{{request.form.username}}"/>
       <br><input type="password" class="form-control" name="password" placeholder="Password" ng-model="password" required=""  value="{{request.form.password}}"/>
       <br><button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     </form>
