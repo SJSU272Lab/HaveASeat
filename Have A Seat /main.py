@@ -681,6 +681,9 @@ def exploration():
     data=request.get_json()
     slot=data['Slot']
     winner=db.Exploration.find_one({"Slot":slot})
+    currentOwner=db.Owners.find_one({"owner_email": session['Email']})
+    currentRestaurant=currentOwner['Restid']
+    emailWinner(winner['Email'] , currentRestaurant['restName'])
     return json.dumps({'Name':winner['CustomerName'], 'Email': winner['CustomerEmail']})
 
 
@@ -689,7 +692,26 @@ def exploitation():
     data=request.get_json()
     slot=data['Slot']
     winner= db.Exploration.find_one({"Slot":slot})
-    return json.dumps({'Name':winner['CustomerName'], 'Email': winner['CustomerEmail']})
+    currentOwner = db.Owners.find_one({"owner_email": session['Email']})
+    currentRestaurant = currentOwner['Restid']
+    emailWinner(winner['Email'], currentRestaurant['restName'])
+    return json.dumps({'Name':winner['customerName'], 'Email': winner['Email']})
+
+def emailWinner(email, restname):
+    sender ="haveaseat.team5@gmail.com"
+    receiver = email
+    message = MIMEMultipart()
+    message['From'] = sender
+    message['To'] = email
+    message['Subject'] = "Exclusive Discounts For You at "+restname
+    print("Please reach the restaurant within the next 15 minutes!")
+    body = "Dine and get 25% discount at "+ restname +"! Offer valid for today"
+    message.attach(MIMEText(body, 'plain'))
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(sender, "haveaseat")
+    server.sendmail(sender, receiver, message.as_string())
+    server.quit()
 '''
 def requires_roles(*roles):
     def wrapper(f):
