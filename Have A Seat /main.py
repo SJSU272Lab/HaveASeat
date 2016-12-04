@@ -632,7 +632,7 @@ def loggedinUser():
     return json.dumps({"error":"no user loggedin"})
 
 
-@app.route('/tweet')
+@app.route('/tweet', methods=['POST'])
 def tweet():
   # Fill in the values noted in previous step here
   cfg = {
@@ -641,10 +641,13 @@ def tweet():
     "access_token"        : "803523740172632064-dbuOv0OWdzWZKVowoHkvLF9rjXFwrz1",
     "access_token_secret" : "1ABNMundXyNGinSgTCs6PeVuI2wmJyd9WDgPyneqLwni5"
     }
+  print("HI")
   res = request.get_json()
   restID = res["restid"]
   restTweet = res["tweetmessage"]
-  restObj = db.Restaurants.find_one({'_id':restID})
+  print restTweet
+  print restID
+  restObj = db.Restaurants.find_one({'_id':int(restID)})
   api = get_api(cfg)
   tweet = restObj['restName'] + "says: "+restTweet
   status = api.update_status(status=tweet)
@@ -735,7 +738,7 @@ def user_page(self):
 '''
 if __name__ == "__main__":  #main source running
     app.secret_key= 'mysecret'
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5013, debug=True)
 
 
 
