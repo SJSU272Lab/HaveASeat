@@ -135,7 +135,7 @@ angular.module('admin')
 
 
 
-             $scope.sendTweet = function(){
+            /* $scope.sendTweet = function(){
                 console.log('can u see tweet '+$scope.tweet);
 
                     //sendTweet
@@ -146,6 +146,26 @@ angular.module('admin')
                         data:{
                             adminTweet:$scope.tweet
                         }
+                    }).then(function (res) {
+                        console.log('tweet send succesfully');
+                        $scope.tweet='';
+                    });
+
+                 }*/
+		$scope.sendTweet = function(){
+                console.log('can u see tweet '+$scope.tweet);
+
+                    //sendTweet
+
+                    $http({
+                        method: 'POST',
+                        url: '/tweet',
+                        data:{
+                            //adminTweet:$scope.tweet
+                            restid:$scope.restaurantId,
+                            tweetmessage:$scope.tweet
+                        }
+
                     }).then(function (res) {
                         console.log('tweet send succesfully');
                         $scope.tweet='';
