@@ -19,8 +19,9 @@ from email.mime.text import MIMEText
 import datetime
 from time import gmtime, strftime
 from twilio.rest import TwilioRestClient
-
-
+import sentimentalAnalysis
+from sentimentalAnalysis import analyseSentiments
+import datetime
 app= Flask(__name__)
 con = MongoClient("mongodb://abcd:qwerty@ds111798.mlab.com:11798/have_a_seat")
 db = con.have_a_seat
@@ -33,12 +34,12 @@ db = con.have_a_seat
 #login_manager=LoginManager()
 #login_manager.init_app(app)
 
-
+'''
 r1= "This restaurant gives huge discounts at 9:00 pm...Love it!"
 r2= "Awesome food, great service ! Book the seats when you find one..because you may not find it later"
-r3= "I wish I could find more seats here... :("
-r4= "Love the ambience inside !! Worth the money"
-r5= "Quick and fast service--just go for it !"
+r3= "I wish I could find more seats here... good good:("
+r4= "Love the ambience inside !! Worth the money bad"
+r5= "Quick and fast service--just go for it bad bad bad!"
 r6= "Service is not good"
 
 u1= "Anthony Stone"
@@ -47,10 +48,9 @@ u3= "Bobby Fischer"
 u4= "Samual Hunt"
 u5= "Chris Newman"
 u6= "Ronald Ross"
-
-review_list=[r1,r2,r3,r4,r5]
+'''
+review_list=[r1,r2,r3,r4,r5,r6]
 user_list=[u1,u2,u3,u4,u5]
-
 
 def get_api(cfg):
   auth = tweepy.OAuthHandler(cfg['consumer_key'], cfg['consumer_secret'])
@@ -710,7 +710,6 @@ def exploitation():
     currentOwner = db.Owners.find_one({"owner_email": session['Email']})
     currentRestaurant = currentOwner['Restid']
     emailWinner(winner['customerEmail'], "subway")
-    #return json.dumps({'Name':winner['customerName'], 'Email': winner['Email']})
     return json.dumps({'Name': winner['customerName'],'Email':winner['customerEmail']})
 
 def emailWinner(email, restname):
@@ -750,32 +749,44 @@ def sendOffer():
     print "success"
     return json.dumps({'Message': "Offer Successfully Sent"})
 
+@app.route('/setReview', methods=['POST'])
+def setReview():
+    #datetime.datetime.now().strftime("%d/%m/%Y")
+    resp=request.get_json()
+    currentReview=resp['Review']
+    dateTime = strftime("%d/%m/%Y %H:%M:%S")
+    date = dateTime.split(" ")[0]
+    db.Reviews.insert({'customerEmail':session['Email'], 'restID':resp['restID'], 'customerReview':currentReview, "Date":date})
 
 
-'''
-def requires_roles(*roles):
-    def wrapper(f):
-        @wraps(f)
-        def wrapped(*args, **kwargs):
-            if get_current_user_role() not in roles:
-                return error_response()
-            return f(*args, **kwargs)
-        return wrapped
-    return wrapper
-'''
+@app.route('/getReviewAnalysis', methods=['POST'])
+def getReviewAnalysis():
+    OwnerObj = db.Owners.find_one({'owner_email': session['Email']})
+    restID = OwnerObj['RestID']
+    reviewObj = db.Reviews.find({'restID': restID})
+    review_list = []
+    for r in reviewObj:
+        review_list.append(reviewObj['customerReview'])
+    positive = 0
+    positivereview = []
+    negativereview = []
+    negative = 0
+    positive,positivereview, negative, negativereview = analyseSentiments(review_list)
+
+    dict = {}
+    dict['positive'] = positive
+    dict['negative'] = negative
+    dict['negativeReviewList'] = negativereview
+    dict['positiveReviewList'] = positivereview
+    return json.dumps(dict)
+
+
+    # resp=request.get_json()
+    # currentReview=resp['Review']
+    # db.Reviews.insert({'customerEmail':session['Email'], 'restID':resp['restID'], 'customerReview':currentReview})
 
 
 
-
-'''
-@app.route('/user')
-@required_roles('admin', 'user')
-def user_page(self):
-    return "You've got permission to access this page."
-'''
 if __name__ == "__main__":  #main source running
-    app.secret_key= 'mysecret'
-    app.run(host="0.0.0.0", port=5013, debug=True)
-
-
-
+    app.secret_key= 'T34M$_CMP32L3'
+    app.run(host="0.0.0.0", port=5017, debug=True)
