@@ -668,6 +668,20 @@ def emailCustomer(counter, name, city):
     server.sendmail(sender, receiver, message.as_string())
     server.quit()
 
+@app.route('/exploration')
+def exploration():
+    data=request.get_json()
+    slot=data['Slot']
+    winner=db.Exploration.find_one({"Slot":slot})
+    return json.dumps({'Name':winner['CustomerName'], 'Email': winner['CustomerEmail']})
+
+
+@app.route('/exploitation')
+def exploitation():
+    data=request.get_json()
+    slot=data['Slot']
+    winner= db.Exploration.find_one({"Slot":slot})
+    return json.dumps({'Name':winner['CustomerName'], 'Email': winner['CustomerEmail']})
 '''
 def requires_roles(*roles):
     def wrapper(f):
