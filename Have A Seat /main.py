@@ -651,7 +651,7 @@ def tweet():
   print restID
   restObj = db.Restaurants.find_one({'_id':int(restID)})
   api = get_api(cfg)
-  tweet = restObj['restName'] + "says: "+restTweet
+  tweet = "#"+restObj['restName'] + "says: "+restTweet
   status = api.update_status(status=tweet)
   dict = {"status":"success"}
   return json.dumps(dict)
