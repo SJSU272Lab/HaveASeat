@@ -632,7 +632,7 @@ def loggedinUser():
     return json.dumps({"error":"no user loggedin"})
 
 
-@app.route('/tweet')
+@app.route('/tweet', methods=['POST'])
 def tweet():
   # Fill in the values noted in previous step here
   cfg = {
@@ -641,10 +641,13 @@ def tweet():
     "access_token"        : "803523740172632064-dbuOv0OWdzWZKVowoHkvLF9rjXFwrz1",
     "access_token_secret" : "1ABNMundXyNGinSgTCs6PeVuI2wmJyd9WDgPyneqLwni5"
     }
+  print("HI")
   res = request.get_json()
   restID = res["restid"]
   restTweet = res["tweetmessage"]
-  restObj = db.Restaurants.find_one({'_id':restID})
+  print restTweet
+  print restID
+  restObj = db.Restaurants.find_one({'_id':int(restID)})
   api = get_api(cfg)
   tweet = restObj['restName'] + "says: "+restTweet
   status = api.update_status(status=tweet)
@@ -681,6 +684,9 @@ def exploration():
     data=request.get_json()
     slot=data['Slot']
     winner=db.Exploration.find_one({"Slot":slot})
+    currentOwner=db.Owners.find_one({"owner_email": session['Email']})
+    currentRestaurant=currentOwner['Restid']
+    emailWinner(winner['Email'] , currentRestaurant['restName'])
     return json.dumps({'Name':winner['CustomerName'], 'Email': winner['CustomerEmail']})
 
 
@@ -689,7 +695,26 @@ def exploitation():
     data=request.get_json()
     slot=data['Slot']
     winner= db.Exploration.find_one({"Slot":slot})
-    return json.dumps({'Name':winner['CustomerName'], 'Email': winner['CustomerEmail']})
+    currentOwner = db.Owners.find_one({"owner_email": session['Email']})
+    currentRestaurant = currentOwner['Restid']
+    emailWinner(winner['Email'], currentRestaurant['restName'])
+    return json.dumps({'Name':winner['customerName'], 'Email': winner['Email']})
+
+def emailWinner(email, restname):
+    sender ="haveaseat.team5@gmail.com"
+    receiver = email
+    message = MIMEMultipart()
+    message['From'] = sender
+    message['To'] = email
+    message['Subject'] = "Exclusive Discounts For You at "+restname
+    print("Please reach the restaurant within the next 15 minutes!")
+    body = "Dine and get 25% discount at "+ restname +"! Offer valid for today"
+    message.attach(MIMEText(body, 'plain'))
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(sender, "haveaseat")
+    server.sendmail(sender, receiver, message.as_string())
+    server.quit()
 '''
 def requires_roles(*roles):
     def wrapper(f):
@@ -713,7 +738,7 @@ def user_page(self):
 '''
 if __name__ == "__main__":  #main source running
     app.secret_key= 'mysecret'
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5013, debug=True)
 
 
 
