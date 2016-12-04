@@ -16,9 +16,13 @@ import bcrypt
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import datetime
+from time import gmtime, strftime
+
 app= Flask(__name__)
 con = MongoClient("mongodb://abcd:qwerty@ds111798.mlab.com:11798/have_a_seat")
 db = con.have_a_seat
+
 
 
 #list=[]
@@ -445,7 +449,14 @@ def isValidAdmin():
 def seatsBooked():
     res = request.get_json() #request object is of form {'Restid': 123, 'tables': [{"sid": 1, "status":0},{"sid":2,"status":2}]}
     restID = int(res['Restid'])
-
+    CustomerBooking = str(res['customerBooking'])
+    CustomerName = ""
+    CustomerEmail = ""
+    CustomerPhone = ""
+    if(CustomerBooking == 'Yes'):
+        CustomerName = str(res['customerName'])
+        CustomerEmail = str(res['customerEmail'])
+        CustomerPhone = str(res['customerPhone'])
     print res
 
     tables = (res['tables'])
@@ -453,7 +464,20 @@ def seatsBooked():
 
     session['Tables'] = tables
     counter=0
+    slot = 0
     bookedRest = db.Restaurants.find_one({"_id": restID})
+    dateTime = strftime("%Y-%m-%d %H:%M:%S")
+    date, time = dateTime.split(" ")
+    if time[0:time.index(':')] < 13:
+        slot = 0
+    elif time[0:time.index(':')] < 17:
+        slot = 1
+    elif time[0:time.index(':')] < 20:
+        slot = 2
+    else:
+        slot = 3
+    if(CustomerBooking == 'Yes'):
+        db.Bookings.insert({'customerName':CustomerName, 'customerEmail': CustomerEmail, 'customerPhone': CustomerPhone, 'Slot': slot})
     for table in tables:
         print int(table["sid"])
         print "hello----->",int(table["status"])
@@ -655,6 +679,9 @@ def requires_roles(*roles):
         return wrapped
     return wrapper
 '''
+
+
+
 
 '''
 @app.route('/user')
