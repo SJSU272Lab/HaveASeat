@@ -98,15 +98,16 @@
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: white;
     color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {padding: 2px 16px; background-color: white;
+    color: white; }
 
 .modal-footer {
-    padding: 2px 16px;
-    background-color: #5cb85c;
+    /*padding: 2px 16px;*/
+    background-color: white;
     color: white;
 }
 </style>
@@ -147,19 +148,19 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">×</span>
-      <h2>Have A Seat</h2>
-    </div>
+      <h2 style="margin-left: 30%"><i>Thank you for registering with Have A Seat !</i></h2>
+
     <div class="modal-body">
-      <p>Thank you for registration</p>
-      <p>Please continue with the login</p>
-    </div>
+      <p style="margin-left: 40%">Please continue with the login</p>
+
     <div class="modal-footer">
-      <h3>Modal Footer</h3>
+
          <form class="form-signin"   ng-submit="redirct()">
              <button   class="btn btn-lg btn-primary btn-block" type="submit" onclick="redirct()" >Login</button>
                </form>
 
-
+    </div>
+    </div>
     </div>
   </div>
 

@@ -449,14 +449,21 @@ def isValidAdmin():
 def seatsBooked():
     res = request.get_json() #request object is of form {'Restid': 123, 'tables': [{"sid": 1, "status":0},{"sid":2,"status":2}]}
     restID = int(res['Restid'])
-    CustomerBooking = str(res['customerBooking'])
+    CustomerEmail = session['Email']
+    CustomerBooking = "No"
     CustomerName = ""
-    CustomerEmail = ""
     CustomerPhone = ""
+    custObj = db.Customers.find_one({'Email':CustomerEmail})
+    if custObj.count() ==1:
+        CustomerBooking = "Yes"
+
     if(CustomerBooking == 'Yes'):
-        CustomerName = str(res['customerName'])
-        CustomerEmail = str(res['customerEmail'])
-        CustomerPhone = str(res['customerPhone'])
+        CustomerName = custObj['customerName']
+        CustomerEmail = custObj['customerEmail']
+        try:
+            CustomerPhone = custObj['customerPhone']
+        except:
+            print "No phone number"
     print res
 
     tables = (res['tables'])
@@ -486,8 +493,9 @@ def seatsBooked():
         db.Tables.update({"Restid": restID, "TableNo": int(table["sid"])},{'$set': {"isAvailable":int(table["status"])}}, upsert=False)
         print "updated", table["sid"]
         counter=counter+1
-    if counter>0:
-        emailCustomer(counter,bookedRest['restName'], bookedRest['City'])
+        currentUser=db.Customers.find_one({'Email':session['Email']})
+    if counter>0 and currentUser:
+        emailCustomer(counter,bookedRest['restName'], bookedRest['City'], currentUser['Email'])
 
 
     dict = {}
@@ -652,15 +660,15 @@ def logout():
         return 'Logged out'
     return "noone is logged in"
 
-def emailCustomer(counter, name, city):
+def emailCustomer(counter, name, city, email):
     sender ="haveaseat.team5@gmail.com"
-    receiver = "sidanasparsh@gmail.com"
+    receiver = email
     message = MIMEMultipart()
     message['From'] = sender
     message['To'] = receiver
     message['Subject'] = "Seats Booked, Happy Dining!"
     print("Please reach the restaurant within the next 15 minutes!")
-    body = "You have booked "+str(counter)+" seats(s) at " + " "+ name+", "+ city + ". Please reach the restaurant within the next 15 minutes"
+    body = "You have booked "+str(counter)+" seats(s) at " + " "+ name + ". Please reach the restaurant within the next 15 minutes"
     message.attach(MIMEText(body, 'plain'))
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
@@ -668,6 +676,20 @@ def emailCustomer(counter, name, city):
     server.sendmail(sender, receiver, message.as_string())
     server.quit()
 
+@app.route('/exploration')
+def exploration():
+    data=request.get_json()
+    slot=data['Slot']
+    winner=db.Exploration.find_one({"Slot":slot})
+    return json.dumps({'Name':winner['CustomerName'], 'Email': winner['CustomerEmail']})
+
+
+@app.route('/exploitation')
+def exploitation():
+    data=request.get_json()
+    slot=data['Slot']
+    winner= db.Exploration.find_one({"Slot":slot})
+    return json.dumps({'Name':winner['CustomerName'], 'Email': winner['CustomerEmail']})
 '''
 def requires_roles(*roles):
     def wrapper(f):
