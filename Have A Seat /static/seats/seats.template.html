@@ -50,6 +50,13 @@ body {
 }
 </style>
 
+<style>
+    .bgimg{
+        background-image: url("static/img/restaurants/restuarant_layout.jpg");
+        height: 422px;
+        margin-left: 49px;
+    }
+</style>
 
 
 
@@ -175,7 +182,7 @@ body {
     </div>
     <div ng-hide="layout.peanutsLayout"   style="color: black" >
 
-          <div class="col-md-4" style="background-color: Yellow" >
+          <div class="col-md-3">
 
                             <br/>
                             <br/>
@@ -189,7 +196,7 @@ body {
                             <dt>Food</dt>
                             <dd>Veg / Non veg</dd>
                         </dl>
-                        <div  style="background-color: black">
+                        <div  style="background-color: wheat">
 
                             <button type="button" class="btn btn-success"> </button> <span style="font-size:medium">Selection</span>
                             <br/>
@@ -200,10 +207,10 @@ body {
                     </div>
                 </div>
 
-                <div class="col-md-4"  style="background-color: #784E45">
+                <div class="col-md-4 bgimg"  style="background-color: #784E45">
 
                     <!--ACTUAL LAYOUT DONT DISTURB-->
-                    <div class="col-md-12">
+                    <div class="col-md-12" style="padding-left: 40%">
 
                         <div class="col-md-12">
                             <div class="lead" > &nbsp;&nbsp;&nbsp;</div>
@@ -226,7 +233,7 @@ body {
                             </div>
 
 
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom: 15px;margin-top: 15px;">
                                 <div class="col-md-3">
                                      <input type="button" ng-class="model.dynamic4" ng-disabled="{{modelAvailForSelect.dynamic4}}" value="3" style="width:50px;margin:3px"  ng-click="updateStatus(selectedRestaurant.seats[2],'dynamic4',4)"  />
                                 </div>
@@ -527,7 +534,7 @@ body {
 
                     <div class="col-md-3"></div>
 
-                    <div class="col-md-6" style="background-color: Orange">
+                    <div class="col-md-6" style="background-color: chocolate">
 
                         <div ng-hide="true"> ThankYou for making a booking with Have A Seat </div>
                         <br/>
