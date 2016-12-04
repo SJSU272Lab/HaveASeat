@@ -119,7 +119,7 @@
 
 <form name ='form1' class="form-signin"   ng-submit="$ctrl.signup()">
 
-      <h2 class="form-signin-heading">Please Sign Up</h2>
+      <h2 class="form-signin-heading">Please Sign Up3</h2>
       <br><input     aria-describedby="name-format" required aria-required=”true” pattern="[A-Za-z]+"  id="firstName" type="text" class="form-control" name="firstName"    ng-model="firstName" placeholder="First Name" required="" autofocus=""  value="{{request.form.firstName}}"/>
       <span id="firstname_validation" class="error"></span>
 
@@ -137,7 +137,7 @@
 
 
 
-      <br><button   id="myBtn"  class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+      <br><button   id="myBtn"  class="btn btn-lg btn-primary btn-block" type="submit" onclick="validateForm()">Sign Up</button>
  </form>
 
 
@@ -167,137 +167,174 @@
 </div>
 
 
+<script>
 
 
+function openModal() {
+// Get the modal
+    var modal = document.getElementById('myModal');
 
+// Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
 
-<!--<script>-->
+// Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-    <!--function validateForm() {-->
-  <!--var valid = 1;-->
-  <!--var email = document.getElementById('email');-->
-  <!--var email_validation = document.getElementById("email_validation");-->
-  <!--var firstname = document.getElementById('firstName');-->
-  <!--var firstname_validation = document.getElementById("firstname_validation");-->
-  <!--var lastname = document.getElementById('lastName');-->
-  <!--var lastname_validation = document.getElementById("lastname_validation");-->
-        <!--var password =document.getElementById('password');-->
-  <!--var password_validation = document.getElementById("password_validation");-->
+// When the user clicks the button, open the modal
+        modal.style.display = "block";
 
+// When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
 
-  <!--var filteremail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;-->
-  <!--var filtername=/^[A-Za-z]+$/;-->
-
-        <!--var mnlen = 6;-->
-        <!--var mxlen = 10;-->
-
-
-                      <!--console.log(password.value);-->
-        <!--console.log(password.value.length);-->
-
-        <!--if(password.value.length === 0)-->
-        <!--{-->
-             <!--valid=0;-->
-             <!--password_validation.innerHTML = "Field Required";-->
-             <!--password_validation.style.display = "block";-->
-             <!--password_validation.parentNode.style.backgroundColor = "#FFDFDF";-->
-
-
-        <!--}-->
-        <!--else-->
-        <!--{-->
-            <!--password_validation.style.display="none" ;-->
-        <!--}-->
-
-
-        <!--if((password.value.length<mnlen || password.value.length> mxlen )  &&  password.value.length !=0)-->
-        <!--{-->
-            <!--valid = 0;-->
-            <!--password_validation.innerHTML = "Please enter password between 6 to 10 characters";-->
-            <!--password_validation.style.display = "block";-->
-            <!--password_validation.parentNode.style.backgroundColor = "#FFDFDF";-->
-        <!--}-->
-     <!--//   else {-->
-
-      <!--//      password_validation.style.display = "none";-->
-      <!--//  }-->
-
-
-  <!--if (firstname.value === "") {-->
-    <!--valid = 0;-->
-    <!--firstname_validation.innerHTML = "Field Required";-->
-    <!--firstname_validation.style.display = "block";-->
-    <!--firstname_validation.parentNode.style.backgroundColor = "#FFDFDF";-->
-  <!--} else {-->
-    <!--firstname_validation.style.display = "none";-->
-<!--//    firstname_validation.parentNode.style.backgroundColor = "transparent";-->
-  <!--}-->
-  <!--if (lastname.value === "") {-->
-    <!--valid = 0;-->
-    <!--lastname_validation.innerHTML = "Field Required";-->
-    <!--lastname_validation.style.display = "block";-->
-    <!--lastname_validation.parentNode.style.backgroundColor = "#FFDFDF";-->
-  <!--} else {-->
-    <!--lastname_validation.style.display = "none";-->
-<!--//    lastname_validation.parentNode.style.backgroundColor = "transparent";-->
-  <!--}-->
-
-
-  <!--if (email.value === "") {-->
-    <!--valid = 0;-->
-    <!--email_validation.innerHTML = "Field Required";-->
-    <!--email_validation.style.display = "block";-->
-    <!--email_validation.parentNode.style.backgroundColor = "#FFDFDF";-->
-  <!--} else {-->
-    <!--email_validation.style.display = "none";-->
-<!--//    email_validation.parentNode.style.backgroundColor = "transparent";-->
-  <!--}-->
-
-  <!--if(!filteremail.test(email.value) && email.value != "") {-->
-    <!--valid = 0;-->
-    <!--email_validation.innerHTML = "Invalid email address";-->
-    <!--email_validation.style.display = "block";-->
-    <!--email_validation.parentNode.style.backgroundColor = "#FFDFDF";-->
-  <!--} //else {-->
-    <!--//email_validation.style.display = "none";-->
-<!--//    email_validation.parentNode.style.backgroundColor = "transparent";-->
-  <!--//}-->
-
-  <!--if(!filtername.test(firstname.value)  && firstname.value!="") {-->
-    <!--valid = 0;-->
-    <!--firstname_validation.innerHTML = "Please enter first name with alphabets";-->
-    <!--firstname_validation.style.display = "block";-->
-    <!--firstname_validation.parentNode.style.backgroundColor = "#FFDFDF";-->
-  <!--}-->
-<!--//  else {-->
-<!--//    firstname_validation.style.display = "none";-->
-<!--////    email_validation.parentNode.style.backgroundColor = "transparent";-->
-<!--//  }-->
-
-  <!--if(!filtername.test(lastname.value)  &&  lastname.value!="") {-->
-    <!--valid = 0;-->
-    <!--lastname_validation.innerHTML = "Please enter last name with alphabets";-->
-    <!--lastname_validation.style.display = "block";-->
-    <!--lastname_validation.parentNode.style.backgroundColor = "#FFDFDF";-->
- <!--} //else {-->
-<!--//    lastname_validation.style.display = "none";-->
-<!--////    email_validation.parentNode.style.backgroundColor = "transparent";-->
-<!--//  }-->
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+</script>
 
 
 
 
 
-  <!--if (!valid)-->
-    <!--return false;-->
-  <!--else-->
-      <!--return true-->
+
+<script>
+
+    function validateForm() {
+  var valid = 1;
+  var email = document.getElementById('email');
+  var email_validation = document.getElementById("email_validation");
+  var firstname = document.getElementById('firstName');
+  var firstname_validation = document.getElementById("firstname_validation");
+  var lastname = document.getElementById('lastName');
+  var lastname_validation = document.getElementById("lastname_validation");
+        var password =document.getElementById('password');
+  var password_validation = document.getElementById("password_validation");
 
 
-<!--}-->
+  var filteremail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  var filtername=/^[A-Za-z]+$/;
+
+        var mnlen = 6;
+        var mxlen = 10;
 
 
-<!--</script>-->
+                      console.log(password.value);
+        console.log(password.value.length);
+
+        if(password.value.length === 0)
+        {
+             valid=0;
+             //password_validation.innerHTML = "Field Required";
+             //password_validation.style.display = "block";
+             //password_validation.parentNode.style.backgroundColor = "#FFDFDF";
+
+
+        }
+        else
+        {
+            //password_validation.style.display="none" ;
+        }
+
+
+        if((password.value.length<mnlen || password.value.length> mxlen )  &&  password.value.length !=0)
+        {
+            valid = 0;
+            //password_validation.innerHTML = "Please enter password between 6 to 10 characters";
+            //password_validation.style.display = "block";
+            //password_validation.parentNode.style.backgroundColor = "#FFDFDF";
+        }
+     //   else {
+
+      //      password_validation.style.display = "none";
+      //  }
+
+
+  if (firstname.value === "") {
+    valid = 0;
+    //firstname_validation.innerHTML = "Field Required";
+    //firstname_validation.style.display = "block";
+    //firstname_validation.parentNode.style.backgroundColor = "#FFDFDF";
+  } else {
+    //firstname_validation.style.display = "none";
+//    firstname_validation.parentNode.style.backgroundColor = "transparent";
+  }
+  if (lastname.value === "") {
+    valid = 0;
+    //lastname_validation.innerHTML = "Field Required";
+    //lastname_validation.style.display = "block";
+    //lastname_validation.parentNode.style.backgroundColor = "#FFDFDF";
+  } else {
+    //lastname_validation.style.display = "none";
+//    lastname_validation.parentNode.style.backgroundColor = "transparent";
+  }
+
+
+  if (email.value === "") {
+    valid = 0;
+    //email_validation.innerHTML = "Field Required";
+    //email_validation.style.display = "block";
+    //email_validation.parentNode.style.backgroundColor = "#FFDFDF";
+  } else {
+    //email_validation.style.display = "none";
+//    email_validation.parentNode.style.backgroundColor = "transparent";
+  }
+
+  if(!filteremail.test(email.value) && email.value != "") {
+    valid = 0;
+    //email_validation.innerHTML = "Invalid email address";
+    //email_validation.style.display = "block";
+    //email_validation.parentNode.style.backgroundColor = "#FFDFDF";
+  } //else {
+    //email_validation.style.display = "none";
+//    email_validation.parentNode.style.backgroundColor = "transparent";
+  //}
+
+  if(!filtername.test(firstname.value)  && firstname.value!="") {
+    valid = 0;
+    //firstname_validation.innerHTML = "Please enter first name with alphabets";
+    //firstname_validation.style.display = "block";
+    //firstname_validation.parentNode.style.backgroundColor = "#FFDFDF";
+  }
+//  else {
+//    firstname_validation.style.display = "none";
+////    email_validation.parentNode.style.backgroundColor = "transparent";
+//  }
+
+  if(!filtername.test(lastname.value)  &&  lastname.value!="") {
+    valid = 0;
+    //lastname_validation.innerHTML = "Please enter last name with alphabets";
+    //lastname_validation.style.display = "block";
+    //lastname_validation.parentNode.style.backgroundColor = "#FFDFDF";
+ } //else {
+//    lastname_validation.style.display = "none";
+////    email_validation.parentNode.style.backgroundColor = "transparent";
+//  }
+
+
+
+
+
+  if (!valid) {
+      //alert("Game of thrones");
+      return false;
+  }
+  else
+  {
+      //alert('John Snow');
+      valid =1;
+      openModal();
+  }
+
+
+}
+
+
+</script>
 
 
 
