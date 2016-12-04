@@ -689,6 +689,9 @@ def requires_roles(*roles):
 def user_page(self):
     return "You've got permission to access this page."
 '''
-if __name__ == "__main__":
+if __name__ == "__main__":  #main source running
     app.secret_key= 'mysecret'
     app.run(host="0.0.0.0", port=5000, debug=True)
+
+
+    
