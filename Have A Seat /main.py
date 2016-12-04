@@ -172,10 +172,12 @@ def restaurants():
     global review_list
 
     quotes = []
-
+    print  listOfRestaurants.count()
     for i in listOfRestaurants:
         sObj = db.Tables.find({"Restid": i['_id']})
+        counter=0
         for seat in sObj:
+            print  seat['isAvailable']
             if(seat['isAvailable']==0):
                 counter+=1
         quotes.append({"rname": user_list[randint(0, len(user_list) - 1)],
