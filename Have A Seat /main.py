@@ -449,14 +449,21 @@ def isValidAdmin():
 def seatsBooked():
     res = request.get_json() #request object is of form {'Restid': 123, 'tables': [{"sid": 1, "status":0},{"sid":2,"status":2}]}
     restID = int(res['Restid'])
-    CustomerBooking = str(res['customerBooking'])
+    CustomerEmail = session['Email']
+    CustomerBooking = "No"
     CustomerName = ""
-    CustomerEmail = ""
     CustomerPhone = ""
+    custObj = db.Customers.find_one({'Email':CustomerEmail})
+    if custObj.count() ==1:
+        CustomerBooking = "Yes"
+
     if(CustomerBooking == 'Yes'):
-        CustomerName = str(res['customerName'])
-        CustomerEmail = str(res['customerEmail'])
-        CustomerPhone = str(res['customerPhone'])
+        CustomerName = custObj['customerName']
+        CustomerEmail = custObj['customerEmail']
+        try:
+            CustomerPhone = custObj['customerPhone']
+        except:
+            print "No phone number"
     print res
 
     tables = (res['tables'])
