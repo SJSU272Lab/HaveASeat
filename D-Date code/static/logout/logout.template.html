@@ -1,0 +1,65 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation"  ng-model="hideHeader">
+            <div class="container">
+                <div class="row">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Have A Seat</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+                        <ul class="nav navbar-nav main-nav  clear navbar-right "   ng-model="logout" >
+
+                            <li>
+                                <form   ng-submit="$ctrl.searchRestaurants()" class="navbar-form navbar-left"   ng-model="hideSearch">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"     ng-hide="hideSearch"  placeholder="search" name="search"  ng-model="search" value="{{request.form.search}}">
+                                    <span style="color:white" aria-hidden="true"></span>
+                                </div>
+                                <input type="submit" class="btn btn-default" value="Search">
+                                </form>
+                            </li>
+                            <li><a class="color_animation" href="#!/login"   >Login</a></li>
+                            <li><a class="color_animation" href="#!/signup"   >Signup</a></li>
+                        </ul>
+
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div id="top" class="starter_container bg">
+            <div class="follow_container">
+                <div class="col-md-6 col-md-offset-3">
+                    <h2 class="top-title"> Thank you </h2>
+                    <h2 class="white second-title"></h2>
+                     <div class="white second-title">Your booking will expire in
+                         <span id="{{timerID}}"  class="white second-title" style="font-size:160%;"></span> minutes!
+                     </div>
+                    <hr>
+                </div>
+            </div>
+        </div>

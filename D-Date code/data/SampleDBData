@@ -1,0 +1,129 @@
+Sample data for each module, let's stick and update this dataset to avoid mismatch in fields in different modules of the code.
+For Restaurant and corresponding Owner
+
+// Sample table and Owner data link to a Restaurant:
+
+original_id=ObjectId()
+db.Restaurants.insert(
+    {"_id": original_id,
+    "restName": "subway",
+    "contactNo": "+1(959)242-7494",
+    "Street": "39 West Julian Street",
+    "City": "San Jose",
+    "State": "California"}
+)
+
+db.Tables.insert(
+[
+{
+"_id": "581a6a305633ee91b5a306aa",
+"Restid": original_id,
+"Capacity": 5,
+"TableNo":1
+"isAvailable": 0
+},
+{
+"_id": "581a6a3004cd810ad7e1b382",
+"Restid": original_id,
+"Capacity": 2,
+"TableNo":2,
+"isAvailable": 2
+},
+{
+"_id": "581a6a3050334297231ddbfc",
+"Restid": original_id,
+"Capacity": 3,
+"TableNo":4,
+"isAvailable": 2
+},
+{
+"_id": "581a6a30546c9a9e4e894238",
+"Restid": original_id,
+"Capacity": 3,
+"TableNo":3,
+"isAvailable": 0
+},
+{
+"_id": "581a6a3030fb2aae9fd55acb",
+"Restid": original_id,
+"Capacity": 4,
+"TableNo":5,
+"isAvailable": 0
+},
+{
+"_id": "581a6a30e59c7a41a58f341f",
+"Restid": original_id,
+"Capacity": 3,
+"TableNo":6,
+"isAvailable": 2
+},
+{
+"_id": "581a6a30150ee4b050ee1c07",
+"Restid": original_id,
+"Capacity": 3,
+"TableNo":7,
+"isAvailable": 1
+}
+])
+
+db.Owners.insert(
+{
+"Restid": original_id,
+"owner_name": "Mr.BOB",
+"owner_email":"iamower@gmail.com",
+"owner_password": "iamowner"
+})
+
+//Sample Customers data
+db.Customers.insert(
+[
+{
+"_id": "581a4d945824c9a794e2d44b",
+"customerName": "Norris Wallace",
+"customerID": "86d8303e-1567-4fe6-9303-90e7bd1e7bce",
+"customerTwitter": "norriswallace@norsul.com",
+"custFoodType": "American Junk"
+},
+{
+"_id": "581a4d94988aaf1f3b7346a0",
+"customerName": "Ryan Cox",
+"customerID": "e137da65-a554-4135-b899-242fff44493f",
+"customerTwitter": "ryancox@norsul.com",
+"custFoodType": "Continental"
+},
+{
+"_id": "581a4d9437a080159239fc47",
+"customerName": "Lucinda Burton",
+"customerID": "e2c33b8c-6e33-4d43-a3c5-3773d48e3575",
+"customerTwitter": "lucindaburton@norsul.com",
+"custFoodType": "American Junk"
+},
+{
+"_id": "581a4d945afb2281960e4a0a",
+"customerName": "Newton Woodard",
+"customerID": "bcb9380c-3cff-4ba7-967f-4b96b5d496fc",
+"customerTwitter": "newtonwoodard@norsul.com",
+"custFoodType": "Chinese"
+},
+{
+"_id": "581a4d941cdbd7a4f3103dd5",
+"customerName": "Susanna Mcmillan",
+"customerID": "82a86ed6-bc1f-4cce-b4ce-6a6a8f9fa79a",
+"customerTwitter": "susannamcmillan@norsul.com",
+"custFoodType": "Indian"
+},
+{
+"_id": "581a4d948cf1623af98ecf5d",
+"customerName": "Deann Nicholson",
+"customerID": "1eee459d-0d41-4027-876a-d222ae8443ec",
+"customerTwitter": "deannnicholson@norsul.com",
+"custFoodType": "Continental"
+},
+{
+"_id": "581a4d94aae8dac0577d6af0",
+"customerName": "Rosella Downs",
+"customerID": "0ff581ff-5949-4a03-be36-3237f49f6e2d",
+"customerTwitter": "roselladowns@norsul.com",
+"custFoodType": "American Junk"
+}
+])

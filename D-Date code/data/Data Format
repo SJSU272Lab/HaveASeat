@@ -1,0 +1,15 @@
+People eating at Restaurants data format:
+
+[
+  '{{repeat(5, 7)}}',
+  {
+    _id: '{{objectId()}}',
+    "Rid":
+    “CustomerEmail": "norriswallace@norsul.com”,
+    "Day”:"{{random(“Monday", “Tuesday", “Wednesday”,”Thursday”,”Friday”,”Saturday”,”Sunday")}}”,
+    “Time: function(tags){
+      return tags.integer(10,22)+ ':'+ tags.integer(10,59)+':'+ tags.integer(10,59);
+    },
+    "TableNo”: ‘{{integer(1,7)}}’,
+  }
+]

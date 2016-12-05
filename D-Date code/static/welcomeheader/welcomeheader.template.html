@@ -1,0 +1,16 @@
+
+<ul class="nav navbar-nav main-nav  clear navbar-right "   ng-model="logout" >
+
+                            <li>
+                                <form   ng-submit="$ctrl.searchRestaurants()" class="navbar-form navbar-left"   ng-model="hideSearch">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"     ng-hide="hideSearch"  placeholder="search" name="search"  ng-model="search" value="{{request.form.search}}">
+                                    <span style="color:white" aria-hidden="true"></span>
+                                </div>
+                                <input type="submit" class="btn btn-default" value="Search">
+                                </form>
+                            </li>
+                            <li><a class="color_animation" href="#!/login"   ng-hide="hideLoginSignup" >Login</a></li>
+                            <li><a class="color_animation" href="#!/signup"   ng-hide="hideLoginSignup" >Signup</a></li>
+                           <li><a class="color_animation" href="" ng-click="logout()" ng-hide="showLogout" >Logout</a></li>
+    </ul>

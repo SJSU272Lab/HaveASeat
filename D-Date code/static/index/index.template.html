@@ -1,0 +1,254 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation"  ng-model="hideHeader">
+            <div class="container">
+                <div class="row">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Have A Seat</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+                        <ul class="nav navbar-nav main-nav  clear navbar-right "   ng-model="logout" >
+
+                            <li>
+                                <form   ng-submit="$ctrl.searchRestaurants()" class="navbar-form navbar-left"   ng-model="hideSearch">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"     ng-hide="hideSearch"  placeholder="search" name="search"  ng-model="search" value="{{request.form.search}}">
+                                    <span style="color:white" aria-hidden="true"></span>
+                                </div>
+                                <input type="submit" class="btn btn-default" value="Search">
+                                </form>
+
+                            </li>
+
+                            <li><a class="color_animation" href="#!/login"   >Login</a></li>
+                            <li><a class="color_animation" href="#!/signup"   >Signup</a></li>
+                        </ul>
+
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav>
+
+
+
+
+
+       <div id="top" class="starter_container bg">
+            <div class="follow_container">
+                <div class="col-md-6 col-md-offset-3">
+                    <h2 class="top-title"> Have A Seat</h2>
+                    <h2 class="white second-title">" Best in the city"</h2>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+
+
+       <section id ="beerqq" class="description_content">
+            <div  class="beer background_content">
+                <h1>Great <span>Place</span> to enjoy</h1>
+            </div>
+
+        </section>
+
+
+
+         <!-- ============ Our Bread  ============= -->
+
+
+        <section id="bread" class=" description_content">
+            <div  class="bread background_content">
+                <h1>Never miss a <span>Table</span></h1>
+            </div>
+            <div class="text-content container">
+                <div class="col-md-6">
+                    <h1>Have you ever ____?</h1>
+                    <div class="icon-bread fa-2x"></div>
+                    <p class="desc-text">Felt The Need To Book Seats <i>On The Go</i> - Know Whether Seats Are Available In The Restaurant To Where You Are Headed & Save Yourself From the Hassle of "The Line" </p>
+                </div>
+                <div class="col-md-6">
+                    <img src="static/images/bread1.jpg" width="260" alt="Bread">
+                    <img src="static/images/bread1.jpg" width="260" alt="Bread">
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <!-- ============ Featured Dish  ============= -->
+
+        <section id="featured" class="description_content">
+            <div  class="featured background_content">
+                <h1>Our Featured Dishes <span>Menu</span></h1>
+            </div>
+            <div class="text-content container">
+                <div class="col-md-6">
+                    <h1>Then be prepared to Have a Seat!</h1>
+                    <div class="icon-hotdog fa-2x"></div>
+                    <p class="desc-text"> How it works ? View seats available in real time. Forget standing in the line. Just enter your restaurant in the search box, choose seats and Boom ! There you go - Experience simplicity at its finest.</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="image_box_story2">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="static/images/slider1.jpg"  alt="...">
+                                    <div class="carousel-caption">
+
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="static/images/slider2.jpg" alt="...">
+                                    <div class="carousel-caption">
+
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="static/images/slider3.JPG" alt="...">
+                                    <div class="carousel-caption">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+
+
+           <!-- ============ About Us ============= -->
+
+        <section id="story" class="description_content">
+            <div class="text-content container">
+                <div class="col-md-6">
+                    <h1>About us</h1>
+                    <div class="fa fa-cutlery fa-2x"></div>
+                    <p class="desc-text">This is an academic project by San Jose State University students, Fall-16 batch, CMPE272 under Prof. Rakesh Ranjan. Please feel free to drop your comments and suggestions. And if you interested - Come join us and see what simplicity tastes like.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-section">
+                       <img src="static/images/kabob.jpg" width="250" height="220">
+                       <img src="static/images/limes.jpg" width="250" height="220">
+                       <div class="img-section-space"></div>
+                       <img src="static/images/radish.jpg"  width="250" height="220">
+                       <img src="static/images/corn.jpg"  width="250" height="220">
+                   </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- ============ Social Section  ============= -->
+<style>
+.social_heading{
+    margin: 0px;
+}
+</style>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+        <section class="social_connect" style="margin:0px">
+            <div class="text-content container">
+                <div class="col-md-6">
+                    <span class="social_heading" style="margin:21px">FOLLOW</span>
+                    <div class="social_icons" style="margin: 18px 0 50px 0;">
+                       <!-- <li><a class="icon-twitter color_animation" href="#" target="_blank"></a></li>
+                        <li><a class="icon-github color_animation" href="#" target="_blank"></a></li>
+                        <li><a class="icon-linkedin color_animation" href="#" target="_blank"></a></li>
+                        <li><a class="icon-mail color_animation" href="#"></a></li>-->
+                        <div class="fb-like" data-href="http://haveaseat.mybluemix.net" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                        <!--<div class="fb-page" data-href="https://www.facebook.com/Tem5HaveASeat/" data-tabs="timeline" data-width="200" data-height="50" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>-->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    &lt;!&ndash;<span class="social_heading">OR DIAL</span>&ndash;&gt;
+                    &lt;!&ndash;<span class="social_info"><a class="color_animation" href="tel:883-335-6524">(+1) 669-265-5123</a></span>&ndash;&gt;
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Contact Section  ============= -->
+
+        <section id="contact">
+            <div class="map">
+               <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.664063989472!2d91.8316103150038!3d24.909437984030877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37505558dd0be6a1%3A0x65c7e47c94b6dc45!2sTechnext!5e0!3m2!1sen!2sbd!4v1444461079802" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.3092217614053!2d-121.88326018471284!3d37.335187379841834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fccb864de43d5%3A0x397ffe721937340e!2sSan+Jos%C3%A9+State+University!5e0!3m2!1sen!2sus!4v1480924599129" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="inner contact">
+                            <!-- Form Area -->
+                            <div class="contact-form">
+                                <!-- Form -->
+                                <form id="contact-us" action="mailto:vimanyu1022007@gmail.com" method="post" enctype="text/plain" onsubmit="location.href='index.html';">
+                                    <!-- Left Inputs -->
+                                    <div class="col-md-6 ">
+                                        <!-- Name -->
+                                        <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" />
+                                        <!-- Email -->
+                                        <input type="email" name="email" id="email" required="required" class="form" placeholder="Email" />
+                                        <!-- Subject -->
+                                        <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Subject" />
+                                    </div><!-- End Left Inputs -->
+                                    <!-- Right Inputs -->
+                                    <div class="col-md-6">
+                                        <!-- Message -->
+                                        <textarea name="message" id="message" class="form textarea"  placeholder="Message"></textarea>
+                                    </div><!-- End Right Inputs -->
+                                    <!-- Bottom Submit -->
+                                    <div class="relative fullwidth col-xs-12">
+                                        <!-- Send Button -->
+                                        <button type="submit" id="submit" name="submit" class="form-btn">Send Message</button>
+                                    </div><!-- End Bottom Submit -->
+                                    <!-- Clear -->
+                                    <div class="clear"></div>
+                                </form>
+                            </div><!-- End Contact Form Area -->
+                        </div><!-- End Inner -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Footer Section  ============= -->
+
+        <footer class="sub_footer">
+            <div class="container">
+                <div class="col-md-4"><p class="sub-footer-text text-center">&copy; Have A Seat by Team 5 CMPE272</p></div>
+                <div class="col-md-4"><p class="sub-footer-text text-center">Back to <a href="#top">TOP</a></p>
+                </div>
+            </div>
+        </footer>
+
