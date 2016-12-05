@@ -742,7 +742,7 @@ def sendOffer():
 
     client.messages.create(to="+1"+data['phoneNumber'],
                            from_="+14093163978",
-                           body="Hello there I am happy!")
+                           body="Hello , you have been given 30% discount on your next visit to restaurant!")
 
 
 

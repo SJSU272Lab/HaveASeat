@@ -479,6 +479,21 @@ angular.module('admin')
 
             }
 
+           $scope.sendmail= function () {
+                var email = $scope.emailHaveASeat;
+                $http({
+
+
+                    method: 'POST',
+                    url: '/emailHaveASeat',
+                    data: {restid: restId, emailmessage: email}
+                }).then(function (res) {
+
+                    $scope.success = "your email has been successfully placed."
+
+                });
+
+            }
 
 
     }]
