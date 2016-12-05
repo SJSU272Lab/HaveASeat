@@ -170,8 +170,8 @@ def restaurants():
     if listOfRestaurants.count()==0:
         listOfRestaurants=db.Restaurants.find({"City": restname})
     
-    global user_list
-    global review_list
+    #global user_list
+    #global review_list
 
     quotes = []
     print  listOfRestaurants.count()
@@ -182,8 +182,8 @@ def restaurants():
             print  seat['isAvailable']
             if(seat['isAvailable']==0):
                 counter+=1
-        quotes.append({"rname": user_list[randint(0, len(user_list) - 1)],
-                       "review": review_list[randint(0, len(review_list) - 1)]})
+        #quotes.append({"rname": user_list[randint(0, len(user_list) - 1)],
+        #               "review": review_list[randint(0, len(review_list) - 1)]})
 
 #     for i in range(listOfRestaurants.count()):
 #         quotes_dict[user_list[randint(0,len(user_list)-1)]] = review_list[randint(0,len(review_list)-1)]
