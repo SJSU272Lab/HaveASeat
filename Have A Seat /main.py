@@ -809,7 +809,8 @@ def emailHaveASeat():
     ownerDetails=db.Owners.find_one({'Restid':int(restID)})
 
     ownerEmail=ownerDetails['owner_email']
-    sender="ssjsparsh@gmail.com"
+    #sender="ssjsparsh@gmail.com"
+    sender=ownerEmail
     receiver = "haveaseat.team5@gmail.com"
     message = MIMEMultipart()
     message['From'] = sender
@@ -821,7 +822,7 @@ def emailHaveASeat():
     message.attach(MIMEText(body, 'plain'))
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login(sender, "abc")
+    server.login(sender, "testowner")
     server.sendmail(sender, receiver, message.as_string())
     server.quit()
     dict={'message':"success"}
