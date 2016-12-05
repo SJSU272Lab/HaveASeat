@@ -381,6 +381,7 @@ angular.module('admin')
                      console.log(res.data)     ;
                      $scope.name=  res.data['Name']  ;
                      $scope.email   =  res.data['Email']  ;
+                     $scope.offerPhone= res.data['PhoneNumber']
 
 
 
@@ -427,6 +428,7 @@ angular.module('admin')
                  {
                         $scope.name1=  res.data['Name']  ;
                         $scope.email1   =  res.data['Email']  ;
+                       $scope.offerPhone= res.data['PhoneNumber']
 
                  //   $location.path('/');
                  });
@@ -435,7 +437,7 @@ angular.module('admin')
 
 			$scope.sendOffer=function () {
 
-                var phoneNumber=$scope.phoneNumber;
+                var phoneNumber= $scope.offerPhone;
                 console.log(phoneNumber)   ;
 
                 $http({
@@ -479,14 +481,15 @@ angular.module('admin')
 
             }
 
-           $scope.sendmail= function () {
+           $scope.sendmail= function ()
+           {
                 var email = $scope.emailHaveASeat;
+               console.log(email);
+
                 $http({
-
-
                     method: 'POST',
                     url: '/emailHaveASeat',
-                    data: {restid: restId, emailmessage: email}
+                    data: {restid: $scope.restaurantId, emailmessage: email}
                 }).then(function (res) {
 
                     $scope.success = "your email has been successfully placed."

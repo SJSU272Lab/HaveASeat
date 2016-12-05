@@ -107,21 +107,15 @@ input.btn.btn-primary.adminButton:hover{
 
 <div class="col-md-4" style="background-color:saddlebrown; width: 450px;
     height: 300px;  left: 5px; top: 410px; position: absolute;" align="left" >
-    <form>
+    <form  method="POST">
 		<input class="btn btn-primary adminButton"
                            type="button"
-                           value="Send Email Have A Seat!"
-						   ng-click="sendmail()">
+                           value="Send Email Have A Seat!" ng-click="sendmail()" >
 
         <div style="margin-bottom: 15px">
-					<textarea class="form-control" rows="3"
-                  placeholder="Email Have A Seat!" ng-model="emailHaveASeat"
-                            name=emailHaveASeat >
+					<textarea class="form-control" rows="3" placeholder="Email Have A Seat!" ng-model="emailHaveASeat"   name=emailHaveASeat ></textarea>
 
-
-                  </textarea>
-
-   <p>{{success}}
+   <p><span style="color: green">{{success}}</span>
    </p>
 
         </div>
@@ -317,8 +311,8 @@ input.btn.btn-primary.adminButton:hover{
 
 <div   style="background-color:saddlebrown;  right: 05px; width: 400px;
     height: 140px;   top: 410px; position: absolute;" align="left">
- <input type="submit"   class="btn btn-primary adminButton"  value="Send Offer"  ng-click="sendOffer()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<br/><br><input style="width: 200px;" type="text" placeholder="Phone number"  name="phoneNumber"  ng-model="phoneNumber"   class="form-control">
+ <input type="submit"   class="btn btn-primary adminButton"  value="Send Offer"  ng-click="sendOffer() " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/><br>&nbsp;&nbsp;{{offerPhone}} <br>
 </div>
 
 

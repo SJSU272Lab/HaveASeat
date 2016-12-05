@@ -60,6 +60,26 @@
           <blockquote cite="https://www.facebook.com/Tem5HaveASeat/" class="fb-xfbml-parse-ignore">
           <a href="https://www.facebook.com/Tem5HaveASeat/">Have A Seat</a></blockquote>
       </div>
+
+
+    <br><br><br>
+    <div>
+        <form  method="POST">
+		<input class="btn btn-primary adminButton"
+                           type="button"
+                           value="Submit Your Review!" ng-click="sendReview()" >
+
+        <div style="margin-bottom: 15px">
+					<textarea class="form-control" rows="3" placeholder="Review Restuarant!" ng-model="customerReview"   name=customerReview ></textarea>
+
+   <p><span style="color: green">{{successReview}}</span>
+   </p>
+
+        </div>
+
+			</form>
+        </div>
+
 </div>
 
 <div class="bgimgres" style="background-color:white; width: 350px;
@@ -287,31 +307,51 @@
 
 
 
-<div  style="background-color: wheat;  top: 510px;width: 480px; height: 70px; position: absolute;left: 390px; "   >
+<div  style="background-color: wheat;  top: 510px;width: 730px; height: 70px; position: absolute;left: 390px; "   >
 
-                            <button type="button" class="btn btn-success"> </button> <span style="font-size:medium">Selection</span>
+     <div  style="width: 120px; position: absolute;">
+                            <button type="button" class="btn btn-success"> </button> <span style="font-size:medium">Selection </span>
                             <br/>
-                            <button type="button" class="btn btn-warning"> </button> <span style="font-size:medium">Booked</span>
+                            <button type="button" class="btn btn-warning"> </button> <span style="font-size:medium">Booked </span>
                             <br/>
-                            <button type="button" class="btn btn-danger"> </button> <span style="font-size:medium">Dining</span>
-                            </div>
+                            <button type="button" class="btn btn-danger"> </button> <span style="font-size:medium">Dining </span>
+    </div>
+
+    <div style="left: 180px;  position: absolute;" >
+
+        <img src="static/images/restaurants/makeReservation.gif" alt="HTML5 Icon" style="width:550px;height:90px;">
+
+    </div>
 
 
-<div  style="background-color: White;  top: 580px;width: 500px; height: 170px; position: absolute;left: 390px; "   >
+</div>
+
+
+<div  style="background-color: red;  top: 580px;width: 390px; height: 170px; position: absolute;left: 00px; "   >
     <br>&nbsp; With Have A Seat
 
-     <img src="static/images/restaurants/haveFood.gif" alt="HTML5 Icon" style="width:490px;height:200px;">
+     <img src="static/images/restaurants/haveFood.gif" alt="HTML5 Icon" style="width:390px;height:200px;">
 
 </div>
 
 
 
-<div  style="background-color: red;  top: 480px;width: 390px; height: 170px; position: absolute;left: 00px; "   >
+<div  style="background-color: red;  top: 280px;width: 390px; height: 170px; position: absolute;left: 00px; "   >
        <br> Without Have A Seat
 
      <img src="static/images/restaurants/noMoreRuning.gif" alt="HTML5 Icon" style="width:390px;height:250px;">
 </div>
 
+<div style="background-color:#2E9AFE;  top: 580px;width: 730px; height: 200px; position: absolute;left: 390px; " >
+
+<marquee  bgcolor="#2E9AFE" scrollamount="3" direction="up" loop="true">
+<center> <font color="#ffffff"><strong> We is Happy to server you.<br><br>
+                                        PEANUTS<br>
+                                        San Jose<br><br>
+                                        <br> CONTACT US FOR ANY QUERIES<br>
+                                        669-265-7685</strong></font></center></marquee>
+
+    </div>
 
 
     <div ng-hide="layout.mcDonaldsLayout" > McDonalds Layout
@@ -557,7 +597,7 @@
 
 
 
-                    <div    class="col-md-6" style="background-color: chocolate; right:320px ;top :93px; width: 250px;height: 700px; position: absolute; ">
+                    <div    class="col-md-6" style="background-color: chocolate; right:320px ;top :93px; width: 250px;height: 418px; position: absolute; ">
 
                         <div ng-hide="true"> ThankYou for making a booking with Have A Seat </div>
                         <br/>

@@ -214,6 +214,44 @@ angular.module('seats')
                 }
             }
 
+            $scope.sendReview= function ()
+           {
+                var review = $scope.customerReview;
+               var restid=$scope.restaurantId
+               console.log(review);
+
+                $http({
+                    method: 'POST',
+                    url: '/setReview',
+                    data: {Review: review, restID: restid}
+                }).then(function (res) {
+
+                    $scope.successReview = res.data['Message'];
+
+                });
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             $scope.unBook= function(table){
                 function filterTables(el) {
                        if(el.selectedTable.sid === table.selectedTable.sid){

@@ -698,7 +698,7 @@ def exploration():
 
     emailWinner(winner['customerEmail'], "subway")
    # return json.dumps({'Name':winner['customerEmail'], 'Email': winner['customerName']})
-    return json.dumps({'Name': winner['customerName'], 'Email': winner['customerEmail']})
+    return json.dumps({'Name': winner['customerName'], 'Email': winner['customerEmail'],'PhoneNumber': "6692655123"})
 
 
 @app.route('/exploitation', methods=['POST'])
@@ -710,7 +710,7 @@ def exploitation():
     currentOwner = db.Owners.find_one({"owner_email": session['Email']})
     currentRestaurant = currentOwner['Restid']
     emailWinner(winner['customerEmail'], "subway")
-    return json.dumps({'Name': winner['customerName'],'Email':winner['customerEmail']})
+    return json.dumps({'Name': winner['customerName'],'Email':winner['customerEmail'],'PhoneNumber': "6692657685"})
 
 def emailWinner(email, restname):
     sender ="haveaseat.team5@gmail.com"
@@ -754,10 +754,13 @@ def setReview():
     #datetime.datetime.now().strftime("%d/%m/%Y")
     resp=request.get_json()
     currentReview=resp['Review']
+    print currentReview
     dateTime = strftime("%d/%m/%Y %H:%M:%S")
     date = dateTime.split(" ")[0]
-    db.Reviews.insert({'customerEmail':session['Email'], 'restID':resp['restID'], 'customerReview':currentReview, "Date":date})
-
+    if 'Email' in session:
+        db.Reviews.insert({'customerEmail':session['Email'], 'restID':resp['restID'], 'customerReview':currentReview, "Date":date})
+        return json.dumps({'Message': "Your review was successfully posted"})
+    return json.dumps({'Message': "Please login to post review"})
 
 @app.route('/getReviewAnalysis', methods=['POST'])
 def getReviewAnalysis():
@@ -795,15 +798,18 @@ def getReviewAnalysis():
     # currentReview=resp['Review']
     # db.Reviews.insert({'customerEmail':session['Email'], 'restID':resp['restID'], 'customerReview':currentReview})
 
-@app.route('/emailHaveASeat')
+@app.route('/emailHaveASeat',methods=['POST'])
 def emailHaveASeat():
+
     res = request.get_json()
     restID = res["restid"]
     restMessage = res["emailmessage"]
-    restDetails=db.Restaurants.find_one({"_id":restID})
-    ownerDetails=db.Owners.find_one({'Restid':restID})
+
+    restDetails=db.Restaurants.find_one({"_id":int(restID)})
+    ownerDetails=db.Owners.find_one({'Restid':int(restID)})
+
     ownerEmail=ownerDetails['owner_email']
-    sender=ownerEmail
+    sender="ssjsparsh@gmail.com"
     receiver = "haveaseat.team5@gmail.com"
     message = MIMEMultipart()
     message['From'] = sender
@@ -815,9 +821,12 @@ def emailHaveASeat():
     message.attach(MIMEText(body, 'plain'))
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login(sender, "haveaseat")
+    server.login(sender, "abc")
     server.sendmail(sender, receiver, message.as_string())
     server.quit()
+    dict={'message':"success"}
+    return json.dumps(dict)
+
 
 if __name__ == "__main__":  #main source running
     app.secret_key= 'T34M$_CMP32L3'
