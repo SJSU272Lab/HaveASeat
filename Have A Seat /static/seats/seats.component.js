@@ -16,17 +16,28 @@ angular.module('seats')
             $scope.showLogout = true;
 
 
-            $http({
+               $http({
                     method: 'GET',
                     url: '/loggedinUser',
                 }).then(function (res) {
-                    console.log(res);
-                    if(res.data.Email){
-                       $scope.userName = res.data.Email;
+                    if(res.data.Name){
+                        $scope.userName = res.data.Name;
                         $scope.showUser = true
                         $scope.showLogout = false;
                     }
                 });
+
+//            $http({
+//                    method: 'GET',
+//                    url: '/loggedinUser',
+//                }).then(function (res) {
+//                    console.log(res);
+//                    if(res.data.Name){
+//                       $scope.userName = res.data.Name;
+//                        $scope.showUser = true
+//                        $scope.showLogout = false;
+//                    }
+//                });
 
 
                 $scope.logoutZZ = function(){

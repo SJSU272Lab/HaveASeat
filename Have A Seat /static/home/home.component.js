@@ -25,7 +25,7 @@ angular.module('home')
                     }
                     else{
                             console.log($rootScope.loginDetails);
-                            $scope.userName  = res.data.Email;
+                            $scope.userName  = res.data.Name;
                     }
                 });
 

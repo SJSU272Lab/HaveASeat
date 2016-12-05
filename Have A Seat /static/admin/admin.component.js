@@ -61,6 +61,7 @@ angular.module('admin')
                       console.log(res.data.isValidAdmin);
                     console.log('isPOsrpto ',res.data.Restid+"" === $scope.restaurantId);
 
+                        $scope.userName = res.data.Name;
 
 
                     if( (res.data.isValidAdmin==='True') && (res.data.Restid+"" === $scope.restaurantId)){

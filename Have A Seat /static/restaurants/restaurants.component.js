@@ -18,8 +18,8 @@ angular.module('restaurants')
                     method: 'GET',
                     url: '/loggedinUser',
                 }).then(function (res) {
-                    if(res.data.Email){
-                        $scope.userName = res.data.Email;
+                    if(res.data.Name){
+                        $scope.userName = res.data.Name;
                         $scope.showUser = true
                         $scope.showLogout = false;
                     }

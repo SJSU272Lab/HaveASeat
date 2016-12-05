@@ -19,8 +19,8 @@ from email.mime.text import MIMEText
 import datetime
 from time import gmtime, strftime
 from twilio.rest import TwilioRestClient
-import sentimentalAnalysis
-from sentimentalAnalysis import analyseSentiments
+# import sentimentalAnalysis
+# from sentimentalAnalysis import analyseSentiments
 import datetime
 app= Flask(__name__)
 con = MongoClient("mongodb://abcd:qwerty@ds111798.mlab.com:11798/have_a_seat")
