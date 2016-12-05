@@ -795,7 +795,29 @@ def getReviewAnalysis():
     # currentReview=resp['Review']
     # db.Reviews.insert({'customerEmail':session['Email'], 'restID':resp['restID'], 'customerReview':currentReview})
 
-
+@app.route('/emailHaveASeat')
+def emailHaveASeat():
+    res = request.get_json()
+    restID = res["restid"]
+    restMessage = res["emailmessage"]
+    restDetails=db.Restaurants.find_one({"_id":restID})
+    ownerDetails=db.Owners.find_one({'Restid':restID})
+    ownerEmail=ownerDetails['owner_email']
+    sender=ownerEmail
+    receiver = "haveaseat.team5@gmail.com"
+    message = MIMEMultipart()
+    message['From'] = sender
+    message['To'] = receiver
+    message['Subject'] = "Email From "+restDetails['restName']
+    body=restMessage
+    print(body)
+    #body = "Dine and get 25% discount at "+ restname +"! Offer valid for today"
+    message.attach(MIMEText(body, 'plain'))
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(sender, "haveaseat")
+    server.sendmail(sender, receiver, message.as_string())
+    server.quit()
 
 if __name__ == "__main__":  #main source running
     app.secret_key= 'T34M$_CMP32L3'
