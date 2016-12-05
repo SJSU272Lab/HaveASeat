@@ -49,8 +49,8 @@ u4= "Samual Hunt"
 u5= "Chris Newman"
 u6= "Ronald Ross"
 '''
-review_list=[r1,r2,r3,r4,r5,r6]
-user_list=[u1,u2,u3,u4,u5]
+# review_list=[r1,r2,r3,r4,r5,r6]
+# user_list=[u1,u2,u3,u4,u5]
 
 def get_api(cfg):
   auth = tweepy.OAuthHandler(cfg['consumer_key'], cfg['consumer_secret'])
@@ -761,12 +761,21 @@ def setReview():
 
 @app.route('/getReviewAnalysis', methods=['POST'])
 def getReviewAnalysis():
-    OwnerObj = db.Owners.find_one({'owner_email': session['Email']})
-    restID = OwnerObj['RestID']
+    resp = request.get_json()
+    restID= resp['Restaurant']
+
+
+    #OwnerObj = db.Owners.find_one({'owner_email': session['Email']})
+    # restID = OwnerObj['Restid']
+    # print restID
     reviewObj = db.Reviews.find({'restID': restID})
     review_list = []
+
+
     for r in reviewObj:
-        review_list.append(reviewObj['customerReview'])
+        review_list.append(r['customerReview'])
+
+    print  review_list
     positive = 0
     positivereview = []
     negativereview = []
@@ -774,10 +783,11 @@ def getReviewAnalysis():
     positive,positivereview, negative, negativereview = analyseSentiments(review_list)
 
     dict = {}
-    dict['positive'] = positive
-    dict['negative'] = negative
+    dict['positive'] = int(positive)
+    dict['negative'] = int(negative)
     dict['negativeReviewList'] = negativereview
     dict['positiveReviewList'] = positivereview
+    print dict
     return json.dumps(dict)
 
 

@@ -1,3 +1,67 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+
+
+
+
+
+       function getGraph() {
+
+//          $(document).ready(function(){
+//            var $element = $('div[ng-controller="Admincontrol"]');
+//            var scope = angular.element($element).scope();
+//            console.log(scope);
+//              console.log(scope.positive);
+
+
+
+
+
+           // Load the Visualization API and the corechart package.
+           google.charts.load('current', {'packages': ['corechart']});
+
+           // Set a callback to run when the Google Visualization API is loaded.
+           google.charts.setOnLoadCallback(drawChart);
+
+           // Callback that creates and populates a data table,
+           // instantiates the pie chart, passes in the data and
+           // draws it.
+           function drawChart() {
+
+               // Create the data table.
+               var data = new google.visualization.DataTable();
+               data.addColumn('string', 'Topping');
+               data.addColumn('number', 'Slices');
+               data.addRows([
+                   ['Posive', 1],
+                   ['negative', 1]
+//                  ['Olives', 1],
+//                  ['Zucchini', 1],
+//                  ['Pepperoni', 2]
+               ]);
+
+               // Set chart options
+               var options = {
+                   'title': 'How Much Pizza I Ate Last Night',
+                   'width': 400,
+                   'height': 300
+               };
+
+               // Instantiate and draw our chart, passing in some options.
+               var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+               chart.draw(data, options);
+           }
+
+       }
+    </script>
+
+
+
+
+
+
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation"  ng-model="hideHeader">
             <div class="container">
                 <div class="row">
@@ -45,6 +109,54 @@
 
  </div>
 
+
+
+<form ng-submit="getAnalysis()">
+      <div    class="col-md-4"    style="background-color:white; width: 50px;
+    height: 40px;  left: 650px; top: 410px; position: absolute;" align="center">
+       <input type="submit"   class="btn btn-primary"  value="Get Graph" onclick="getGraph()"  />
+          </div>
+    </form>
+
+
+ <div id="chart_div"    class="col-md-4"    style=" left: 500px; top: 470px; position: absolute;" align="center" ></div>
+
+</form>
+
+
+<!--<div class="container"  style="background-color:white; width: 50px;-->
+    <!--height: 40px;  left: 770px; top: 310px; position: absolute;" align="center" >-->
+	<!--<div class="row">-->
+        <!--<div class="col-sm-6 col-sm-push-4 mt-100">-->
+            <!--<button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".charts-modal">Last Week Review</button>-->
+        <!--</div>-->
+	<!--</div>-->
+<!--</div>-->
+<!--<div class="modal fade charts-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">-->
+  <!--<div class="modal-dialog modal-lg">-->
+    <!--<div class="modal-content">-->
+       <!--<div class="modal-header">-->
+            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>-->
+            <!--<h4 class="modal-title" id="myModalLabel">Last Week Analysis</h4>-->
+      <!--</div>-->
+        <!--<div class="js-loading text-center">-->
+            <!--<h3>Loading...</h3>-->
+        <!--</div>-->
+        <!--<div id="area-example"></div>-->
+        <!--<div class="modal-footer">-->
+            <!--<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+        <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+
+
+      <!--<div    class="col-md-4"    style="background-color:white; width: 50px;-->
+    <!--height: 40px;  left: 770px; top: 410px; position: absolute;" align="center">-->
+       <!--<input type="submit"   class="btn btn-primary"  value="Get OverAll Analysis  "  data-toggle="modal" data-target="#OverallAnalysis" />-->
+          <!--</div>-->
 
 
 
@@ -590,7 +702,7 @@
                     <div class="col-md-6">
 
 
-                        <!--MODALLLLLL-->
+                        <!--MODALLLLLL  Seat Selection-->
 
                             <div class="container">
                             <!-- Modal -->
@@ -627,10 +739,6 @@
                             </div>
 
                             </div>
-
-                        <!--MODALLLLLL-->
-
-
 
                         <!--MODALLLLLL for Analysis Exploration-->
 
@@ -674,13 +782,6 @@
 
                             </div>
 
-                        <!--MODALLLLLL-->
-
-
-
-
-
-
                         <!--MODALLLLLL for Analysis Exploitation-->
 
                             <div class="container">
@@ -723,9 +824,89 @@
 
                             </div>
 
-                        <!--MODALLLLLL-->
+                        <!--MODALLLLLL for Yesterday Analysis-->
+
+                            <!--<div class="container">-->
+                            <!--&lt;!&ndash; Modal &ndash;&gt;-->
+                            <!--<div class="modal fade" id="YesterdayAnalysis" role="dialog">-->
+                            <!--<div class="modal-dialog  modal-sm">-->
+
+                              <!--&lt;!&ndash; Modal content&ndash;&gt;-->
+                              <!--<div class="modal-content">-->
+                                <!--<div class="modal-header">-->
+                                  <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                  <!--<h4 class="modal-title">Action</h4>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                  <!--<p>Review Analysis for Yesterday</p>-->
+
+                                     <!--<div class="content">-->
+                                <!--<div id="chartActivity" class="ct-chart"></div>-->
+
+                                <!--<div class="footer">-->
+                                    <!--<div class="legend">-->
+                                        <!--<i class="fa fa-circle text-info"></i> <img src="/static/images/uber.png" width="25" height="25" alt="">-->
+                                        <!--<i class="fa fa-circle text-danger"></i> <img src="/static/images/lyft.ico" width="25" height="25" alt="">-->
+                                    <!--</div>-->
+                                    <!--&nbsp; &nbsp;-->
+                                    <!--<div class="stats">-->
+                                    <!--<b>X-axis : </b>Difference in price between Uber & Lyft &nbsp; &nbsp;<b>Y-axis</b> represents the Price in US$-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                               <!--</div>-->
 
 
+                                <!--</div>-->
+                                <!--<div class="modal-footer">-->
+                                  <!--<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="exploitation()">Apply</button>-->
+                                <!--</div>-->
+                              <!--</div>-->
+
+                            <!--</div>-->
+                            <!--</div>-->
+
+                            <!--</div>-->
+
+                        <!--MODALLLLLL for OverAll Analysis-->
+
+                           <!--<div class="container"   >-->
+                            <!--&lt;!&ndash; Modal &ndash;&gt;-->
+                            <!--<div class="modal fade" id="OverallAnalysis" role="dialog">-->
+                            <!--<div class="modal-dialog  modal-sm">-->
+
+
+                              <!--&lt;!&ndash; Modal content&ndash;&gt;-->
+                              <!--<div class="modal-content"  style="width: 600px; height: 700px;"  >-->
+                                <!--<div class="modal-header">-->
+                                  <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                  <!--<h4 class="modal-title">Analysis</h4>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                  <!--<p>Review Analysis for Yesterday</p>-->
+
+                                     <!--<div class="content">-->
+                                <!--<div id="chartActivity" class="ct-chart"></div>-->
+
+                                <!--<div class="footer">-->
+                                    <!--<div class="legend">-->
+                                        <!--<i class="fa fa-circle text-info"></i> <img src="/static/images/restaurants/happy.jpg" width="25" height="25" alt="">-->
+                                        <!--<i class="fa fa-circle text-danger"></i> <img src="/static/images/restaurants/sad.jpg" width="25" height="25" alt="">-->
+                                    <!--</div>-->
+                                    <!--&nbsp; &nbsp;-->
+                                    <!--<div class="stats">-->
+                                    <!--<b>X-axis : </b>Number of Customers&nbsp; &nbsp;<b>Y-axis</b> Date-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                               <!--</div>-->
+
+
+                                <!--</div>-->
+                              <!--</div>-->
+
+                            <!--</div>-->
+                            <!--</div>-->
+
+                            <!--</div>-->
 
 
                     </div>
@@ -739,6 +920,7 @@
 
 
 </div>
+
 
 <footer   style="background-color:black;  right: 05px; width: 100%;
     height: 50px;   bottom: 0px; position: absolute;"  >

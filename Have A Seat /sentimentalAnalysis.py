@@ -134,8 +134,8 @@ def calculate(text):
 def analyseSentiments(inputData):
     print "Inside text Processing"
     print inputData
-    # negative=0
-    # positive=0
+    negative=0
+    positive=0
     positiveReviews=[]
     negativeReviews=[]
     for i in inputData:
@@ -155,10 +155,10 @@ def analyseSentiments(inputData):
         dict_tagged_sentences = dicttagger.tag(pos_tagged_sentences)
         print sentiment_score(dict_tagged_sentences)
         if sentiment_score(dict_tagged_sentences) < 0:
-            negative = negative + abs(sentiment_score(dict_tagged_sentences))
+            negative = negative + 1
             negativeReviews.append(i)
         elif sentiment_score(dict_tagged_sentences) > 0:
-            positive=positive + abs(sentiment_score(dict_tagged_sentences))
+            positive=positive + 1
             positiveReviews.append(i)
     print positive
     print negative

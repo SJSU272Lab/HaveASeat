@@ -11,6 +11,7 @@ angular.module('admin')
 		function ($http, $scope, $location,$routeParams, $rootScope, $anchorScroll) {
 
              var seatsCtrl = this;
+             var seatsCtrl = this;
              $scope.bookedTables = [];
              $scope.bookedTableIDs = [];
              $scope.restaurantId = $routeParams.resId;
@@ -447,6 +448,35 @@ angular.module('admin')
                 }).then(function (res) {
 
                 });
+            }
+
+            $scope.getAnalysis=function () {
+
+                var restId=$scope.restaurantId;
+                console.log(restId)   ;
+
+                $http({
+
+
+                    method: 'POST',
+                    url: '/getReviewAnalysis',
+                    data: {Restaurant: restId}
+
+                }).then(function (res) {
+
+                           $scope.positive=  res.data['positive']  ;
+                           $scope.negative=  res.data['negative']  ;
+
+                                            console.log($scope.positive) ;
+                            console.log($scope.negative) ;
+
+
+
+
+                });
+
+
+
             }
 
 
