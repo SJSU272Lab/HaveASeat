@@ -1,3 +1,7 @@
+<!--<input type="hidden" name="positive" id="positive" value={{positive}}>-->
+<!--<input type="hidden" name="negative" id="negative" value={{negative}}>-->
+
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
 
@@ -14,7 +18,11 @@
 //            console.log(scope);
 //              console.log(scope.positive);
 
-
+//         var positive = valueOf(document.getElementById("positive"));
+//         var negative = valueOf(document.getElementById("negative"));
+//
+//           console.log(positive);
+//           console.log(negative);
 
 
 
@@ -35,8 +43,8 @@
                data.addColumn('number', 'Slices');
                data.addRows([
                    ['Posive', 1],
-                   ['negative', 1]
-//                  ['Olives', 1],
+                   ['Negative', 1]
+//                  ['OlivNs', 1],
 //                  ['Zucchini', 1],
 //                  ['Pepperoni', 2]
                ]);
