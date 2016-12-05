@@ -4,39 +4,25 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-
-
-
-
-
-
        function getGraph() {
-
 //          $(document).ready(function(){
 //            var $element = $('div[ng-controller="Admincontrol"]');
 //            var scope = angular.element($element).scope();
 //            console.log(scope);
 //              console.log(scope.positive);
-
 //         var positive = valueOf(document.getElementById("positive"));
 //         var negative = valueOf(document.getElementById("negative"));
 //
 //           console.log(positive);
 //           console.log(negative);
-
-
-
            // Load the Visualization API and the corechart package.
            google.charts.load('current', {'packages': ['corechart']});
-
            // Set a callback to run when the Google Visualization API is loaded.
            google.charts.setOnLoadCallback(drawChart);
-
            // Callback that creates and populates a data table,
            // instantiates the pie chart, passes in the data and
            // draws it.
            function drawChart() {
-
                // Create the data table.
                var data = new google.visualization.DataTable();
                data.addColumn('string', 'Topping');
@@ -48,19 +34,16 @@
 //                  ['Zucchini', 1],
 //                  ['Pepperoni', 2]
                ]);
-
                // Set chart options
                var options = {
                    'title': 'How Much Pizza I Ate Last Night',
                    'width': 400,
                    'height': 300
                };
-
                // Instantiate and draw our chart, passing in some options.
                var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
                chart.draw(data, options);
            }
-
        }
     </script>
 
@@ -105,29 +88,59 @@
 
 
 <style type="text/css">
-.bgimg {
-    background-image: url('static/img/restaurants/Peanuts400.jpg');
+.image {
+    content: url('static/img/restaurants/Peanuts400.jpg');
+    padding:0px;
+}
+.adminButton{  background-color:black;
+}
+input.btn.btn-primary.adminButton:hover{
+            background-color:darkcyan;
 }
 </style>
 
 
-<div class="col-md-4 bgimg" style="background-color:green; width: 450px;
+<div class="col-md-4 image" style="background-color:saddlebrown; width: 450px;
     height: 300px;  left: 5px; top: 90px; position: absolute;" align="left"  >
 
  </div>
-<div class="col-md-4"    style="background-color:green; width: 450px;
+
+<div class="col-md-4" style="background-color:saddlebrown; width: 450px;
+    height: 300px;  left: 5px; top: 410px; position: absolute;" align="left" >
+    <form>
+		<input class="btn btn-primary adminButton"
+                           type="button"
+                           value="Email Have A Seat!"
+						   ng-click="emailHaveASeat()">
+
+        <div style="margin-bottom: 15px">
+					<textarea class="form-control" rows="3"
+                  placeholder="Email Have A Seat!" ng-model="emailHaveASeat"
+                            name=emailHaveASeat >
+
+                  </textarea>
+
+
+				</div>
+
+			</form>
+    <p style="color:white;">Thank you for using Have A Seat!</p>
+    <p style="color:white;">We are happy to help you. If you would like share feedback or have some concerns, please write your message in the above box and click on the <b>'Email Have A Seat' button!</b></p>
+    </div>
+
+<!--<div class="col-md-4"    style="background-color:saddlebrown; width: 450px;
     height: 300px;  left: 5px; top: 410px; position: absolute;" align="left"  >
 
     <i>Uniquely flavored peanuts are our specialty here at The Peanut Roaster! Extra-large Virginia peanuts are hand-roasted and completely coated in unique seasonings</i>
 
- </div>
+ </div>-->
 
 
 
 <form ng-submit="getAnalysis()">
       <div    class="col-md-4"    style="background-color:white; width: 50px;
     height: 40px;  left: 650px; top: 410px; position: absolute;" align="center">
-       <input type="submit"   class="btn btn-primary"  value="Get Graph" onclick="getGraph()"  />
+       <input type="submit"   class="btn btn-primary adminButton"  value="Get Graph" onclick="getGraph()"  />
           </div>
     </form>
 
@@ -282,34 +295,34 @@
 <br/><br/><br/>
 
 
-      <div    style="background-color:green;  right: 05px; width: 400px;
+      <div    style="background-color:saddlebrown;  right: 05px; width: 400px;
     height: 140px;   top: 90px; position: absolute;" align="left">
-       <input type="submit"   class="btn btn-primary"  value="Exploitation Mode"  data-toggle="modal" data-target="#AnalysisExploitationModal" />
-          <br/><br/>&nbsp;Name :<span style="color: white">&nbsp;{{name1}}</span>
- <br/><br/>&nbsp;Email: <span style="color: white">&nbsp;{{email1}}</span>
+       <input type="submit"   class="btn btn-primary adminButton"  value="Exploitation Mode"  data-toggle="modal" data-target="#AnalysisExploitationModal" />
+          <br/><br/><p style="color:white;">&nbsp;Name :<span style="color: white">&nbsp;{{name1}}</span></p>
+ <br/><br/><p style="color:white;">&nbsp;Email : <span style="color: white">&nbsp;{{email1}}</span></p>
       </div>
 
 
-<div   style="background-color:green; width: 400px;
+<div   style="background-color:saddlebrown; width: 400px;
     height: 140px;  right: 05px; top: 250px; position: absolute;" align="left">
- <input type="submit"  class="btn btn-primary"  value="Exploration Mode"  data-toggle="modal" data-target="#AnalysisModal" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <br/><br/>&nbsp;Name :<span style="color: white">&nbsp;{{name}}</span>
- <br/><br/>&nbsp;Email: <span style="color: white">&nbsp;{{email}}</span></div>
+ <input type="submit"  class="btn btn-primary adminButton"  value="Exploration Mode"  data-toggle="modal" data-target="#AnalysisModal" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <br/><br/><p style="color:white;">&nbsp;Name : <span style="color: white">&nbsp;{{name}}</span></p>
+ <br/><br/><p style="color:white;">&nbsp;Email : <span style="color: white">&nbsp;{{email}}</span></p></div>
 
 
 
 
-<div   style="background-color:green;  right: 05px; width: 400px;
+<div   style="background-color:saddlebrown;  right: 05px; width: 400px;
     height: 140px;   top: 410px; position: absolute;" align="left">
- <input type="submit"   class="btn btn-primary"  value="Send Offer"  ng-click="sendOffer()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="submit"   class="btn btn-primary adminButton"  value="Send Offer"  ng-click="sendOffer()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <br/><br><input style="width: 200px;" type="text" placeholder="Phone number"  name="phoneNumber"  ng-model="phoneNumber" class="form-control">
 </div>
 
 
-<div    style="background-color:green; right: 05px;  width: 400px;
+<div    style="background-color:saddlebrown; right: 05px;  width: 400px;
     height: 140px;   top: 570px; position: absolute;" align="left" >
     <form>
-		<input class="btn btn-primary"
+		<input class="btn btn-primary adminButton"
                            type="button"
                            value="Tweet"
 						   ng-click="sendTweet()">
@@ -744,7 +757,7 @@
                                         </div>
                                 </div>
                                 <div class="modal-footer">
-                                  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="adminChange()">Apply</button>
+                                  <button type="button" class="btn btn-primary adminButton" data-dismiss="modal" ng-click="adminChange()">Apply</button>
                                 </div>
                               </div>
 
@@ -786,7 +799,7 @@
                                         </div>
                                 </div>
                                 <div class="modal-footer">
-                                  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="exploration()">Apply</button>
+                                  <button type="button" class="btn btn-primary adminButton" data-dismiss="modal" ng-click="exploration()">Apply</button>
                                 </div>
                               </div>
 
@@ -828,7 +841,7 @@
                                         </div>
                                 </div>
                                 <div class="modal-footer">
-                                  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="exploitation()">Apply</button>
+                                  <button type="button" class="btn btn-primary adminButton" data-dismiss="modal" ng-click="exploitation()">Apply</button>
                                 </div>
                               </div>
 
