@@ -39,17 +39,6 @@
 
 
 
-
-
-
-
-
- <style>
-body {
-    background-image: url("static/images/restaurants/res_back.jpg");
-}
-</style>
-
 <style>
     .bgimg{
         background-image: url("static/img/restaurants/restuarant_layout.jpg");
@@ -57,7 +46,6 @@ body {
         margin-left: 49px;
     }
 </style>
-<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -67,10 +55,26 @@ body {
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
+<div style="right: 20px; top:90px ;background-color: lightblue; width: 300px;height: 700px; position: absolute;">
+    <div  class="fb-page" data-href="https://www.facebook.com/Tem5HaveASeat/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+          <blockquote cite="https://www.facebook.com/Tem5HaveASeat/" class="fb-xfbml-parse-ignore">
+          <a href="https://www.facebook.com/Tem5HaveASeat/">Have A Seat</a></blockquote>
+      </div>
+</div>
 
-<div ng-hide="false">
-    <br/>
-    <br/>
+<div class="bgimgres" style="background-color:white; width: 350px;
+   height: 200px;  left: 5px; top: 90px; position: absolute;" align="left"  >
+    </div>
+
+<style type="text/css">
+.bgimgres {
+   content: url('static/images/restaurants/Peanuts400.jpg');
+
+}
+</style>
+
+
+
 
 
 
@@ -188,35 +192,19 @@ body {
                 </div>
 
 
-    </div>
-    <div ng-hide="layout.peanutsLayout"   style="color: black" >
 
-          <div class="col-md-3">
+    <div ng-hide="layout.peanutsLayout"   style="color: black; " >
 
-                            <br/>
-                            <br/>
-                    <div class="lead" >Chooos your Table at :  <b>{{selectedRestaurant.name}}</b>
-                        <br/>
-                        <dl class="dl-horizontal">
-                            <dt>Food</dt>
-                            <dd>Veg / Non veg</dd>
-                            <dt>Cuisines</dt>
-                            <dd>Asian / Arabian</dd>
-                            <dt>Food</dt>
-                            <dd>Veg / Non veg</dd>
-                        </dl>
-                        <div  style="background-color: wheat">
 
-                            <button type="button" class="btn btn-success"> </button> <span style="font-size:medium">Selection</span>
-                            <br/>
-                            <button type="button" class="btn btn-warning"> </button> <span style="font-size:medium">Booked</span>
-                            <br/>
-                            <button type="button" class="btn btn-danger"> </button> <span style="font-size:medium">Dining</span>
-                            </div>
+                    <div  class="lead"   style="width: 330px;height: 200px; top: 350px; background-color: white; position: absolute"  >Chooos your Table at :  <b>{{selectedRestaurant.name}}</b>
+                        <br/><br/>
+
+                        Food : Veg/ Non veg<br>
+                        Cuisines : Asian / Arabian<br>
                     </div>
-                </div>
 
-                <div class="col-md-4 bgimg"  style="background-color: #784E45">
+
+                <div class="col-md-4 bgimg"  style="background-color: #784E45; top:90px;left:340px; position: absolute;">
 
                     <!--ACTUAL LAYOUT DONT DISTURB-->
                     <div class="col-md-12" style="padding-left: 40%">
@@ -296,6 +284,35 @@ body {
                 </div>
 
     </div>
+
+
+
+<div  style="background-color: wheat;  top: 510px;width: 480px; height: 70px; position: absolute;left: 390px; "   >
+
+                            <button type="button" class="btn btn-success"> </button> <span style="font-size:medium">Selection</span>
+                            <br/>
+                            <button type="button" class="btn btn-warning"> </button> <span style="font-size:medium">Booked</span>
+                            <br/>
+                            <button type="button" class="btn btn-danger"> </button> <span style="font-size:medium">Dining</span>
+                            </div>
+
+
+<div  style="background-color: White;  top: 580px;width: 500px; height: 170px; position: absolute;left: 390px; "   >
+    <br>&nbsp; With Have A Seat
+
+     <img src="static/images/restaurants/haveFood.gif" alt="HTML5 Icon" style="width:490px;height:200px;">
+
+</div>
+
+
+
+<div  style="background-color: red;  top: 480px;width: 390px; height: 170px; position: absolute;left: 00px; "   >
+       <br> Without Have A Seat
+
+     <img src="static/images/restaurants/noMoreRuning.gif" alt="HTML5 Icon" style="width:390px;height:250px;">
+</div>
+
+
 
     <div ng-hide="layout.mcDonaldsLayout" > McDonalds Layout
 
@@ -538,12 +555,9 @@ body {
 
                 </div>
 
-                <div class="col-md-4">
 
 
-                    <div class="col-md-3"></div>
-
-                    <div class="col-md-6" style="background-color: chocolate">
+                    <div    class="col-md-6" style="background-color: chocolate; right:320px ;top :93px; width: 250px;height: 700px; position: absolute; ">
 
                         <div ng-hide="true"> ThankYou for making a booking with Have A Seat </div>
                         <br/>
@@ -565,17 +579,12 @@ body {
 
                     </div>
 
-                    <div class="col-md-3"></div>
-
-                </div>
-                    <div class="fb-page" data-href="https://www.facebook.com/Tem5HaveASeat/" data-tabs="timeline" data-width="400" data-height="130" style="
-  justify-content: center;
-    margin: 0 auto;
-    width: 800px;
-    align-content: center;
-    margin-left: 475px;
-    margin-top: 60px;
-" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Tem5HaveASeat/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Tem5HaveASeat/">Have A Seat</a></blockquote></div>
-
     </div>
 </div>
+
+
+<footer   style="background-color:black;  right: 05px; width: 100%;
+    height: 50px;   bottom: 0px; position: fixed;"  >
+
+
+</footer>
