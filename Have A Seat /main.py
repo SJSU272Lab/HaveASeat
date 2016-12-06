@@ -458,12 +458,12 @@ def seatsBooked():
     CustomerName = ""
     CustomerPhone = ""
     custObj = db.Customers.find_one({'Email':CustomerEmail})
-    if custObj.count() ==1:
+    if custObj:
         CustomerBooking = "Yes"
 
     if(CustomerBooking == 'Yes'):
         CustomerName = custObj['customerName']
-        CustomerEmail = custObj['customerEmail']
+        CustomerEmail = custObj['Email']
         try:
             CustomerPhone = custObj['customerPhone']
         except:
