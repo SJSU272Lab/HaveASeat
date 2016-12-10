@@ -28,6 +28,8 @@ Enables the owners to do targeted marketing and gain automated insights from the
 Owners can reach out the customers which were previously out-of-scope by using Have A Seat Database.
  • Lots and lots of happiness to the Foodies!
 
+For more info: Please checkout the Project_Report.pdf
+
 ##Architectural Flow Diagram:
 
 ![artitecture flow diagram](https://cloud.githubusercontent.com/assets/21698271/19756814/120493d0-9bd4-11e6-9e3a-f96cbe620a41.png)
