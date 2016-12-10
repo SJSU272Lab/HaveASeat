@@ -22,9 +22,11 @@ Owners will get a notification via ML algorithm one-hour prior to closing time t
 Wider ML integration to suggest appropriate restaurants to the foodies based on their eating habits, and to suggest owners what food to prepare and how much in case a customer has booked a seat. With much data (real and accurate), we can scale the app to release APIs which can be used to develop other apps (or can also expand this app) and give recommendations of available seat based on time/season to the users.
 
 ##Benefits:
-•Increased revenue of the restaurant owners by allowing them to contact *prospective* customers thereby allowing them to fill up the seats at the last moment.
-•Reduced food wastage by making the restaurants aware about the eating habits of the prospective customers.
-•Lots and lots of happiness to the Foodies!
+•  Increased revenue of the restaurant owners by allowing them to contact prospective customers thereby allowing them to fill up the seats at the last moment. 
+Improve the opportunity costs for the restaurant owners when they have seats available.
+Enables the owners to do targeted marketing and gain automated insights from the user reviews in graphical format.
+Owners can reach out the customers which were previously out-of-scope by using Have A Seat Database.
+ • Lots and lots of happiness to the Foodies!
 
 ##Architectural Flow Diagram:
 
