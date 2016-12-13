@@ -1,6 +1,6 @@
 #				TITLE: HAVE A SEAT 
 
-### For Link Click [Here](http://haveaseat.mybluemix.net)
+### Link [Here](http://haveaseat.mybluemix.net)
 					            
 ##Problem Statement:
 How many times has it occurred that you went to a diner and couldn’t find a seat? You probably ended up spending time in long queues, ruining your dining experience and getting frustrated – not knowing that there is a diner with available seats on the next street or there was a seat available just a few minutes ago when you stopped just for a small chat.
