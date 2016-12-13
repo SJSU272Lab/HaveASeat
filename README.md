@@ -4,7 +4,7 @@
 
 #				TITLE: _HAVE A SEAT_
 
-###                                Link [Here](http://haveaseat.mybluemix.net)
+###                                Link to website [Here](http://haveaseat.mybluemix.net)
 ### 				   Tweet your comments/suggestion to @haveaseat_team5 [here] (https://www.twitter.com)
 					            
 ##Problem Statement:
