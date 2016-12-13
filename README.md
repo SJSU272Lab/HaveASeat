@@ -1,6 +1,10 @@
+![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/sjsu.png "User Flow Diagram")
+
+#                             CMPE 272 - Class Project
+
 #				TITLE: HAVE A SEAT 
 
-### Link [Here](http://haveaseat.mybluemix.net)
+###                                Link [Here](http://haveaseat.mybluemix.net)
 					            
 ##Problem Statement:
 How many times has it occurred that you went to a diner and couldn’t find a seat? You probably ended up spending time in long queues, ruining your dining experience and getting frustrated – not knowing that there is a diner with available seats on the next street or there was a seat available just a few minutes ago when you stopped just for a small chat.
@@ -17,6 +21,10 @@ Restaurant owner who doesn’t want to waste food and have seats in their restau
 ###@Consumers: 
 Foodies can now look up in the app and see if there is a seat available at the location where they want to eat. They can submit the request to book the seat, and the app will give them a time-limit to reach to the restaurant. If they reach the restaurant in the specified time, the owner can check-in them and mark their seat as booked. As soon as the owner marks the seat as booked, it will be reflected across all the apps in real time.
 
+##User Architectural Flow Diagram
+![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/User%20Persona.png "User Flow Diagram")
+
+
 ###@Owners: 
 Owners will get a notification via ML algorithm one-hour prior to closing time to send tweets/messages to the foodies based on the historical data accumulated by the app. Owner can then decide whether to call it a day & go home or to send the tweets to the foodie popped-out by the ML algorithm. Owners also get to disapprove the request for booking in case a favorite customer comes in before the ones who booked the seat via the app.
 
@@ -31,6 +39,9 @@ Owners can reach out the customers which were previously out-of-scope by using H
  • Lots and lots of happiness to the Foodies!
 
 ### For Step by step instructions with screenshots click [here] (./Project_Report.pdf)
+
+
+
 
 ##Architectural Flow Diagram:
 
