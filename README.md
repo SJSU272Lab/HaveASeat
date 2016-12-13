@@ -1,4 +1,6 @@
 #				TITLE: HAVE A SEAT
+
+### Link : haveaseat.mybluemix.net
 					            
 ##Problem Statement:
 How many times has it occurred that you went to a diner and couldn’t find a seat? You probably ended up spending time in long queues, ruining your dining experience and getting frustrated – not knowing that there is a diner with available seats on the next street or there was a seat available just a few minutes ago when you stopped just for a small chat.
@@ -28,7 +30,7 @@ Enables the owners to do targeted marketing and gain automated insights from the
 Owners can reach out the customers which were previously out-of-scope by using Have A Seat Database.
  • Lots and lots of happiness to the Foodies!
 
-## For more info: Please checkout the Project_Report.pdf
+### Step by step instructions with screenshots are available in Project_Report.pdf
 
 ##Architectural Flow Diagram:
 
