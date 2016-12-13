@@ -5,6 +5,7 @@
 #				TITLE: _HAVE A SEAT_
 
 ###                                Link [Here](http://haveaseat.mybluemix.net)
+### 				   Tweet if your comments/suggestion to [@haveaseat_team5] [https://www.twitter.com]
 					            
 ##Problem Statement:
 How many times has it occurred that you went to a diner and couldn’t find a seat? You probably ended up spending time in long queues, ruining your dining experience and getting frustrated – not knowing that there is a diner with available seats on the next street or there was a seat available just a few minutes ago when you stopped just for a small chat.
@@ -91,10 +92,6 @@ Owner can change the state of the table at the restaurant and it is reflected in
 
 **An Amazon Echo device will be deployed at the restaurant which will be helping the owner with confirming booked seats.** Alexa will be assisting the owner  by confirming customer details when they reach the restaurant after booking seats using the Have A Seat application. Alexa just need customer’s name and the table number they booked and Alexa will confirm the booking if the details presented by customer are valid.
 ![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/ss11.PNG)
-
-###More Features available to Owner
-![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/ss11.PNG)
-
 
 ###Tweet Functionality
 ![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/tweet.PNG "Owners Tweet")
