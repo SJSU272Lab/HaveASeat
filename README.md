@@ -78,11 +78,12 @@ This is the Thankyou page to which the user is redirected after his successful c
 ![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/ss8.PNG)
 
 ###Owner Dashboard View of Restaurant
-As he logs in the owner of the restaurant is redirected to the restaurant he owns, this is the home dashboard of the owner, where he can see the current status of all the tables  in the restaurant. He can manage all the tables in the restaurant from this dashboard.
+As he logs as the owner of the restaurant,he is redirected to the restaurant he owns, this is the home dashboard of the owner, where he can see the current status of all the tables in the restaurant.                                                                        
 ![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/ss9.PNG)
 
 ###Features available to owner
 Owner can see the status of seats in his own restaurant. He also has the flexibility to change the status of the seats as per his will.
+
 ![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/ss10.PNG)
 
 ###Owner making the changes in seat availability status
@@ -94,18 +95,23 @@ Owner can change the state of the table at the restaurant and it is reflected in
 ###More Features available to Owner
 ![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/ss11.PNG)
 
-Owner can tweet about the instant offer that he wants to give to its customers. Tweet can be send using haeaseat_team5 twitter handle. Customers will be benefited from this functionality as they can get instant tweets about the latest offer that the restaurant has to offer.
-![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/tweet.PNG)
 
+###Tweet Functionality
+![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/tweet.PNG "Owners Tweet")
+Owner can tweet about the instant offer that he wants to give to its customers. Tweet can be send using haeaseat_team5 twitter handle. Customers need to follow only tweets at @haveaseat_team5 about the latest offer that the restaurants affiliated with us offer.
+
+###Targeted Marketing
 As marketing strategy can be implemented in two ways - Give huge discounts to the low frequency customers (Exploration Mode) or give moderate discounts to high frequency customers (Exploitation Mode).  Epsilon-Greedy Algorithm is a simplistic algorithm that came out as the direct result of Multi-Armed Bandit Problem posed by Microsoft Research. It has been proven that this method beats A/B Testing everytime.
 ![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/epsilongreedy.PNG)
 
 Emails crunched out by Epsilon-Greedy Algorithm enables the owner to do targeted marketing. This is further refined by providing time-slots to the owner which specify in which time slot does the owner wants to do targeted marketing. Because the algorithm plays on large data set - the output is formed by a cron job which runs on BlueMix Platform at mid-night and is stored on Flask Server. This saves the owner from waiting while the algorithm is crunching out the emails.
 ![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/timeslot.PNG)
 
+###Sentimental Analysis on user reviews
 Owner can click on the Get Graph button to get the comparative analysis of the reviews that the customers have submitted on the Have A Seat website. The Have A Seat team provides this graphical view to the owner by **performing sentimental analysis using NLTK** (Natural Language ToolKit) library  on the reviews submitted by the customers.
 ![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/graph.PNG)
 
+###Contact to _Have A Seat_ Team
 Owner can send email to Have A Seat team, as per his requirements & needs. And team will be available to resolve their issues. This functionality can also be used to share instant feedback between Owner & Have A Seat.
 ![alt text](https://github.com/SJSU272Lab/Fall16-Team5/blob/master/Have%20A%20Seat%20/static/team.PNG)
 
