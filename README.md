@@ -130,3 +130,8 @@ Owners can reach out the customers which were previously out-of-scope by using H
 
 ![machine learning 272](https://cloud.githubusercontent.com/assets/21698271/19756815/12053038-9bd4-11e6-8983-8a803a967978.png)
 
+## Team Members
+
+| [![Vimanyu Agarwal](https://avatars.githubusercontent.com/VimanyuAgg?s=100)<br /><sub>Vimanyu Agarwal</sub>](https://github.com/VimanyuAgg)<br /> | [![Sparsh Sidana](https://avatars.githubusercontent.com/sidanasparsh?s=100)<br /><sub>Sparsh Sidana</sub>](https://github.com/sidanasparsh)<br /> | [![Amit Pandey](https://avatars.githubusercontent.com/amit-sjsu?s=100)<br /><sub>Amit Pandey</sub>](https://github.com/amit-sjsu)<br />| [![Jayam Malviya](https://avatars.githubusercontent.com/Jayam-Malviya?s=100)<br /><sub>Jayam Malviya</sub>](https://github.com/Jayam-Malviya)<br />|
+| :---: | :---: | :---: | :---: |
+
