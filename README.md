@@ -6,6 +6,20 @@
 
 ###                                Link to website [Here](http://haveaseat.mybluemix.net)
 ### 				   Tweet your comments/suggestion to @haveaseat_team5 [here] (https://www.twitter.com)
+
+
+
+## Team Members
+
+| [![Vimanyu Agarwal](https://avatars.githubusercontent.com/VimanyuAgg?s=100)<br /><sub>Vimanyu Aggarwal</sub>](https://github.com/VimanyuAgg)<br /> | [![Sparsh Sidana](https://avatars.githubusercontent.com/sidanasparsh?s=100)<br /><sub>Sparsh Sidana</sub>](https://github.com/sidanasparsh)<br /> | [![Amit Pandey](https://avatars.githubusercontent.com/amit-sjsu?s=100)<br /><sub>Amit Pandey</sub>](https://github.com/amit-sjsu)<br />| [![Jayam Malviya](https://avatars.githubusercontent.com/Jayam-Malviya?s=100)<br /><sub>Jayam Malviya</sub>](https://github.com/Jayam-Malviya)<br />|
+| :---: | :---: | :---: | :---: |
+
+
+###Vimanyu Aggarwal(+1-669-254-7235)
+###Sparsh Sidana   (+1-669-265-5123)
+###Amit Pandey     (+1-669-265-7685)
+###Jayam Malviya   (+1-669-265-5125)
+
 					            
 ##Problem Statement:
 How many times has it occurred that you went to a diner and couldn’t find a seat? You probably ended up spending time in long queues, ruining your dining experience and getting frustrated – not knowing that there is a diner with available seats on the next street or there was a seat available just a few minutes ago when you stopped just for a small chat.
@@ -129,16 +143,5 @@ Owners can reach out the customers which were previously out-of-scope by using H
 ![artitecture flow diagram](https://cloud.githubusercontent.com/assets/21698271/19756814/120493d0-9bd4-11e6-9e3a-f96cbe620a41.png)
 
 ![machine learning 272](https://cloud.githubusercontent.com/assets/21698271/19756815/12053038-9bd4-11e6-8983-8a803a967978.png)
-
-## Team Members
-
-| [![Vimanyu Agarwal](https://avatars.githubusercontent.com/VimanyuAgg?s=100)<br /><sub>Vimanyu Aggarwal</sub>](https://github.com/VimanyuAgg)<br /> | [![Sparsh Sidana](https://avatars.githubusercontent.com/sidanasparsh?s=100)<br /><sub>Sparsh Sidana</sub>](https://github.com/sidanasparsh)<br /> | [![Amit Pandey](https://avatars.githubusercontent.com/amit-sjsu?s=100)<br /><sub>Amit Pandey</sub>](https://github.com/amit-sjsu)<br />| [![Jayam Malviya](https://avatars.githubusercontent.com/Jayam-Malviya?s=100)<br /><sub>Jayam Malviya</sub>](https://github.com/Jayam-Malviya)<br />|
-| :---: | :---: | :---: | :---: |
-
-
-###Vimanyu Aggarwal(+1-669-254-7235)
-###Sparsh Sidana   (+1-669-265-5123)
-###Amit Pandey     (+1-669-265-7685)
-###Jayam Malviya   (+1-669-265-5125)
 
 
